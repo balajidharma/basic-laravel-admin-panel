@@ -1,5 +1,5 @@
 <h1 align="center">Basic Laravel Admin Panel</h1>
-<h3 align="center">~ A basic and simple admin panel for Laravel projects.</h3>
+<h3 align="center">A basic and simple admin panel for Laravel projects.</h3>
 
 ## Installation
 - Clone the repository with __git clone__
