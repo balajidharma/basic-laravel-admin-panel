@@ -10,9 +10,11 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flex flex-col mt-8">
+                    @can('permission create')
                     <div class="d-print-none with-border mb-8">
                         <a href="{{ route('permission.create') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{ __('Add Permission') }}</a>
                     </div>
+                    @endcan
                         <div class="py-2">
                         @if(session()->has('message'))
                             <div class="mb-8 text-green-400 font-bold">
@@ -26,9 +28,11 @@
                                             <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light text-left">
                                                 {{ __('Name') }}
                                             </th>
+                                            @canany(['permission edit', 'permission delete'])
                                             <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light text-left">
                                                 {{ __('Actions') }}
                                             </th>
+                                            @endcanany
                                         </tr>
                                     </thead>
 
@@ -40,21 +44,25 @@
                                                     <a href="{{route('permission.show', $permission->id)}}" class="no-underline hover:underline text-cyan-600 dark:text-cyan-400">{{ $permission->name }}</a>
                                                 </div>
                                             </td>
-
+                                            @canany(['permission edit', 'permission delete'])
                                             <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
                                                 <form action="{{ route('permission.destroy', $permission->id) }}" method="POST">
+                                                    @can('permission edit')
                                                     <a href="{{route('permission.edit', $permission->id)}}" class="px-4 py-2 text-white mr-4 bg-blue-600">
                                                         {{ __('Edit') }}
                                                     </a>
+                                                    @endcan
 
+                                                    @can('permission delete')
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="px-4 py-2 text-white bg-red-600">
                                                         {{ __('Delete') }}
                                                     </button>
+                                                    @endcan
                                                 </form>
                                             </td>
-
+                                            @endcanany
                                         </tr>
                                         @endforeach
                                     </tbody>
