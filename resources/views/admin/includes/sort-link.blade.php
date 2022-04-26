@@ -10,7 +10,7 @@
         $down_fill = 'black';
     }
 @endphp
-@if (request()->query('sort') == 'name')
+@if (request()->query('sort') == $attribute)
     <a href="{{request()->fullUrlWithQuery(['sort' => '-'.$attribute])}}" class="no-underline hover:underline text-cyan-600 dark:text-cyan-400">{{ __($label) }}</a>
 @else
     <a href="{{request()->fullUrlWithQuery(['sort' => $attribute])}}" class="no-underline hover:underline text-cyan-600 dark:text-cyan-400">{{ __($label) }}</a>
