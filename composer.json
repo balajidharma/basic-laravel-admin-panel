@@ -1,15 +1,14 @@
 {
-    "name": "laravel/laravel",
+    "name": "balajidharma/basic-laravel-admin-panel",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "The Baic Laravel Admin Panel - Laravel Admin Boilerplate",
+    "keywords": ["framework", "laravel", "boilerplate", "admin panel"],
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "fruitcake/laravel-cors": "^2.0.5",
         "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^9.0",
-        "laravel/sanctum": "^2.14",
+        "laravel/framework": "^9.2",
+        "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "spatie/laravel-permission": "^5.5"
     },
