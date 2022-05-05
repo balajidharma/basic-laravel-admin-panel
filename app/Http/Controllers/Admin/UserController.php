@@ -161,4 +161,69 @@ class UserController extends Controller
         return redirect()->route('user.index')
                         ->with('message','User deleted successfully');
     }
+
+    /**
+     * Show the user a form to change their personal information & password.
+     */
+    public function accountInfo()
+    {
+        $user = \Auth::user();
+
+        return view('admin.user.account_info', compact('user'));
+    }
+
+    /**
+     * Save the modified personal information for a user.
+     */
+    public function accountInfoStore(Request $request)
+    {
+        $request->validateWithBag('account', [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.\Auth::user()->id],
+        ]);
+
+        $user = \Auth::user()->update($request->except(['_token']));
+
+        if ($user) {
+            $message = "Account updated successfully.";
+        } else {
+            $message = "Error while saving. Please try again.";
+        }
+
+        return redirect()->route('admin.account.info')->with('account_message', $message);
+    }
+
+    /**
+     * Save the new password for a user.
+     */
+    public function changePasswordStore(Request $request)
+    {
+        $validator = \Validator::make(request()->all(), [
+            'old_password' => ['required'],
+            'new_password' => ['required', Rules\Password::defaults()],
+            'confirm_password' => ['required', 'same:new_password', Rules\Password::defaults()],
+        ]);
+
+        $validator->after(function ($validator) use ($request) {
+            if (! Hash::check($request->input('old_password'), \Auth::user()->password)) {
+                $validator->errors()->add(
+                    'old_password', 'Old password is incorrect.'
+                );
+            }
+        });
+
+        $validator->validateWithBag('password');
+
+        $user = \Auth::user()->update([
+            'password' => Hash::make($request->input('old_password')),
+        ]);
+
+        if ($user) {
+            $message = "Password updated successfully.";
+        } else {
+            $message = "Error while saving. Please try again.";
+        }
+
+        return redirect()->route('admin.account.info')->with('password_message', $message);
+    }
 }
