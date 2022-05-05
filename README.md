@@ -7,7 +7,7 @@
 - `sail artisan breeze:install`
 - `sail artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"`
 - `npm install && npm run dev`
-- `sail artisan migrate`
+- `sail artisan migrate --seed --seeder=BasicAdminPermissionSeeder`
 
 ## License
 
