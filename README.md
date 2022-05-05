@@ -8,12 +8,15 @@
 <p align="center"><img src="https://miro.medium.com/max/1400/1*3eXlUx9DnzjgXX_1PJ_qWw.png" width="600"></a>
 
 ## Installation
-- Clone the repository with __git clone__
-- `./vendor/bin/sail up`
-- `sail artisan breeze:install`
-- `sail artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"`
-- `npm install && npm run dev`
-- `sail artisan migrate --seed --seeder=BasicAdminPermissionSeeder`
+- Open WSL2 Linux terminal
+- `docker run --rm -v "$(pwd)":/opt -w /opt laravelsail/php81-composer:latest bash -c "composer create-project balajidharma/basic-laravel-admin-panel admin-app && cd admin-app && php ./artisan sail:install --with=mysql,redis,meilisearch,mailhog,selenium"`
+- `cd admin-app && ./vendor/bin/sail up`
+- `./vendor/bin/sail npm install`
+- `./vendor/bin/sail npm run dev`
+- `./vendor/bin/sail artisan migrate --seed --seeder=BasicAdminPermissionSeeder`
+- Now open http://localhost/
+- Email - superadmin@example.com
+- Password - password
 
 ## License
 
