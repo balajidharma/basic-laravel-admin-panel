@@ -4,6 +4,8 @@
 ## Installation
 - Clone the repository with __git clone__
 - `./vendor/bin/sail up`
+- `sail artisan breeze:install`
+- `sail artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"`
 - `npm install && npm run dev`
 - `sail artisan migrate`
 
