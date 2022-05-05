@@ -5,5 +5,6 @@ Route::group([
     'prefix'     => 'admin',
     'middleware' => ['auth'],
 ], function () {
+    Route::resource('role', 'RoleController');
     Route::resource('permission', 'PermissionController');
 });
