@@ -22,7 +22,13 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        $permissions = Permission::latest()->paginate(5);
+        $permissions = Permission::latest();
+
+        if (request()->has('search')) {
+            $permissions->where('name', 'Like', '%' . request()->input('search') . '%');
+        }
+
+        $permissions = $permissions->paginate(5);
 
         return view('admin.permission.index',compact('permissions'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
