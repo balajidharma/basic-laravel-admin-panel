@@ -198,13 +198,14 @@ class UserController extends Controller
      */
     public function changePasswordStore(Request $request)
     {
-        $validator = \Validator::make(request()->all(), [
+        $validator = \Validator::make($request->all(), [
             'old_password' => ['required'],
             'new_password' => ['required', Rules\Password::defaults()],
             'confirm_password' => ['required', 'same:new_password', Rules\Password::defaults()],
         ]);
 
         $validator->after(function ($validator) use ($request) {
+            if ($validator->failed()) return;
             if (! Hash::check($request->input('old_password'), \Auth::user()->password)) {
                 $validator->errors()->add(
                     'old_password', 'Old password is incorrect.'
