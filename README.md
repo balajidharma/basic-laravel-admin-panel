@@ -5,7 +5,14 @@
 <a href="https://packagist.org/packages/balajidharma/basic-laravel-admin-panel"><img src="https://poser.pugx.org/balajidharma/basic-laravel-admin-panel/v/stable" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/balajidharma/basic-laravel-admin-panel"><img src="https://poser.pugx.org/balajidharma/basic-laravel-admin-panel/license" alt="License"></a>
 </p>
-<p align="center"><img src="https://miro.medium.com/max/1400/1*3eXlUx9DnzjgXX_1PJ_qWw.png" width="600"></a>
+<p align="center"><img src="https://miro.medium.com/max/1400/1*3eXlUx9DnzjgXX_1PJ_qWw.png" width="600"></p>
+
+## Built with
+- [Laravel 9](https://github.com/laravel/framework)
+- [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
+- [Laravel Breeze](https://github.com/laravel/breeze)
+- [Tailwind CSS](https://tailwindcss.com/)
+
 
 ## Installation
 - To get started, you need to install [Docker Desktop](https://www.docker.com/products/docker-desktop).
