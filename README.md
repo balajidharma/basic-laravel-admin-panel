@@ -6,12 +6,6 @@
 <a href="https://packagist.org/packages/balajidharma/basic-laravel-admin-panel"><img src="https://poser.pugx.org/balajidharma/basic-laravel-admin-panel/license" alt="License"></a>
 </p>
 
-## Screenshots
-<p align="center"><img src="https://miro.medium.com/max/700/1*Wk4WaomlQ4v_GKUY2AhcXw.png" width="600"></p>
-<p align="center"><img src="https://miro.medium.com/max/700/1*3eXlUx9DnzjgXX_1PJ_qWw.png" width="600"></p>
-<p align="center"><img src="https://miro.medium.com/max/700/1*jtzIchs6RP-leKp3nugdZw.png" width="600"></p>
-<p align="center"><img src="https://miro.medium.com/max/700/1*4LFqQCnriBDipDpbvcnCzw.png" width="600"></p>
-
 ## Built with
 - [Laravel 9](https://github.com/laravel/framework)
 - [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
@@ -30,9 +24,20 @@
 - `./vendor/bin/sail artisan migrate --seed --seeder=BasicAdminPermissionSeeder`
 - Now open http://localhost/
 
-#### Login
+###### Super Admin Login
 - Email - superadmin@example.com
 - Password - password
+
+## Screenshots
+<p align="center">
+	<img src="https://miro.medium.com/max/700/1*Wk4WaomlQ4v_GKUY2AhcXw.png" >
+	<br/><br/>
+	<img src="https://miro.medium.com/max/700/1*3eXlUx9DnzjgXX_1PJ_qWw.png" >
+	<br/><br/>
+	<img src="https://miro.medium.com/max/700/1*jtzIchs6RP-leKp3nugdZw.png" >
+    <br/><br/>
+	<img src="https://miro.medium.com/max/700/1*4LFqQCnriBDipDpbvcnCzw.png">
+</p>
 
 ## License
 
