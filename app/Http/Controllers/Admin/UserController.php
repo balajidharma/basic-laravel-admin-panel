@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreUserRequest;
 use App\Http\Requests\Admin\UpdateUserRequest;
+use App\Actions\Admin\User\CreateUser;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Http\Request;
@@ -66,19 +67,12 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\Admin\StoreUserRequest  $request
+     * @param  \App\Actions\Admin\User\CreateUser $createUser
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUserRequest  $request)
+    public function store(StoreUserRequest $request, CreateUser $createUser)
     {
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        if(! empty($request->roles)) {
-            $user->assignRole($request->roles);
-        }
+        $createUser->handle($request);
 
         return redirect()->route('user.index')
                         ->with('message','User created successfully.');
