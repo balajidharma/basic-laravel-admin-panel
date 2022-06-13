@@ -1,0 +1,2 @@
+<h1 class="inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200 py-4 block sm:inline-block flex">{{ $title }}</h1>
+<a href="{{ $href }}" class="no-underline hover:underline text-cyan-600 dark:text-cyan-400">{{ $slot }}</a>
