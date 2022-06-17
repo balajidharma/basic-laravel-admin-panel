@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreUserRequest;
 use App\Http\Requests\Admin\UpdateUserRequest;
 use App\Actions\Admin\User\CreateUser;
+use App\Actions\Admin\User\UpdateUser;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Http\Request;
@@ -75,7 +76,7 @@ class UserController extends Controller
         $createUser->handle($request);
 
         return redirect()->route('user.index')
-                        ->with('message','User created successfully.');
+                        ->with('message', __('User created successfully.'));
     }
 
     /**
@@ -110,26 +111,15 @@ class UserController extends Controller
      *
      * @param  \App\Http\Requests\Admin\UpdateUserRequest  $request
      * @param  \App\Models\User  $user
+     * @param  \App\Actions\Admin\User\UpdateUser $updateUser
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(UpdateUserRequest $request, User $user, UpdateUser $updateUser)
     {
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-        ]);
-
-        if($request->password){
-            $user->update([
-                'password' => Hash::make($request->password),
-            ]);
-        }
-
-        $roles = $request->roles ?? [];
-        $user->assignRole($roles);
+        $updateUser->handle($request, $user);
 
         return redirect()->route('user.index')
-                        ->with('message','User updated successfully.');
+                        ->with('message', __('User updated successfully.'));
     }
 
     /**
@@ -143,7 +133,7 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('user.index')
-                        ->with('message','User deleted successfully');
+                        ->with('message', __('User deleted successfully'));
     }
 
     /**
@@ -174,7 +164,7 @@ class UserController extends Controller
             $message = "Error while saving. Please try again.";
         }
 
-        return redirect()->route('admin.account.info')->with('account_message', $message);
+        return redirect()->route('admin.account.info')->with('account_message', __($message));
     }
 
     /**
@@ -192,7 +182,7 @@ class UserController extends Controller
             if ($validator->failed()) return;
             if (! Hash::check($request->input('old_password'), \Auth::user()->password)) {
                 $validator->errors()->add(
-                    'old_password', 'Old password is incorrect.'
+                    'old_password', __('Old password is incorrect.')
                 );
             }
         });
@@ -209,6 +199,6 @@ class UserController extends Controller
             $message = "Error while saving. Please try again.";
         }
 
-        return redirect()->route('admin.account.info')->with('password_message', $message);
+        return redirect()->route('admin.account.info')->with('password_message', __($message));
     }
 }
