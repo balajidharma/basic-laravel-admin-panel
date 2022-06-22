@@ -67,7 +67,7 @@
                                                         @can('permission delete')
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="px-4 py-2 text-white bg-red-600">
+                                                        <button class="px-4 py-2 text-white bg-red-600" onclick="return confirm('{{ __('Are you sure you want to delete?') }}')">
                                                             {{ __('Delete') }}
                                                         </button>
                                                         @endcan
