@@ -43,10 +43,9 @@ class RoleController extends Controller
             $roles->latest();
         }
 
-        $roles = $roles->paginate(5);
+        $roles = $roles->paginate(5)->onEachSide(2);
 
-        return view('admin.role.index',compact('roles'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('admin.role.index', compact('roles'));
     }
 
     /**

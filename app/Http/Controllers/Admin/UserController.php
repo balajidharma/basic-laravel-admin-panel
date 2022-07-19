@@ -47,10 +47,9 @@ class UserController extends Controller
             $users->latest();
         }
 
-        $users = $users->paginate(5);
+        $users = $users->paginate(5)->onEachSide(2);
 
-        return view('admin.user.index',compact('users'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('admin.user.index', compact('users'));
     }
 
     /**

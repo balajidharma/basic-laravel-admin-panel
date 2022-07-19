@@ -42,10 +42,9 @@ class PermissionController extends Controller
             $permissions->latest();
         }
 
-        $permissions = $permissions->paginate(5);
+        $permissions = $permissions->paginate(5)->onEachSide(2);
 
-        return view('admin.permission.index',compact('permissions'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('admin.permission.index', compact('permissions'));
     }
 
     /**
