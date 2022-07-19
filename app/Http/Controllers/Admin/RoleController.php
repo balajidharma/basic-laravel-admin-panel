@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreRoleRequest;
+use App\Http\Requests\Admin\UpdateRoleRequest;
 use App\Models\Role;
 use App\Models\Permission;
 use Illuminate\Http\Request;
@@ -61,15 +63,11 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Admin\StoreRoleRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRoleRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255|unique:'.config('permission.table_names.roles', 'roles').',name',
-        ]);
-
         $role = Role::create($request->all());
 
         if(! empty($request->permissions)) {
@@ -110,16 +108,12 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Admin\UpdateRoleRequest  $request
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(UpdateRoleRequest $request, Role $role)
     {
-        $request->validate([
-            'name' => 'required|string|max:255|unique:'.config('permission.table_names.roles', 'roles').',name,'.$role->id,
-        ]);
-
         $role->update($request->all());
         $permissions = $request->permissions ?? [];
         $role->syncPermissions($permissions);
@@ -139,6 +133,6 @@ class RoleController extends Controller
         $role->delete();
     
         return redirect()->route('role.index')
-                        ->with('message','Role deleted successfully');
+                        ->with('message', __('Role deleted successfully'));
     }
 }
