@@ -10,7 +10,6 @@
     @endcan
 
     <div class="py-2">
-        <x-admin.message />
         <div class="min-w-full border-b border-gray-200 shadow overflow-x-auto">
             <x-admin.grid.search action="{{ route('permission.index') }}" />
             <x-admin.grid.table>
@@ -39,7 +38,7 @@
                             <form action="{{ route('permission.destroy', $permission->id) }}" method="POST">
                                 <div class="flex">
                                     @can('permission edit')
-                                    <a href="{{route('permission.edit', $permission->id)}}" class="px-4 py-2 text-white mr-4 bg-blue-600">
+                                    <a href="{{route('permission.edit', $permission->id)}}" class="inline-flex items-center px-4 py-2 mr-4 bg-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-600 active:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-150">
                                         {{ __('Edit') }}
                                     </a>
                                     @endcan
@@ -47,7 +46,7 @@
                                     @can('permission delete')
                                     @csrf
                                     @method('DELETE')
-                                    <button class="px-4 py-2 text-white bg-red-600" onclick="return confirm('{{ __('Are you sure you want to delete?') }}')">
+                                    <button class="inline-flex items-center px-4 py-2 bg-red-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-red-700 focus:outline-none focus:border-red-700 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150" onclick="return confirm('{{ __('Are you sure you want to delete?') }}')">
                                         {{ __('Delete') }}
                                     </button>
                                     @endcan
