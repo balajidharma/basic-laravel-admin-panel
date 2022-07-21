@@ -6,17 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StorePermissionRequest;
 use App\Http\Requests\Admin\UpdatePermissionRequest;
 use App\Models\Permission;
-use Illuminate\Http\Request;
 
 class PermissionController extends Controller
 {
-    function __construct()
+    public function __construct()
     {
-         $this->middleware('can:permission list', ['only' => ['index','show']]);
-         $this->middleware('can:permission create', ['only' => ['create','store']]);
-         $this->middleware('can:permission edit', ['only' => ['edit','update']]);
-         $this->middleware('can:permission delete', ['only' => ['destroy']]);
+        $this->middleware('can:permission list', ['only' => ['index', 'show']]);
+        $this->middleware('can:permission create', ['only' => ['create', 'store']]);
+        $this->middleware('can:permission edit', ['only' => ['edit', 'update']]);
+        $this->middleware('can:permission delete', ['only' => ['destroy']]);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +27,7 @@ class PermissionController extends Controller
         $permissions = (new Permission)->newQuery();
 
         if (request()->has('search')) {
-            $permissions->where('name', 'Like', '%' . request()->input('search') . '%');
+            $permissions->where('name', 'Like', '%'.request()->input('search').'%');
         }
 
         if (request()->query('sort')) {
@@ -79,7 +79,7 @@ class PermissionController extends Controller
      */
     public function show(Permission $permission)
     {
-        return view('admin.permission.show',compact('permission'));
+        return view('admin.permission.show', compact('permission'));
     }
 
     /**
@@ -90,7 +90,7 @@ class PermissionController extends Controller
      */
     public function edit(Permission $permission)
     {
-        return view('admin.permission.edit',compact('permission'));
+        return view('admin.permission.edit', compact('permission'));
     }
 
     /**
@@ -117,7 +117,7 @@ class PermissionController extends Controller
     public function destroy(Permission $permission)
     {
         $permission->delete();
-    
+
         return redirect()->route('permission.index')
                         ->with('message', __('Permission deleted successfully'));
     }

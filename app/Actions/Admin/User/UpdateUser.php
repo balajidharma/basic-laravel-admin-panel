@@ -1,10 +1,11 @@
 <?php
+
 namespace App\Actions\Admin\User;
- 
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
- 
+
 class UpdateUser
 {
     public function handle(Request $request, User $user): User
@@ -14,7 +15,7 @@ class UpdateUser
             'email' => $request->email,
         ]);
 
-        if($request->password){
+        if ($request->password) {
             $user->update([
                 'password' => Hash::make($request->password),
             ]);
