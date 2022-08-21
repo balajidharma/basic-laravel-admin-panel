@@ -194,7 +194,7 @@ class UserController extends Controller
         $validator->validateWithBag('password');
 
         $user = \Auth::user()->update([
-            'password' => Hash::make($request->input('old_password')),
+            'password' => Hash::make($request->input('new_password')),
         ]);
 
         if ($user) {
