@@ -12,10 +12,6 @@
 - [Laravel Breeze](https://github.com/laravel/breeze)
 - [Tailwind CSS](https://tailwindcss.com/)
 
-## Also Try
-- [Build a Laravel admin panel from scratch](https://blog.devgenius.io/laravel-create-an-admin-panel-from-scratch-part-1-installation-8c11dae7e684)
-- [Laravel Vue Admin Panel](https://github.com/balajidharma/laravel-vue-admin-panel)
-
 ## Installation
 - To get started, you need to install [Docker Desktop](https://www.docker.com/products/docker-desktop).
 - You may run the following command in your terminal
@@ -30,6 +26,10 @@
 ###### Super Admin Login
 - Email - superadmin@example.com
 - Password - password
+
+## Also Try
+- [Build a Laravel admin panel from scratch](https://blog.devgenius.io/laravel-create-an-admin-panel-from-scratch-part-1-installation-8c11dae7e684)
+- [Laravel Vue Admin Panel](https://github.com/balajidharma/laravel-vue-admin-panel)
 
 ## Screenshots
 <p align="center">
