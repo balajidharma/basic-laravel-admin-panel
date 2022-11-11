@@ -64,6 +64,15 @@
                         @endcanany
                     </tr>
                     @endforeach
+                    @if($users->isEmpty())
+                        <tr>
+                            <td colspan="3">
+                                <div class="flex flex-col justify-center items-center py-4 text-lg">
+                                    {{ __('No Result Found') }}
+                                </div>
+                            </td>
+                        </tr>
+                    @endif
                 </x-slot>
             </x-admin.grid.table>
         </div>
