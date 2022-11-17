@@ -3,7 +3,7 @@
         {{ $head }}
     </thead>
 
-    <tbody class="bg-white dark:bg-slate-800">
+    <tbody class="bg-white">
         {{ $body }}
     </tbody>
 </table>

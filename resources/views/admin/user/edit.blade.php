@@ -52,7 +52,7 @@
             </div>
 
             <div class="py-2">
-                <h3 class="inline-block text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200 py-4 block sm:inline-block flex">Roles</h3>
+                <h3 class="inline-block text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight py-4 block sm:inline-block flex">Roles</h3>
                 <div class="grid grid-cols-4 gap-4">
                     @forelse ($roles as $role)
                         <div class="col-span-4 sm:col-span-2 md:col-span-1">

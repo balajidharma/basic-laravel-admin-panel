@@ -30,7 +30,7 @@
                     <tr>
                         <x-admin.grid.td>
                             <div class="text-sm text-gray-900">
-                                <a href="{{route('permission.show', $permission->id)}}" class="no-underline hover:underline text-cyan-600 dark:text-cyan-400">{{ $permission->name }}</a>
+                                <a href="{{route('permission.show', $permission->id)}}" class="no-underline hover:underline text-cyan-600">{{ $permission->name }}</a>
                             </div>
                         </x-admin.grid.td>
                         @canany(['permission edit', 'permission delete'])

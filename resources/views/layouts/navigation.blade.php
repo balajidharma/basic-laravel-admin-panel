@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
 
@@ -15,7 +15,7 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('permission.index')" :active="request()->routeIs('permission.index')">
+                    <x-nav-link :href="route('permission.index')" :active="request()->routeIs('permission.index')">        
                         {{ __('Permissions') }}
                     </x-nav-link>
                     <x-nav-link :href="route('role.index')" :active="request()->routeIs('role.index')">
@@ -31,7 +31,7 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ml-1">
@@ -43,10 +43,11 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <!-- Authentication -->
-                        <x-dropdown-link :href="route('admin.account.info')" :active="request()->routeIs('admin.account.info')">
-                                {{ __('My Account') }}
+                        <x-dropdown-link :href="route('profile.edit')">
+                            {{ __('Profile') }}
                         </x-dropdown-link>
+
+                        <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
@@ -78,7 +79,7 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('permission.index')" :active="request()->routeIs('permission.index')">
+            <x-responsive-nav-link :href="route('permission.index')" :active="request()->routeIs('permission.index')">     
                 {{ __('Permissions') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('role.index')" :active="request()->routeIs('role.index')">
@@ -97,9 +98,10 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('admin.account.info')" :active="request()->routeIs('admin.account.info')">
-                        {{ __('My Account') }}
-                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('profile.edit')">
+                    {{ __('Profile') }}
+                </x-response-nav-link>
+
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

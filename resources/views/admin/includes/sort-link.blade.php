@@ -12,9 +12,9 @@
 @endphp
 <div class="flex items-center gap-4">
 @if (request()->query('sort') == $attribute)
-    <a href="{{request()->fullUrlWithQuery(['sort' => '-'.$attribute])}}" class="no-underline hover:underline text-cyan-600 dark:text-cyan-400">{{ __($label) }}</a>
+    <a href="{{request()->fullUrlWithQuery(['sort' => '-'.$attribute])}}" class="no-underline hover:underline text-cyan-600">{{ __($label) }}</a>
 @else
-    <a href="{{request()->fullUrlWithQuery(['sort' => $attribute])}}" class="no-underline hover:underline text-cyan-600 dark:text-cyan-400">{{ __($label) }}</a>
+    <a href="{{request()->fullUrlWithQuery(['sort' => $attribute])}}" class="no-underline hover:underline text-cyan-600">{{ __($label) }}</a>
 @endif
     <div class="flex flex-col">
         <svg class="inline-block" xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 15 15" fill="none">

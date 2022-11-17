@@ -30,7 +30,7 @@
                     <tr>
                         <x-admin.grid.td>
                             <div class="text-sm text-gray-900">
-                                <a href="{{route('role.show', $role->id)}}" class="no-underline hover:underline text-cyan-600 dark:text-cyan-400">{{ $role->name }}</a>
+                                <a href="{{route('role.show', $role->id)}}" class="no-underline hover:underline text-cyan-600">{{ $role->name }}</a>
                             </div>
                         </x-admin.grid.td>
                         @canany(['role edit', 'role delete'])

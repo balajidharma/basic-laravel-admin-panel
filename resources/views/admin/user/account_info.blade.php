@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="px-6">
-                    <h1 class="inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200 py-4 block sm:inline-block flex">{{ __('Account Info') }}</h1>
+                    <h1 class="inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight py-4 block sm:inline-block flex">{{ __('Account Info') }}</h1>
                     @if ($errors->account->any())
                         <ul class="mt-3 list-none list-inside text-sm text-red-400">
                             @foreach ($errors->account->all() as $error)
@@ -62,7 +62,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="px-6">
-                    <h1 class="inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200 py-4 block sm:inline-block flex">{{ __('Change Password') }}</h1>
+                    <h1 class="inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight py-4 block sm:inline-block flex">{{ __('Change Password') }}</h1>
                     @if ($errors->password->any())
                         <ul class="mt-3 list-none list-inside text-sm text-red-400">
                             @foreach ($errors->password->all() as $error)

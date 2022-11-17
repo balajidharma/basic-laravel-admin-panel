@@ -33,7 +33,7 @@
                     <tr>
                         <x-admin.grid.td>
                             <div class="text-sm text-gray-900">
-                                <a href="{{route('user.show', $user->id)}}" class="no-underline hover:underline text-cyan-600 dark:text-cyan-400">{{ $user->name }}</a>
+                                <a href="{{route('user.show', $user->id)}}" class="no-underline hover:underline text-cyan-600">{{ $user->name }}</a>
                             </div>
                         </x-admin.grid.td>
                         <x-admin.grid.td>
