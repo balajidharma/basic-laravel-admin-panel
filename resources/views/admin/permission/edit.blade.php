@@ -1,6 +1,6 @@
 <x-admin.wrapper>
     <x-slot name="title">
-            {{ __('Permissions') }}
+        {{ Breadcrumbs::render('permission.edit',$permission) }}
     </x-slot>
 
     <div>

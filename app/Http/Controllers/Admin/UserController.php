@@ -75,9 +75,9 @@ class UserController extends Controller
     public function store(StoreUserRequest $request, CreateUser $createUser)
     {
         $createUser->handle($request);
+        toastr()->success('User created successfully.');
 
-        return redirect()->route('user.index')
-                        ->with('message', __('User created successfully.'));
+        return redirect()->route('user.index');
     }
 
     /**
@@ -120,8 +120,8 @@ class UserController extends Controller
     {
         $updateUser->handle($request, $user);
 
-        return redirect()->route('user.index')
-                        ->with('message', __('User updated successfully.'));
+        toastr()->success('User updated successfully.');
+        return redirect()->route('user.index');
     }
 
     /**
@@ -134,8 +134,8 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect()->route('user.index')
-                        ->with('message', __('User deleted successfully'));
+        toastr()->success('User deleted successfully.');
+        return redirect()->route('user.index');
     }
 
     /**

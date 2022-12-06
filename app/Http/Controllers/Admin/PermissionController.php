@@ -66,9 +66,8 @@ class PermissionController extends Controller
     public function store(StorePermissionRequest $request)
     {
         Permission::create($request->all());
-
-        return redirect()->route('permission.index')
-                        ->with('message', __('Permission created successfully.'));
+        toastr()->success('Permission created successfully!');
+        return redirect()->route('permission.index');
     }
 
     /**
@@ -103,9 +102,9 @@ class PermissionController extends Controller
     public function update(UpdatePermissionRequest $request, Permission $permission)
     {
         $permission->update($request->all());
-
+        toastr()->success('Permission updated successfully!');
         return redirect()->route('permission.index')
-                        ->with('message', __('Permission updated successfully.'));
+            ;
     }
 
     /**
@@ -117,8 +116,8 @@ class PermissionController extends Controller
     public function destroy(Permission $permission)
     {
         $permission->delete();
-
+        toastr()->success('Permission deleted successfully!');
         return redirect()->route('permission.index')
-                        ->with('message', __('Permission deleted successfully'));
+            ;
     }
 }

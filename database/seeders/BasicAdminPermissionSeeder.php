@@ -33,6 +33,7 @@ class BasicAdminPermissionSeeder extends Seeder
             'user create',
             'user edit',
             'user delete',
+            'admin read',
         ];
 
         foreach ($permissions as $permission) {

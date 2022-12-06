@@ -1,6 +1,6 @@
 <x-admin.wrapper>
     <x-slot name="title">
-        {{ __('Permissions') }}
+        {{ Breadcrumbs::render('permission.index') }}
     </x-slot>
 
     @can('permission create')
@@ -34,7 +34,7 @@
                             </div>
                         </x-admin.grid.td>
                         @canany(['permission edit', 'permission delete'])
-                        <x-admin.grid.td>
+                            <x-admin.grid.td style="width: 150px">
                             <form action="{{ route('permission.destroy', $permission->id) }}" method="POST">
                                 <div class="flex">
                                     @can('permission edit')

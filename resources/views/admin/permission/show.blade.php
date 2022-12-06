@@ -1,10 +1,10 @@
 <x-admin.wrapper>
     <x-slot name="title">
-            {{ __('Permissions') }}
+        {{ Breadcrumbs::render('permission.show',$permission) }}
     </x-slot>
 
     <div class="d-print-none with-border">
-        <x-admin.breadcrumb href="{{route('permission.index')}}" title="{{ __('View permission') }}">{{ __('<< Back to all permissions') }}</x-admin.breadcrumb> 
+        <x-admin.breadcrumb href="{{route('permission.index')}}" title="{{ __('View permission') }}">{{ __('<< Back to all permissions') }}</x-admin.breadcrumb>
     </div>
     <div class="w-full py-2">
         <div class="min-w-full border-b border-gray-200 shadow">

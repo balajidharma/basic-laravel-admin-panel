@@ -1,6 +1,6 @@
 <x-admin.wrapper>
     <x-slot name="title">
-        {{ __('Roles') }}
+        {{ Breadcrumbs::render('role.index') }}
     </x-slot>
 
     @can('role create')
@@ -12,6 +12,7 @@
     <div class="py-2">
         <div class="min-w-full border-b border-gray-200 shadow overflow-x-auto">
             <x-admin.grid.search action="{{ route('role.index') }}" />
+
             <x-admin.grid.table>
                 <x-slot name="head">
                     <tr>
@@ -19,9 +20,9 @@
                             @include('admin.includes.sort-link', ['label' => 'Name', 'attribute' => 'name'])
                         </x-admin.grid.th>
                         @canany(['role edit', 'role delete'])
-                        <x-admin.grid.th>
-                            {{ __('Actions') }}
-                        </x-admin.grid.th>
+                            <x-admin.grid.th>
+                                {{ __('Actions') }}
+                            </x-admin.grid.th>
                         @endcanany
                     </tr>
                 </x-slot>
@@ -34,21 +35,21 @@
                             </div>
                         </x-admin.grid.td>
                         @canany(['role edit', 'role delete'])
-                        <x-admin.grid.td>
+                        <x-admin.grid.td style="width: 150px">
                             <form action="{{ route('role.destroy', $role->id) }}" method="POST">
                                 <div class="flex">
                                     @can('role edit')
-                                    <a href="{{route('role.edit', $role->id)}}" class="inline-flex items-center px-4 py-2 mr-4 bg-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-600 active:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-150">
-                                        {{ __('Edit') }}
-                                    </a>
+                                        <a href="{{route('role.edit', $role->id)}}" class="inline-flex items-center px-4 py-2 mr-4 bg-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-600 active:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-150">
+                                            {{ __('Edit') }}
+                                        </a>
                                     @endcan
 
                                     @can('role delete')
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="inline-flex items-center px-4 py-2 bg-red-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-red-700 focus:outline-none focus:border-red-700 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150" onclick="return confirm('{{ __('Are you sure you want to delete?') }}')">
-                                        {{ __('Delete') }}
-                                    </button>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="inline-flex items-center px-4 py-2 bg-red-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-red-700 focus:outline-none focus:border-red-700 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150" onclick="return confirm('{{ __('Are you sure you want to delete?') }}')">
+                                            {{ __('Delete') }}
+                                        </button>
                                     @endcan
                                 </div>
                             </form>

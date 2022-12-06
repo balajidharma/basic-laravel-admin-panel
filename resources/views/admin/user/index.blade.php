@@ -1,12 +1,13 @@
 <x-admin.wrapper>
+
     <x-slot name="title">
-        {{ __('Users') }}
+        {{ Breadcrumbs::render('user.index') }}
     </x-slot>
 
     @can('user create')
-    <x-admin.add-link href="{{ route('user.create') }}">
-        {{ __('Add User') }}
-    </x-admin.add-link>
+        <x-admin.add-link href="{{ route('user.create') }}">
+            {{ __('Add User') }}
+        </x-admin.add-link>
     @endcan
 
     <div class="py-2">
@@ -42,7 +43,7 @@
                             </div>
                         </x-admin.grid.td>
                         @canany(['user edit', 'user delete'])
-                        <x-admin.grid.td>
+                        <x-admin.grid.td style="width: 150px">
                             <form action="{{ route('user.destroy', $user->id) }}" method="POST">
                                 <div class="flex">
                                     @can('user edit')

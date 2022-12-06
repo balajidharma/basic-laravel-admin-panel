@@ -73,9 +73,9 @@ class RoleController extends Controller
         if (! empty($request->permissions)) {
             $role->givePermissionTo($request->permissions);
         }
+        toastr()->success('Data has been saved successfully!');
 
-        return redirect()->route('role.index')
-                        ->with('message', 'Role created successfully.');
+        return redirect()->route('role.index');
     }
 
     /**
@@ -119,8 +119,8 @@ class RoleController extends Controller
         $permissions = $request->permissions ?? [];
         $role->syncPermissions($permissions);
 
-        return redirect()->route('role.index')
-                        ->with('message', 'Role updated successfully.');
+        toastr()->success('Role updated successfully!');
+        return redirect()->route('role.index') ;
     }
 
     /**
@@ -132,8 +132,7 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $role->delete();
-
-        return redirect()->route('role.index')
-                        ->with('message', __('Role deleted successfully'));
+        toastr()->success('Role deleted successfully!');
+        return redirect()->route('role.index');
     }
 }

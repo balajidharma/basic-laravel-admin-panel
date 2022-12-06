@@ -1,6 +1,6 @@
 <x-admin.wrapper>
     <x-slot name="title">
-            {{ __('Roles') }}
+        {{ Breadcrumbs::render('role.edit',$role) }}
     </x-slot>
 
     <div>
@@ -23,7 +23,7 @@
                                 />
             </div>
 
-            @unless ($role->name == env('APP_SUPER_ADMIN', 'super-admin'))
+{{--            @unless ($role->name == env('APP_SUPER_ADMIN', 'super-admin'))--}}
             <div class="py-2">
                 <h3 class="inline-block text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight py-4 block sm:inline-block flex">Permissions</h3>
                 <div class="grid grid-cols-4 gap-4">
@@ -39,7 +39,7 @@
                     @endforelse
                 </div>
             </div>
-            @endunless
+{{--            @endunless--}}
 
             <div class="flex justify-end mt-4">
                 <x-admin.form.button>{{ __('Update') }}</x-admin.form.button>

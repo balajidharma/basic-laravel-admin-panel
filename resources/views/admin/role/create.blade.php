@@ -1,6 +1,6 @@
 <x-admin.wrapper>
     <x-slot name="title">
-            {{ __('Roles') }}
+        {{ Breadcrumbs::render('role.create') }}
     </x-slot>
 
     <div>
