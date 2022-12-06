@@ -3,15 +3,20 @@
         {{ Breadcrumbs::render('permission.index') }}
     </x-slot>
 
-    @can('permission create')
-    <x-admin.add-link href="{{ route('permission.create') }}">
-        {{ __('Add Permission') }}
-    </x-admin.add-link>
-    @endcan
+
 
     <div class="py-2">
         <div class="min-w-full border-b border-gray-200 shadow overflow-x-auto">
-            <x-admin.grid.search action="{{ route('permission.index') }}" />
+            <div class="flex justify-between  items-center mb-5">
+
+                <x-admin.grid.search action="{{ route('permission.index') }}" />
+                @can('permission create')
+                    <x-admin.add-link href="{{ route('permission.create') }}">
+                        {{ __('Add Permission') }}
+                    </x-admin.add-link>
+                @endcan
+            </div>
+
             <x-admin.grid.table>
                 <x-slot name="head">
                     <tr>

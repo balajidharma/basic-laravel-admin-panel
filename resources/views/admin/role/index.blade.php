@@ -3,15 +3,19 @@
         {{ Breadcrumbs::render('role.index') }}
     </x-slot>
 
-    @can('role create')
-    <x-admin.add-link href="{{ route('role.create') }}">
-        {{ __('Add Role') }}
-    </x-admin.add-link>
-    @endcan
+
 
     <div class="py-2">
         <div class="min-w-full border-b border-gray-200 shadow overflow-x-auto">
-            <x-admin.grid.search action="{{ route('role.index') }}" />
+            <div class="flex justify-between  items-center mb-5">
+                <x-admin.grid.search action="{{ route('role.index') }}" />
+                @can('role create')
+                    <x-admin.add-link href="{{ route('role.create') }}">
+                        {{ __('Add Role') }}
+                    </x-admin.add-link>
+                @endcan
+            </div>
+
 
             <x-admin.grid.table>
                 <x-slot name="head">
