@@ -4,7 +4,7 @@
     </x-slot>
 
     <div>
-        <x-admin.breadcrumb href="{{route('permission.index')}}" title="{{ __('Update permission') }}">{{ __('<< Back to all permissions') }}</x-admin.breadcrumb>
+        <x-admin.breadcrumb href="{{route('permission.index')}}" title="{{ __('Update permission') }}"></x-admin.breadcrumb>
         <x-admin.form.errors />
     </div>
     <div class="w-full py-2 bg-white overflow-hidden">

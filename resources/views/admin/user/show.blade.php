@@ -4,8 +4,9 @@
     </x-slot>
 
     <div class="d-print-none with-border">
-        <x-admin.breadcrumb href="{{route('user.index')}}" title="{{ __('View user') }}">{{ __('<< Back to all users') }}</x-admin.breadcrumb>
+        <x-admin.breadcrumb href="{{route('user.index')}}" title="{{ __('View user') }}"></x-admin.breadcrumb>
     </div>
+
     <div class="w-full py-2">
         <div class="min-w-full border-b border-gray-200 shadow">
             <table class="table-fixed w-full text-sm">

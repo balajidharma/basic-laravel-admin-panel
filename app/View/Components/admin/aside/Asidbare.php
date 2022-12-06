@@ -13,11 +13,13 @@ class Asidbare extends Component
      */
     public $route;
     public $title;
+    public $classactive;
 
-    public function __construct($route = '',$title = '')
+    public function __construct($route = '',$title = '',$classactive = '')
     {
         $this->title = $title;
         $this->route = $route;
+        $this->classactive = $classactive;
     }
 
     /**

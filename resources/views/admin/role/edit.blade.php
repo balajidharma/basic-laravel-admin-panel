@@ -4,7 +4,7 @@
     </x-slot>
 
     <div>
-        <x-admin.breadcrumb href="{{route('role.index')}}" title="{{ __('Update role') }}">{{ __('<< Back to all roles') }}</x-admin.breadcrumb>
+        <x-admin.breadcrumb href="{{route('role.index')}}" title="{{ __('Update role') }}"></x-admin.breadcrumb>
         <x-admin.form.errors />
     </div>
     <div class="w-full py-2 bg-white overflow-hidden">

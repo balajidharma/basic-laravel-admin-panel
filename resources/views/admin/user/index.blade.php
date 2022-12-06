@@ -4,15 +4,18 @@
         {{ Breadcrumbs::render('user.index') }}
     </x-slot>
 
-    @can('user create')
-        <x-admin.add-link href="{{ route('user.create') }}">
-            {{ __('Add User') }}
-        </x-admin.add-link>
-    @endcan
+
 
     <div class="py-2">
         <div class="min-w-full border-b border-gray-200 shadow overflow-x-auto">
-            <x-admin.grid.search action="{{ route('user.index') }}" />
+            <div class="flex justify-between  items-center mb-5">
+                <x-admin.grid.search action="{{ route('user.index') }}" />
+                @can('user create')
+                    <x-admin.add-link href="{{ route('user.create') }}">
+                        {{ __('Add User') }}
+                    </x-admin.add-link>
+                @endcan
+            </div>
             <x-admin.grid.table>
                 <x-slot name="head">
                     <tr>

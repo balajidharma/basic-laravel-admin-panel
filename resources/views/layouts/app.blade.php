@@ -13,8 +13,9 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
         />
+        <link rel="stylesheet" href="{{asset('css/app.css')}}" />
+
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
         <div class="flex flex-wrap bg-gray-100 w-full h-screen">
@@ -42,39 +43,9 @@
 
 
         </div>
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/admin.js') }}"></script>
 
-        <script type="text/javascript">
-            function dropdown() {
-                document.querySelector("#submenu").classList.toggle("hidden");
-                document.querySelector("#arrow").classList.toggle("rotate-0");
-            }
-            dropdown();
-
-            function openSidebar() {
-                document.querySelector(".sidebar").classList.toggle("hidden");
-            }
-
-
-
-
-            // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark')
-            } else {
-                document.documentElement.classList.remove('dark')
-            }
-
-            // Whenever the user explicitly chooses light mode
-            localStorage.theme = 'light'
-
-            // Whenever the user explicitly chooses dark mode
-            localStorage.theme = 'dark'
-
-            // Whenever the user explicitly chooses to respect the OS preference
-            localStorage.removeItem('theme')
-
-
-        </script>
 
     </body>
 </html>
