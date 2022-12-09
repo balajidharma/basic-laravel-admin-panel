@@ -1,3 +1,3 @@
-<td {{ $attributes->merge(['class' => 'border-b border-slate-100 p-4 text-slate-500']) }}>
+<td {{ $attributes->merge(['class' => 'px-4 py-3 border']) }}>
     {{ $slot }}
 </td>

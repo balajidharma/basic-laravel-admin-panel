@@ -12,3 +12,12 @@ Route::group([
     Route::post('edit-account-info', 'UserController@accountInfoStore')->name('admin.account.info.store');
     Route::post('change-password', 'UserController@changePasswordStore')->name('admin.account.password.store');
 });
+
+
+Route::group([
+    'namespace' => 'App\Http\Controllers\Ecom',
+    'prefix' => 'admin',
+    'middleware' => ['auth', 'verified'],
+], function () {
+    Route::resource('products', 'ProductsController');
+});

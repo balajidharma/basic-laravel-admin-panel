@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Ecom;
 
-use App\Models\Ecom\Stores;
+use App\Http\Controllers\Controller;
+use App\Models\Ecom\Products;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class StoresController extends Controller
+class ProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +17,10 @@ class StoresController extends Controller
      */
     public function index()
     {
-        $stores = (new Stores)->newQuery();
+        $products = (new Products)->newQuery();
 
         if (request()->has('search')) {
-            $stores->where('name', 'Like', '%'.request()->input('search').'%');
+            $products->where('name', 'Like', '%'.request()->input('search').'%');
         }
 
         if (request()->query('sort')) {
@@ -29,14 +32,22 @@ class StoresController extends Controller
                 $attribute = substr($attribute, 1);
             }
 
-            $stores->orderBy($attribute, $sort_order);
+            $products->orderBy($attribute, $sort_order);
         }
         else {
-            $stores->latest();
+            $products->latest();
         }
 
-        $stores = $stores->paginate(5)->onEachSide(2);
+        $products = $products->paginate(5)->onEachSide(2);
 
-        return view('admin.store.index', compact('stores'));
+        return view('admin.products.index', compact('products'));
+    }
+
+
+
+    public function create()
+    {
+        return view('admin.products.create');
+
     }
 }

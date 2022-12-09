@@ -22,18 +22,30 @@ class BasicAdminPermissionSeeder extends Seeder
 
         // create permissions
         $permissions = [
+
+
             'permission list',
             'permission create',
             'permission edit',
             'permission delete',
+
+
             'role list',
             'role create',
             'role edit',
             'role delete',
+
             'user list',
             'user create',
             'user edit',
             'user delete',
+
+            'products list',
+            'products create',
+            'products edit',
+            'products delete',
+
+            'stores read',
             'admin read',
         ];
 
@@ -53,13 +65,12 @@ class BasicAdminPermissionSeeder extends Seeder
         }
 
         $role3 = Role::create(['name' => 'super-admin']);
-        // gets all permissions via Gate::before rule; see AuthServiceProvider
 
-        // create demo users
         $user = \App\Models\User::factory()->create([
             'name' => 'Super Admin',
             'email' => 'superadmin@example.com',
             'password' => Hash::make('Pa$$w0rd!'),
+
         ]);
         $user->assignRole($role3);
 

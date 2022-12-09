@@ -6,7 +6,7 @@
 
 
     <div class="py-2">
-        <div class="min-w-full border-b border-gray-200 shadow overflow-x-auto">
+        <div class="min-w-full border-b border-gray-200  overflow-x-auto">
             <div class="flex justify-between  items-center mb-5">
 
                 <x-admin.grid.search action="{{ route('permission.index') }}" />
@@ -16,10 +16,11 @@
                     </x-admin.add-link>
                 @endcan
             </div>
-
-            <x-admin.grid.table>
+            <div class="w-full mb-8 overflow-hidden rounded-lg ">
+                <div class="w-full overflow-x-auto">
+                    <x-admin.grid.table>
                 <x-slot name="head">
-                    <tr>
+                    <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
                         <x-admin.grid.th>
                             @include('admin.includes.sort-link', ['label' => 'Name', 'attribute' => 'name'])
                         </x-admin.grid.th>
@@ -32,7 +33,7 @@
                 </x-slot>
                 <x-slot name="body">
                 @foreach($permissions as $permission)
-                    <tr>
+                    <tr class="text-gray-700">
                         <x-admin.grid.td>
                             <div class="text-sm text-gray-900">
                                 <a href="{{route('permission.show', $permission->id)}}" class="no-underline hover:underline text-cyan-600">{{ $permission->name }}</a>
@@ -43,17 +44,17 @@
                             <form action="{{ route('permission.destroy', $permission->id) }}" method="POST">
                                 <div class="flex">
                                     @can('permission edit')
-                                    <a href="{{route('permission.edit', $permission->id)}}" class="inline-flex items-center px-4 py-2 mr-4 bg-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-600 active:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-150">
-                                        {{ __('Edit') }}
+                                    <a href="{{route('permission.edit', $permission->id)}}" >
+                                        <x-icons.edit />
                                     </a>
                                     @endcan
 
                                     @can('permission delete')
                                     @csrf
                                     @method('DELETE')
-                                    <button class="inline-flex items-center px-4 py-2 bg-red-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-red-700 focus:outline-none focus:border-red-700 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150" onclick="return confirm('{{ __('Are you sure you want to delete?') }}')">
-                                        {{ __('Delete') }}
-                                    </button>
+                                        <button  onclick="return confirm('{{ __('Are you sure you want to delete?') }}')">
+                                             <x-icons.delete />
+                                        </button>
                                     @endcan
                                 </div>
                             </form>
@@ -72,9 +73,14 @@
                     @endif
                 </x-slot>
             </x-admin.grid.table>
+                </div>
+            </div>
         </div>
-        <div class="py-8">
-            {{ $permissions->appends(request()->query())->links() }}
-        </div>
+
+
+            <div class="py-8">
+                {{ $permissions->appends(request()->query())->links() }}
+            </div>
+
     </div>
 </x-admin.wrapper>

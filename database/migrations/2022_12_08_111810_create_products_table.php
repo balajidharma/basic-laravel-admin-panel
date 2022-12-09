@@ -13,27 +13,29 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('store', function (Blueprint $table) {
+        Schema::create('category_product', function (Blueprint $table) {
 
             $table->id();
-            $table->bigInteger('category_id')->nullable();
+            $table->string('name')->nullable();
+        });
+
+        Schema::create('products', function (Blueprint $table) {
+
+            $table->id();
+            $table->bigInteger('category_id')->nullable()->unsigned();
             $table->string('title')->nullable();
             $table->string('description')->nullable();
+            $table->float('price')->nullable();
+            $table->integer('count')->nullable();
             $table->dateTime('deactivated_at')->nullable();
-
             $table->timestamps();
-        });
 
-
-        Schema::create('store_user', function (Blueprint $table) {
-            $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('stores_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')
+            $table->foreign('category_id')->references('id')->on('category_product')
                 ->onDelete('cascade');
 
-            $table->foreign('stores_id')->references('id')->on('store')
-                ->onDelete('cascade');
+
         });
+
     }
 
     /**
@@ -43,7 +45,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('store');
-        Schema::dropIfExists('store');
+        Schema::dropIfExists('category_product');
+        Schema::dropIfExists('products');
     }
 };

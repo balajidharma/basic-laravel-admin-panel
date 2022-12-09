@@ -41,3 +41,4 @@ Breadcrumbs::macro('resource', function ($name, $title)  {
 Breadcrumbs::resource('permission', 'Permissions');
 Breadcrumbs::resource('role', 'Roles');
 Breadcrumbs::resource('user', 'Users');
+Breadcrumbs::resource('products', 'Products');

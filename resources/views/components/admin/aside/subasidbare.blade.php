@@ -12,4 +12,5 @@
     <ul class="submenu-menubar text-left text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold {{$active??''}}"  >
         {{$submenu??''}}
     </ul>
+
 </li>
