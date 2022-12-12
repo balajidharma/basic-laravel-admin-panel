@@ -14,7 +14,7 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
         />
         <link rel="stylesheet" href="{{asset('css/app.css')}}" />
-
+    @stack('styles')
         <!-- Scripts -->
     </head>
     <body class="font-sans antialiased">
@@ -45,7 +45,7 @@
         </div>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/admin.js') }}"></script>
-
+        @stack('scripts')
 
     </body>
 </html>

@@ -11,17 +11,29 @@ class Products extends Model
     use HasFactory;
 
     protected $fillable = [
-        'users_id',
+
         'category_id',
         'title',
         'description',
-        'deactivated_at'
+        'image',
+        'deactivated_at',
+        'price',
+        'count',
+
     ];
 
     public function users()
     {
         return $this->belongsToMany(User::class, 'store_user');
     }
+
+
+    public function categoryProducts()
+    {
+        return $this->belongsTo(CategoryProducts::class,'category_id');
+    }
+
+
 
 
 }

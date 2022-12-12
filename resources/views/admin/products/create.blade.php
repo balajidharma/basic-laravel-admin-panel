@@ -12,26 +12,85 @@
         <form method="POST" action="{{ route('products.store') }}">
         @csrf
 
-            <div class="py-2">
-                <x-admin.form.label for="name" class="{{$errors->has('name') ? 'text-red-400' : ''}}">{{ __('Name') }}</x-admin.form.label>
 
-                <x-admin.form.input id="name" class="{{$errors->has('name') ? 'border-red-400' : ''}}"
+
+            <div class="py-2">
+                <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 ml-2 sm:col-span-4 md:mr-3">
+                    <!-- Photo File Input -->
+                    <input type="file" class="hidden" x-ref="photo" x-on:change="
+                        photoName = $refs.photo.files[0].name;
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            photoPreview = e.target.result;
+                        };
+                        reader.readAsDataURL($refs.photo.files[0]);
+                    ">
+
+                    <div class="flex justify-start items-center" >
+                        <!-- Current Profile Photo -->
+                        <div class="mt-2 mb-4 rounded-lg" x-show="! photoPreview">
+                            <img src="https://images.unsplash.com/photo-1531316282956-d38457be0993?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"
+                                 class="w-40 h-40 m-auto rounded-lg shadow">
+                        </div>
+                        <!-- New Profile Photo Preview -->
+                        <div class="mt-2 mb-4" x-show="photoPreview" style="display: none;">
+                        <span class="block w-40 h-40 rounded-lg m-auto shadow" x-bind:style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'" style="background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('null');">
+                        </span>
+                        </div>
+                        <button type="button" class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-400 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150 mt-2 ml-3" x-on:click.prevent="$refs.photo.click()">
+                            Select New Photo
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="py-2">
+                <x-admin.form.label for="title" class="{{$errors->has('title') ? 'text-red-400' : ''}}">{{ __('Name') }}</x-admin.form.label>
+
+                <x-admin.form.input id="title" class="{{$errors->has('title') ? 'border-red-400' : ''}}"
                                     type="text"
-                                    name="name"
-                                    value="{{ old('name') }}"
+                                    name="title"
+                                    value="{{ old('title') }}"
                                     />
             </div>
 
 
             <div class="py-2">
-                <x-admin.form.label for="subdomain" class="{{$errors->has('subdomain') ? 'text-red-400' : ''}}">{{ __('Subdomain') }}</x-admin.form.label>
+                <x-admin.form.label for="description" class="{{$errors->has('description') ? 'text-red-400' : ''}}">{{ __('description') }}</x-admin.form.label>
 
-                <x-admin.form.input id="subdomain" class="{{$errors->has('subdomain') ? 'border-red-400' : ''}}"
+                <x-admin.form.input id="description" class="{{$errors->has('description') ? 'border-red-400' : ''}}"
                                     type="text"
-                                    name="subdomain"
-                                    value="{{ old('subdomain') }}"
+                                    name="description"
+                                    value="{{ old('description') }}"
                                     />
             </div>
+
+
+            <div class="py-2">
+                <x-admin.form.label for="price" class="{{$errors->has('price') ? 'text-red-400' : ''}}">{{ __('price') }}</x-admin.form.label>
+
+                <x-admin.form.input id="price" class="{{$errors->has('price') ? 'border-red-400' : ''}}"
+                                    type="number"
+                                    name="price"
+                                    value="{{ old('price') }}"
+                                    />
+            </div>
+
+
+            <div class="py-2">
+                <x-admin.form.label for="count" class="{{$errors->has('count') ? 'text-red-400' : ''}}">{{ __('count') }}</x-admin.form.label>
+
+                <x-admin.form.input id="price" class="{{$errors->has('count') ? 'border-red-400' : ''}}"
+                                    type="number"
+                                    name="count"
+                                    value="{{ old('count') }}"
+                                    />
+            </div>
+
+
+
 
             <div class="py-2">
                 <x-admin.form.label for="category_id" class="{{$errors->has('category_id') ? 'text-red-400' : ''}}">{{ __('Category') }}</x-admin.form.label>
@@ -42,12 +101,17 @@
                                     value="{{ old('category_id') }}"
                                     >
                     <option value="">---</option>
-                    <option value="1">Mode femme</option>
-                    <option value="2">Mode homme</option>
-                    <option value="3">Électronique</option>
+                    @foreach($categoryProd as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
                 </x-admin.form.select>
 
             </div>
+
+
+
+
+
 
 
 
@@ -56,4 +120,8 @@
             </div>
         </form>
     </div>
+
+    @push('scripts')
+        <script type="text/javascript" src="{{ asset('js/scripts.js') }}"></script>
+    @endpush
 </x-admin.wrapper>

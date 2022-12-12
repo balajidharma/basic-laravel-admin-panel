@@ -45,6 +45,12 @@ class BasicAdminPermissionSeeder extends Seeder
             'products edit',
             'products delete',
 
+            'categoryProducts list',
+            'categoryProducts create',
+            'categoryProducts edit',
+            'categoryProducts delete',
+
+            'categoryProducts read',
             'stores read',
             'admin read',
         ];

@@ -20,4 +20,15 @@ Route::group([
     'middleware' => ['auth', 'verified'],
 ], function () {
     Route::resource('products', 'ProductsController');
+    Route::resource('category-products', 'CategoryProductsController', [
+        'names' => [
+            'index' => 'categoryProducts.index',
+            'store' => 'categoryProducts.store',
+            'update' => 'categoryProducts.update',
+            'create' => 'categoryProducts.create',
+            'edit' => 'categoryProducts.edit',
+            'destroy' => 'categoryProducts.destroy',
+            'show' => 'categoryProducts.show',
+        ]
+    ]);
 });

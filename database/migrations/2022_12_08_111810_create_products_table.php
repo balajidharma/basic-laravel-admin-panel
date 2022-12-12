@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('category_product', function (Blueprint $table) {
+        Schema::create('category_products', function (Blueprint $table) {
 
             $table->id();
             $table->string('name')->nullable();
+            $table->timestamps();
         });
 
         Schema::create('products', function (Blueprint $table) {
@@ -27,10 +28,11 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->float('price')->nullable();
             $table->integer('count')->nullable();
+            $table->string('image')->nullable();
             $table->dateTime('deactivated_at')->nullable();
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('category_product')
+            $table->foreign('category_id')->references('id')->on('category_products')
                 ->onDelete('cascade');
 
 
@@ -45,7 +47,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_product');
+        Schema::dropIfExists('category_products');
         Schema::dropIfExists('products');
     }
 };

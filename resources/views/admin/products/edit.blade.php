@@ -1,71 +1,80 @@
 <x-admin.wrapper>
     <x-slot name="title">
-        {{ Breadcrumbs::render('user.edit',$user) }}
+        {{ Breadcrumbs::render('products.edit',$products) }}
     </x-slot>
 
     <div>
-        <x-admin.breadcrumb href="{{route('user.index')}}" title="{{ __('Update user') }}"></x-admin.breadcrumb>
+        <x-admin.breadcrumb href="{{route('products.index')}}" title="{{ __('Update products') }}"></x-admin.breadcrumb>
         <x-admin.form.errors />
     </div>
     <div class="w-full py-2 bg-white overflow-hidden">
 
-        <form method="POST" action="{{ route('user.update', $user->id) }}">
+        <form method="POST" action="{{ route('products.update', $products->id) }}">
         @csrf
         @method('PUT')
 
             <div class="py-2">
-                <x-admin.form.label for="name" class="{{$errors->has('name') ? 'text-red-400' : ''}}">{{ __('Name') }}</x-admin.form.label>
+                <x-admin.form.label for="title" class="{{$errors->has('title') ? 'text-red-400' : ''}}">{{ __('Name') }}</x-admin.form.label>
 
-                <x-admin.form.input id="name" class="{{$errors->has('name') ? 'border-red-400' : ''}}"
-                                type="text"
-                                name="name"
-                                value="{{ old('name', $user->name) }}"
-                                />
+                <x-admin.form.input id="title" class="{{$errors->has('title') ? 'border-red-400' : ''}}"
+                                    type="text"
+                                    name="title"
+                                    value="{{ $products->title??old('title') }}"
+                />
             </div>
+
 
             <div class="py-2">
-                <x-admin.form.label for="email" class="{{$errors->has('email') ? 'text-red-400' : ''}}">{{ __('Email') }}</x-admin.form.label>
+                <x-admin.form.label for="description" class="{{$errors->has('description') ? 'text-red-400' : ''}}">{{ __('description') }}</x-admin.form.label>
 
-                <x-admin.form.input id="email" class="{{$errors->has('email') ? 'border-red-400' : ''}}"
-                                type="email"
-                                name="email"
-                                value="{{ old('email', $user->email) }}"
-                                />
+                <x-admin.form.input id="description" class="{{$errors->has('description') ? 'border-red-400' : ''}}"
+                                    type="text"
+                                    name="description"
+                                    value="{{ $products->description??old('description') }}"
+                />
             </div>
+
 
             <div class="py-2">
-                <x-admin.form.label for="password" class="{{$errors->has('password') ? 'text-red-400' : ''}}">{{ __('Password') }}</x-admin.form.label>
+                <x-admin.form.label for="price" class="{{$errors->has('price') ? 'text-red-400' : ''}}">{{ __('price') }}</x-admin.form.label>
 
-                <x-admin.form.input id="password" class="{{$errors->has('password') ? 'border-red-400' : ''}}"
-                                type="password"
-                                name="password"
-                                />
+                <x-admin.form.input id="price" class="{{$errors->has('price') ? 'border-red-400' : ''}}"
+                                    type="number"
+                                    name="price"
+                                    value="{{ $products->price??old('price') }}"
+                />
             </div>
+
 
             <div class="py-2">
-                <x-admin.form.label for="password_confirmation" class="{{$errors->has('password') ? 'text-red-400' : ''}}">{{ __('Password Confirmation') }}</x-admin.form.label>
+                <x-admin.form.label for="count" class="{{$errors->has('count') ? 'text-red-400' : ''}}">{{ __('count') }}</x-admin.form.label>
 
-                <x-admin.form.input id="password_confirmation" class="{{$errors->has('password') ? 'border-red-400' : ''}}"
-                                type="password"
-                                name="password_confirmation"
-                                />
+                <x-admin.form.input id="price" class="{{$errors->has('count') ? 'border-red-400' : ''}}"
+                                    type="number"
+                                    name="count"
+                                    value="{{ $products->count??old('count') }}"
+                />
             </div>
+
+
+
 
             <div class="py-2">
-                <h3 class="inline-block text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight py-4 block sm:inline-block flex">Roles</h3>
-                <div class="grid grid-cols-4 gap-4">
-                    @forelse ($roles as $role)
-                        <div class="col-span-4 sm:col-span-2 md:col-span-1">
-                            <label class="form-check-label">
-                                <input type="checkbox" name="roles[]" value="{{ $role->name }}" {{ in_array($role->id, $userHasRoles) ? 'checked' : '' }} class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                {{ $role->name }}
-                            </ >
-                        </div>
-                    @empty
-                        ----
-                    @endforelse
-                </div>
+                <x-admin.form.label for="category_id" class="{{$errors->has('category_id') ? 'text-red-400' : ''}}">{{ __('Category') }}</x-admin.form.label>
+
+                <x-admin.form.select id="category_id" class="{{$errors->has('category_id') ? 'border-red-400' : ''}}"
+                                     type="text"
+                                     name="category_id"
+                                     value="{{ $products->category_id??old('category_id') }}" >
+
+                    <option value="">---</option>
+                    @foreach($categoryProd as $category)
+                        <option @if($products->category_id ==  $category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </x-admin.form.select>
+
             </div>
+
 
             <div class="flex justify-end mt-4">
                 <x-admin.form.button>{{ __('Update') }}</x-admin.form.button>

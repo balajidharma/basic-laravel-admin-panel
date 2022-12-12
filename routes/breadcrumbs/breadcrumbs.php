@@ -26,7 +26,7 @@ Breadcrumbs::macro('resource', function ($name, $title)  {
     // Home > Blog > Post 123
     Breadcrumbs::for("$name.show", function ($trail, $model) use ($name) {
         $trail->parent("$name.index");
-        $trail->push($model->name, route("$name.show", "$model->id"));
+        $trail->push($model->name??$model->title, route("$name.show", "$model->id"));
     });
 
     // Home > Blog > Post 123 > Edit
@@ -38,7 +38,9 @@ Breadcrumbs::macro('resource', function ($name, $title)  {
     });
 });
 
+
 Breadcrumbs::resource('permission', 'Permissions');
 Breadcrumbs::resource('role', 'Roles');
 Breadcrumbs::resource('user', 'Users');
 Breadcrumbs::resource('products', 'Products');
+Breadcrumbs::resource('categoryProducts', 'Category Products');
