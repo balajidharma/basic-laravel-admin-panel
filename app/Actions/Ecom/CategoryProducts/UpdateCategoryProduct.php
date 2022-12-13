@@ -12,8 +12,23 @@ class UpdateCategoryProduct
     public function handle(Request $request, CategoryProducts $categoryProducts): CategoryProducts
     {
 
+        if ($request->hasFile('image')){
+
+            $fileName = time().'.'.$request->image->extension();
+            $img =  $request->image->storeAs('products_category', $fileName);
+
+            if(file_exists('storage/' . $request->image_name)) {
+                unlink('storage/' . $request->image_name);
+            }
+
+        }else{
+            $img = $request->image_name;
+        }
+
+
         $categoryProducts->update([
             'name' => $request->name,
+                        'image' => $img,
         ]);
 
         return $categoryProducts;

@@ -10,8 +10,13 @@ class CreateCategoryProduct
 {
     public function handle(Request $request): CategoryProducts
     {
+
+       $fileName = time().'.'.$request->image->extension();
+       $img =  $request->image->storeAs('products_category', $fileName);
+
         $categoryProducts = CategoryProducts::create([
             'name' => $request->name,
+            'image' => $img,
         ]);
 
 
