@@ -13,8 +13,9 @@ class CreateProduct
     {
 
 
+
         $fileName = time().'.'.$request->image->extension();
-        $request->image->storeAs('products', $fileName);
+       $img =  $request->image->storeAs('products', $fileName);
 
 
         $categoryProducts = Products::create([
@@ -23,7 +24,7 @@ class CreateProduct
             'description' => $request->description,
             'price' => $request->price,
             'count' => $request->count,
-            'image' => $request->image,
+            'image' => $img,
         ]);
 
 

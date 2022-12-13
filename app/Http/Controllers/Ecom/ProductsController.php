@@ -68,8 +68,9 @@ class ProductsController extends Controller
      * @param CreateProduct $createProduct
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreProductRequest $request, CreateProduct $createProduct)
+    public function store( Request $request, CreateProduct $createProduct)
     {
+
 
         $createProduct->handle($request);
         toastr()->success('products created successfully.');

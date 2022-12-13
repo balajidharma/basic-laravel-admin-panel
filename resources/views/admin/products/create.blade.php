@@ -9,37 +9,27 @@
     </div>
     <div class="w-full py-2 bg-white overflow-hidden">
 
-        <form method="POST" action="{{ route('products.store') }}">
+        <form method="POST" enctype="multipart/form-data" action="{{ route('products.store') }}">
         @csrf
 
 
 
             <div class="py-2">
-                <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 ml-2 sm:col-span-4 md:mr-3">
+                <div class="col-span-6 ml-2 sm:col-span-4 mb-4 md:mr-3">
                     <!-- Photo File Input -->
-                    <input type="file" class="hidden" x-ref="photo" x-on:change="
-                        photoName = $refs.photo.files[0].name;
-                        const reader = new FileReader();
-                        reader.onload = (e) => {
-                            photoPreview = e.target.result;
-                        };
-                        reader.readAsDataURL($refs.photo.files[0]);
-                    ">
 
-                    <div class="flex justify-start items-center" >
+                    <input type="file" id="image_upload" name="image" class="hidden">
+
+                    <div class="" >
                         <!-- Current Profile Photo -->
-                        <div class="mt-2 mb-4 rounded-lg" x-show="! photoPreview">
-                            <img src="https://images.unsplash.com/photo-1531316282956-d38457be0993?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"
-                                 class="w-40 h-40 m-auto rounded-lg shadow">
-                        </div>
-                        <!-- New Profile Photo Preview -->
-                        <div class="mt-2 mb-4" x-show="photoPreview" style="display: none;">
-                        <span class="block w-40 h-40 rounded-lg m-auto shadow" x-bind:style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'" style="background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('null');">
-                        </span>
-                        </div>
-                        <button type="button" class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-400 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150 mt-2 ml-3" x-on:click.prevent="$refs.photo.click()">
+
+                         <div class="mt-2 mb-2 h-36 w-36 border-2 rounded-lg bg-cover bg-center bg-no-repeat " id="previews_image_upload"
+                              style="background-image: url('{{asset('imgs/products/iconmonstr-product-3-240.png')}}')">
+
+                         </div>
+                        <label for="image_upload"  class=" inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-400 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150  ">
                             Select New Photo
-                        </button>
+                        </label>
                     </div>
                 </div>
 
@@ -122,6 +112,6 @@
     </div>
 
     @push('scripts')
-        <script type="text/javascript" src="{{ asset('js/scripts.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/products.js') }}"></script>
     @endpush
 </x-admin.wrapper>

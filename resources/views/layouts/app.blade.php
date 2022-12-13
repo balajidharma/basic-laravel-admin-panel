@@ -18,7 +18,7 @@
         <!-- Scripts -->
     </head>
     <body class="font-sans antialiased">
-        <div class="flex flex-wrap bg-gray-100 w-full h-screen">
+        <div class="flex flex-wrap bg-gray-100">
 
             @include('layouts.sidbare')
 

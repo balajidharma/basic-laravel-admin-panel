@@ -11,7 +11,6 @@ class Products extends Model
     use HasFactory;
 
     protected $fillable = [
-
         'category_id',
         'title',
         'description',
@@ -19,8 +18,9 @@ class Products extends Model
         'deactivated_at',
         'price',
         'count',
-
     ];
+    public $timestamps = true;
+
 
     public function users()
     {
