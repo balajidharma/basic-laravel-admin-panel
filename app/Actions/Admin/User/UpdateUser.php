@@ -3,25 +3,24 @@
 namespace App\Actions\Admin\User;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UpdateUser
 {
-    public function handle(Request $request, User $user): User
+    public function handle($data, User $user): User
     {
         $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
+            'name' => $data->name,
+            'email' => $data->email,
         ]);
 
-        if ($request->password) {
+        if ($data->password) {
             $user->update([
-                'password' => Hash::make($request->password),
+                'password' => Hash::make($data->password),
             ]);
         }
 
-        $roles = $request->roles ?? [];
+        $roles = $data->roles ?? [];
         $user->syncRoles($roles);
 
         return $user;

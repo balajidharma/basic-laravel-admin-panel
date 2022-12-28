@@ -3,20 +3,19 @@
 namespace App\Actions\Admin\User;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class CreateUser
 {
-    public function handle(Request $request): User
+    public function handle($data): User
     {
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'name' => $data->name,
+            'email' => $data->email,
+            'password' => Hash::make($data->password),
         ]);
 
-        $roles = $request->roles ?? [];
+        $roles = $data->roles ?? [];
         $user->assignRole($roles);
 
         return $user;

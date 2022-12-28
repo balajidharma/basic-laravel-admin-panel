@@ -74,7 +74,7 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request, CreateUser $createUser)
     {
-        $createUser->handle($request);
+        $createUser->handle((object) $request->all());
 
         return redirect()->route('user.index')
                         ->with('message', __('User created successfully.'));
@@ -118,7 +118,7 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user, UpdateUser $updateUser)
     {
-        $updateUser->handle($request, $user);
+        $updateUser->handle((object) $request->all(), $user);
 
         return redirect()->route('user.index')
                         ->with('message', __('User updated successfully.'));
