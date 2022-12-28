@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\Admin\User\CreateUser;
-use App\Actions\Admin\User\UpdateUser;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\StoreUserRequest;
-use App\Http\Requests\Admin\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\User;
+use BalajiDharma\LaravelAdminCore\Actions\User\CreateUser;
+use BalajiDharma\LaravelAdminCore\Actions\User\UpdateUser;
+use BalajiDharma\LaravelAdminCore\Requests\StoreUserRequest;
+use BalajiDharma\LaravelAdminCore\Requests\UpdateUserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
