@@ -11,6 +11,7 @@
 - [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
 - [Laravel Breeze](https://github.com/laravel/breeze)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [balajidharma/laravel-menu](https://github.com/balajidharma/laravel-menu)
 
 ## Installation
 - To get started, you need to install [Docker Desktop](https://www.docker.com/products/docker-desktop).
@@ -23,20 +24,18 @@
 - `./vendor/bin/sail up`
 - `./vendor/bin/sail npm install`
 - `./vendor/bin/sail npm run dev`
-- `./vendor/bin/sail artisan migrate --seed --seeder=BasicAdminPermissionSeeder`
+- `./vendor/bin/sail artisan vendor:publish --provider="BalajiDharma\LaravelAdminCore\AdminCoreServiceProvider"`
+- `./vendor/bin/sail artisan vendor:publish --provider="BalajiDharma\LaravelMenu\MenuServiceProvider"`
+- `./vendor/bin/sail artisan migrate --seed --seeder=AdminCoreSeeder`
 - Now open http://localhost/
 
 ###### Super Admin Login
 - Email - superadmin@example.com
 - Password - password
 
-#### Copy the package config to your local config with the publish command:
+#### Admin Configuration:
 
-```shell
-./vendor/bin/sail artisan vendor:publish --provider="BalajiDharma\LaravelAdminCore\AdminCoreServiceProvider"
-```
-
-To change the Admin Prefix, copy the file to your config folder and change it or add the `ADMIN_PREFIX` on env 
+To change the Admin Prefix, change `prefix` on `config/admin.php` or add the `ADMIN_PREFIX` on env 
 
 ```php
 'prefix' => env('ADMIN_PREFIX', 'admin'),
