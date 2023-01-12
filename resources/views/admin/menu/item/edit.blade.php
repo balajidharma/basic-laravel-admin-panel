@@ -29,7 +29,7 @@
             <x-admin.form.input id="uri" class="{{$errors->has('uri') ? 'border-red-400' : ''}}"
                                 type="text"
                                 name="uri"
-                                value="{{ old('name', $item->uri) }}"
+                                value="{{ old('uri', $item->uri) }}"
                                 />
                 <div class="item-list">
                         You can also enter an internal path such as <em class="placeholder">/home</em> or an external URL such as <em class="placeholder">http://example.com</em>. 
@@ -43,7 +43,7 @@
             <x-admin.form.input id="description" class="{{$errors->has('description') ? 'border-red-400' : ''}}"
                                 type="text"
                                 name="description"
-                                value="{{ old('name', $item->description) }}"
+                                value="{{ old('description', $item->description) }}"
                                 />
             </div>
 
@@ -77,7 +77,7 @@
             <x-admin.form.input id="weight" class="{{$errors->has('weight') ? 'border-red-400' : ''}}"
                                 type="number"
                                 name="weight"
-                                value="{{ old('name', $item->weight) }}"
+                                value="{{ old('weight', $item->weight) }}"
                                 />
             </div>
 
