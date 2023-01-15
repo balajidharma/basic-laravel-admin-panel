@@ -64,7 +64,7 @@ class MenuItemController extends Controller
      */
     public function edit(Menu $menu, MenuItem $item)
     {
-        $item_options = MenuItem::selectOptions($menu->id, $item->parent_id);
+        $item_options = MenuItem::selectOptions($menu->id, $item->parent_id ?? $item->id);
         return view('admin.menu.item.edit', compact('menu', 'item', 'item_options'));
     }
 
