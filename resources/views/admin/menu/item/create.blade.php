@@ -57,10 +57,10 @@
                 <x-admin.form.label for="parent_id" class="{{$errors->has('parent_id') ? 'text-red-400' : ''}}">{{ __('Parent Item') }}</x-admin.form.label>
 
                 <select name="parent_id" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full">
-                    <option value=''>-Select-</option>
+                    <option value=''>-ROOT-</option>
                     @foreach ($item_options as $key => $name)
                     <option value="{{ $key }}" @selected(old('parent_id') == $key)>
-                        {{ $name }}
+                        {!! $name !!}
                     </option>
                     @endforeach
                 </select>

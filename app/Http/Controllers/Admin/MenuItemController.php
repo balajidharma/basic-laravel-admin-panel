@@ -25,7 +25,8 @@ class MenuItemController extends Controller
      */
     public function index(Menu $menu)
     {
-        $items = MenuItem::tree($menu->id);
+        $items = (new MenuItem)->toTree($menu->id);
+
         return view('admin.menu.item.index', compact('items', 'menu'));
     }
 
@@ -36,7 +37,7 @@ class MenuItemController extends Controller
      */
     public function create(Menu $menu)
     {
-        $item_options = MenuItem::dropdown($menu->id);
+        $item_options = MenuItem::selectOptions($menu->id);
         return view('admin.menu.item.create', compact('menu', 'item_options'));
     }
 
@@ -63,8 +64,7 @@ class MenuItemController extends Controller
      */
     public function edit(Menu $menu, MenuItem $item)
     {
-        $item_options = MenuItem::dropdown($menu->id, $item->parent_id);
-    
+        $item_options = MenuItem::selectOptions($menu->id, $item->parent_id);
         return view('admin.menu.item.edit', compact('menu', 'item', 'item_options'));
     }
 
