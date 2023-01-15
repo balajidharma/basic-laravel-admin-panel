@@ -51,7 +51,7 @@
                     @foreach($items as $item)
                         <x-admin.grid.index-menu-item :item="$item" :menu="$menu" level="0"/>
                     @endforeach
-                    @if($items->isEmpty())
+                    @empty($items)
                         <tr>
                             <td colspan="2">
                                 <div class="flex flex-col justify-center items-center py-4 text-lg">
@@ -59,7 +59,7 @@
                                 </div>
                             </td>
                         </tr>
-                    @endif
+                    @endempty
                 </x-slot>
             </x-admin.grid.table>
         </div>

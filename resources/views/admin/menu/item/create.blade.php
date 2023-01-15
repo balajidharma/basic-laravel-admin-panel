@@ -28,7 +28,7 @@
             <x-admin.form.input id="uri" class="{{$errors->has('uri') ? 'border-red-400' : ''}}"
                                 type="text"
                                 name="uri"
-                                value="{{ old('name') }}"
+                                value="{{ old('uri') }}"
                                 />
                 <div class="item-list">
                         You can also enter an internal path such as <em class="placeholder">/home</em> or an external URL such as <em class="placeholder">http://example.com</em>. 
@@ -42,7 +42,7 @@
             <x-admin.form.input id="description" class="{{$errors->has('description') ? 'border-red-400' : ''}}"
                                 type="text"
                                 name="description"
-                                value="{{ old('name') }}"
+                                value="{{ old('description') }}"
                                 />
             </div>
 
@@ -57,10 +57,10 @@
                 <x-admin.form.label for="parent_id" class="{{$errors->has('parent_id') ? 'text-red-400' : ''}}">{{ __('Parent Item') }}</x-admin.form.label>
 
                 <select name="parent_id" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full">
-                    <option value=''>-Select-</option>
+                    <option value=''>-ROOT-</option>
                     @foreach ($item_options as $key => $name)
                     <option value="{{ $key }}" @selected(old('parent_id') == $key)>
-                        {{ $name }}
+                        {!! $name !!}
                     </option>
                     @endforeach
                 </select>
