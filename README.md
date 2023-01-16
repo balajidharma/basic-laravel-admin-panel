@@ -10,8 +10,10 @@
 - [Laravel 9](https://github.com/laravel/framework)
 - [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
 - [Laravel Breeze](https://github.com/laravel/breeze)
-- [Tailwind CSS](https://tailwindcss.com/)
 - [balajidharma/laravel-menu](https://github.com/balajidharma/laravel-menu)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [daisyUI](https://daisyui.com/)
+
 
 ## Installation
 - To get started, you need to install [Docker Desktop](https://www.docker.com/products/docker-desktop).
@@ -49,17 +51,23 @@ To change the Admin Prefix, change `prefix` on `config/admin.php` or add the `AD
 <p align="center">
 	<img src="https://user-images.githubusercontent.com/6037466/179876455-1fbe6c89-9afc-4002-879b-fe3fc6506e34.png" >
 	<br/><br/>
-	<img src="https://user-images.githubusercontent.com/6037466/179876116-e775581c-6a5d-4af3-b12d-14b89cdcdaaf.png" >
+	<img src="https://user-images.githubusercontent.com/6037466/212739682-9b78b9d0-0a98-47c1-8cfd-c59eda49c29d.png" >
 	<br/><br/>
-	<img src="https://user-images.githubusercontent.com/6037466/179875636-e805f212-1963-4c25-886f-66ca77e29e88.png" >
+	<img src="https://user-images.githubusercontent.com/6037466/212739938-558b0510-aab8-4093-b5d6-046ad54e4719.png" >
 	<br/><br/>
-	<img src="https://user-images.githubusercontent.com/6037466/179875820-46d2ddc4-a12c-41ec-a53c-cb8e86b7f3f7.png">
+	<img src="https://user-images.githubusercontent.com/6037466/212740241-7991aa91-f31b-4545-ad75-6d8b7d5a0152.png">
 	<br/><br/>
-	<img src="https://user-images.githubusercontent.com/6037466/179875943-116df32a-18dc-45e8-8ec5-e67d5c7cf434.png">
+	<img src="https://user-images.githubusercontent.com/6037466/212740406-8289a684-2c9b-49fc-a14c-4c1ab34fe851.png">
 	<br/><br/>
-	<img src="https://user-images.githubusercontent.com/6037466/179876040-0fe5f7e5-6bd5-475f-87cc-989848705829.png">
+	<img src="https://user-images.githubusercontent.com/6037466/212740481-cca2a0e7-66c7-49c3-8cc6-d0d02e4e79d7.png">
 	<br/><br/>
-	<img src="https://user-images.githubusercontent.com/6037466/179876212-be4f8a64-21a7-4e09-8c7d-5e0faf548052.png">
+	<img src="https://user-images.githubusercontent.com/6037466/212740915-e358e0de-15f3-4de5-8fd0-3fa719fd653f.png">
+	<br/><br/>
+	<img src="https://user-images.githubusercontent.com/6037466/212739281-833ba20f-b9e7-4f5f-9f03-5a558a7bb8d3.png">
+	<br/><br/>
+	<img src="https://user-images.githubusercontent.com/6037466/212739204-5a5d8008-e48e-401f-aadf-305b57c7186d.png">
+	<br/><br/>
+	<img src="https://user-images.githubusercontent.com/6037466/212739488-04caedb1-8d24-4317-b229-4c734fee7f9a.png">
 </p>
 
 ## License
