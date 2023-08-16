@@ -76,7 +76,7 @@ class UserController extends Controller
     {
         $createUser->handle((object) $request->all());
 
-        return redirect()->route('user.index')
+        return redirect()->route('admin.user.index')
                         ->with('message', __('User created successfully.'));
     }
 
@@ -120,7 +120,7 @@ class UserController extends Controller
     {
         $updateUser->handle((object) $request->all(), $user);
 
-        return redirect()->route('user.index')
+        return redirect()->route('admin.user.index')
                         ->with('message', __('User updated successfully.'));
     }
 
@@ -134,7 +134,7 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect()->route('user.index')
+        return redirect()->route('admin.user.index')
                         ->with('message', __('User deleted successfully'));
     }
 

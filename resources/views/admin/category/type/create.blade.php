@@ -1,15 +1,15 @@
 <x-admin.wrapper>
     <x-slot name="title">
-            {{ __('Menus') }}
+            {{ __('Category Types') }}
     </x-slot>
 
     <div>
-        <x-admin.breadcrumb href="{{route('admin.menu.index')}}" title="{{ __('Create menu') }}">{{ __('<< Back to all menus') }}</x-admin.breadcrumb>
+        <x-admin.breadcrumb href="{{route('admin.category.type.index')}}" title="{{ __('Create Category Type') }}">{{ __('<< Back to all Category Types') }}</x-admin.breadcrumb>
         <x-admin.form.errors />
     </div>
     <div class="w-full py-2 bg-white overflow-hidden">
 
-        <form method="POST" action="{{ route('admin.menu.store') }}">
+        <form method="POST" action="{{ route('admin.category.type.store') }}">
         @csrf
 
             <div class="py-2">
