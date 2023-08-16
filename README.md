@@ -30,6 +30,7 @@
 - `./vendor/bin/sail npm run dev`
 - `./vendor/bin/sail artisan vendor:publish --provider="BalajiDharma\LaravelAdminCore\AdminCoreServiceProvider"`
 - `./vendor/bin/sail artisan vendor:publish --provider="BalajiDharma\LaravelMenu\MenuServiceProvider"`
+- `./vendor/bin/sail artisan vendor:publish --provider="BalajiDharma\LaravelCategory\CategoryServiceProvider"`
 - `./vendor/bin/sail artisan migrate --seed --seeder=AdminCoreSeeder`
 - Now open http://localhost/
 
