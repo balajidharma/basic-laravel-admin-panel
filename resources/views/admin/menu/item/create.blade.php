@@ -4,12 +4,12 @@
     </x-slot>
 
     <div>
-        <x-admin.breadcrumb href="{{route('menu.item.index', $menu->id)}}" title="{{ __('Add Menu Item') }}">{{ __('<< Back to Menu Items') }}</x-admin.breadcrumb>
+        <x-admin.breadcrumb href="{{route('admin.menu.item.index', $menu->id)}}" title="{{ __('Add Menu Item') }}">{{ __('<< Back to Menu Items') }}</x-admin.breadcrumb>
         <x-admin.form.errors />
     </div>
     <div class="w-full py-2 bg-white overflow-hidden">
 
-        <form method="POST" action="{{ route('menu.item.store', ['menu' => $menu->id]) }}">
+        <form method="POST" action="{{ route('admin.menu.item.store', ['menu' => $menu->id]) }}">
         @csrf
 
             <div class="py-2">

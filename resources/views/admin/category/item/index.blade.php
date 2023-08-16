@@ -1,10 +1,10 @@
 <x-admin.wrapper>
     <x-slot name="title">
-        {{ __('Menus') }}
+        {{ __('Categories') }}
     </x-slot>
     
     <div class="d-print-none with-border">
-        <x-admin.breadcrumb href="{{route('admin.menu.index')}}" title="{{ __('Menu Items') }}">{{ __('<< Back to all menus') }}</x-admin.breadcrumb> 
+        <x-admin.breadcrumb href="{{route('admin.category.type.index')}}" title="{{ __('Categories') }}">{{ __('<< Back to all category types') }}</x-admin.breadcrumb> 
     </div>
     <div class="w-full py-2">
         <div class="min-w-full border-b border-gray-200 shadow">
@@ -12,11 +12,11 @@
                 <tbody class="bg-white">
                     <tr>
                         <td class="border-b border-slate-100 p-4 pl-8 text-slate-500">{{ __('Name') }}</td>
-                        <td class="border-b border-slate-100 p-4 text-slate-500">{{$menu->name}}</td>
+                        <td class="border-b border-slate-100 p-4 text-slate-500">{{$type->name}}</td>
                     </tr>
                     <tr>
                         <td class="border-b border-slate-100 p-4 pl-8 text-slate-500">{{ __('Machine name') }}</td>
-                        <td class="border-b border-slate-100 p-4 text-slate-500">{{$menu->machine_name}}</td>
+                        <td class="border-b border-slate-100 p-4 text-slate-500">{{$type->machine_name}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -24,8 +24,8 @@
     </div>
 
     @can('menu create')
-    <x-admin.add-link href="{{ route('admin.menu.item.create', $menu->id) }}">
-        {{ __('Add Menu Item') }}
+    <x-admin.add-link href="{{ route('admin.category.type.item.create', $type->id) }}">
+        {{ __('Add Category') }}
     </x-admin.add-link>
     @endcan
     
@@ -36,6 +36,9 @@
                     <tr>
                         <x-admin.grid.th>
                         {{ __('Name') }}
+                        </x-admin.grid.th>
+                        <x-admin.grid.th>
+                        {{ __('Slug') }}
                         </x-admin.grid.th>
                         <x-admin.grid.th>
                             {{ __('Enabled') }}
@@ -49,7 +52,7 @@
                 </x-slot>
                 <x-slot name="body">
                     @foreach($items as $item)
-                        <x-admin.grid.index-menu-item :item="$item" :menu="$menu" level="0"/>
+                        <x-admin.grid.index-category-item :item="$item" :type="$type" level="0"/>
                     @endforeach
                     @empty($items)
                         <tr>

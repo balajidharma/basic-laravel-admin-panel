@@ -4,12 +4,12 @@
     </x-slot>
 
     <div>
-        <x-admin.breadcrumb href="{{route('permission.index')}}" title="{{ __('Update permission') }}">{{ __('<< Back to all permissions') }}</x-admin.breadcrumb>
+        <x-admin.breadcrumb href="{{route('admin.permission.index')}}" title="{{ __('Update permission') }}">{{ __('<< Back to all permissions') }}</x-admin.breadcrumb>
         <x-admin.form.errors />
     </div>
     <div class="w-full py-2 bg-white overflow-hidden">
 
-        <form method="POST" action="{{ route('permission.update', $permission->id) }}">
+        <form method="POST" action="{{ route('admin.permission.update', $permission->id) }}">
         @csrf
         @method('PUT')
 

@@ -71,7 +71,7 @@ class MenuController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect()->route('menu.index')
+        return redirect()->route('admin.menu.index')
                         ->with('message', 'Menu created successfully.');
     }
 
@@ -97,7 +97,7 @@ class MenuController extends Controller
     {
         $menu->update($request->all());
 
-        return redirect()->route('menu.index')
+        return redirect()->route('admin.menu.index')
                         ->with('message', 'Menu updated successfully.');
     }
 
@@ -111,7 +111,7 @@ class MenuController extends Controller
     {
         $menu->delete();
 
-        return redirect()->route('menu.index')
+        return redirect()->route('admin.menu.index')
                         ->with('message', __('Menu deleted successfully'));
     }
 }

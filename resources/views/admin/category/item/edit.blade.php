@@ -1,15 +1,15 @@
 <x-admin.wrapper>
     <x-slot name="title">
-            {{ __('Menu Items') }}
+            {{ __('Categories') }}
     </x-slot>
 
     <div>
-        <x-admin.breadcrumb href="{{route('admin.menu.item.index', $menu->id)}}" title="{{ __('Update Menu Item') }}">{{ __('<< Back to Menu Items') }}</x-admin.breadcrumb>
+        <x-admin.breadcrumb href="{{route('admin.category.type.item.index', $type->id)}}" title="{{ __('Update category') }}">{{ __('<< Back to Categories') }}</x-admin.breadcrumb>
         <x-admin.form.errors />
     </div>
     <div class="w-full py-2 bg-white overflow-hidden">
 
-        <form method="POST" action="{{ route('admin.menu.item.update', ['menu' => $menu->id, 'item' => $item->id]) }}">
+        <form method="POST" action="{{ route('admin.category.type.item.update', ['type' => $type->id, 'item' => $item->id]) }}">
         @csrf
         @method('PUT')
 
@@ -21,20 +21,6 @@
                                 name="name"
                                 value="{{ old('name', $item->name) }}"
                                 />
-            </div>
-
-            <div class="py-2">
-            <x-admin.form.label for="uri" class="{{$errors->has('uri') ? 'text-red-400' : ''}}">{{ __('Link') }}</x-admin.form.label>
-
-            <x-admin.form.input id="uri" class="{{$errors->has('uri') ? 'border-red-400' : ''}}"
-                                type="text"
-                                name="uri"
-                                value="{{ old('uri', $item->uri) }}"
-                                />
-                <div class="item-list">
-                        You can also enter an internal path such as <em class="placeholder">/home</em> or an external URL such as <em class="placeholder">http://example.com</em>. 
-                        Add prefix <em class="placeholder">&lt;admin&gt;</em> to link for admin page. Enter <em class="placeholder">&lt;nolink&gt;</em> to display link text only.
-                </div>
             </div>
 
             <div class="py-2">
@@ -67,7 +53,7 @@
                 </select>
 
                 <div>
-                    The maximum depth for a link and all its children is fixed. Some menu links may not be available as parents if selecting them would exceed this limit.
+                    The maximum depth for a link and all its children is fixed. Some type links may not be available as parents if selecting them would exceed this limit.
                 </div>
             </div>
 

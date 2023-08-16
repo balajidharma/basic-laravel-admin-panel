@@ -4,12 +4,12 @@
     </x-slot>
 
     <div>
-        <x-admin.breadcrumb href="{{route('role.index')}}" title="{{ __('Update role') }}">{{ __('<< Back to all roles') }}</x-admin.breadcrumb>
+        <x-admin.breadcrumb href="{{route('admin.role.index')}}" title="{{ __('Update role') }}">{{ __('<< Back to all roles') }}</x-admin.breadcrumb>
         <x-admin.form.errors />
     </div>
     <div class="w-full py-2 bg-white overflow-hidden">
 
-        <form method="POST" action="{{ route('role.update', $role->id) }}">
+        <form method="POST" action="{{ route('admin.role.update', $role->id) }}">
         @csrf
         @method('PUT')
 
