@@ -50,6 +50,10 @@ class MenuItemController extends Controller
      */
     public function store(StoreMenuItemRequest $request, Menu $menu)
     {
+        if(!$request->has('enabled')) {
+            $request['enabled'] = false;
+        }
+        
         $menu->menuItems()->create($request->all());
 
         return redirect()->route('admin.menu.item.index', $menu->id)
@@ -78,6 +82,10 @@ class MenuItemController extends Controller
      */
     public function update(UpdateMenuItemRequest $request, Menu $menu, MenuItem $item)
     {
+        if(!$request->has('enabled')) {
+            $request['enabled'] = false;
+        }
+        
         $item->update($request->all());
 
         return redirect()->route('admin.menu.item.index', $menu->id)

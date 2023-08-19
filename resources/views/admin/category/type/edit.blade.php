@@ -37,6 +37,13 @@
                                 />
             </div>
 
+            <div class="p-2">
+                <label for="is_flat" class="inline-flex items-center">
+                    <input id="is_flat" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="is_flat" value="1" {{ old('is_flat', $type->is_flat) ? 'checked="checked"' : '' }}>
+                    <span class="ml-2">{{ __('Use Flat Category') }}</span>
+                </label>
+            </div>
+
             <div class="flex justify-end mt-4">
                 <x-admin.form.button>{{ __('Update') }}</x-admin.form.button>
             </div>

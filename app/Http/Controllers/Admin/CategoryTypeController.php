@@ -65,10 +65,15 @@ class CategoryTypeController extends Controller
      */
     public function store(StoreCategoryTypeRequest $request)
     {
+        if(!$request->has('is_flat')) {
+            $request['is_flat'] = false;
+        }
+
         CategoryType::create([
             'name' => $request->name,
             'machine_name' => $request->machine_name,
             'description' => $request->description,
+            'is_flat' => $request->is_flat,
         ]);
 
         return redirect()->route('admin.category.type.index')
@@ -93,9 +98,13 @@ class CategoryTypeController extends Controller
      * @param  \BalajiDharma\LaravelCategory\Models\CategoryType  $categoryType
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateCategoryTypeRequest $request, CategoryType $categoryType)
+    public function update(UpdateCategoryTypeRequest $request, CategoryType $type)
     {
-        $categoryType->update($request->all());
+        if(!$request->has('is_flat')) {
+            $request['is_flat'] = false;
+        }
+
+        $type->update($request->all());
 
         return redirect()->route('admin.category.type.index')
                         ->with('message', 'Category type updated successfully.');

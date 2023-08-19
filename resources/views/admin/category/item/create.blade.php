@@ -39,6 +39,7 @@
                 </label>
             </div>
 
+            @if (!$type->is_flat)
             <div class="py">
                 <x-admin.form.label for="parent_id" class="{{$errors->has('parent_id') ? 'text-red-400' : ''}}">{{ __('Parent Item') }}</x-admin.form.label>
 
@@ -55,6 +56,7 @@
                     The maximum depth for a link and all its children is fixed. Some menu links may not be available as parents if selecting them would exceed this limit.
                 </div>
             </div>
+            
 
             <div class="py-2 w-40">
             <x-admin.form.label for="weight" class="{{$errors->has('weight') ? 'text-red-400' : ''}}">{{ __('Weight') }}</x-admin.form.label>
@@ -65,6 +67,7 @@
                                 value="{{ old('weight', 0) }}"
                                 />
             </div>
+            @endif
 
             <div class="flex justify-end mt-4">
                 <x-admin.form.button>{{ __('Create') }}</x-admin.form.button>
