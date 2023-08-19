@@ -40,6 +40,7 @@
                 </label>
             </div>
 
+            @if (!$type->is_flat)
             <div class="py">
                 <x-admin.form.label for="parent_id" class="{{$errors->has('parent_id') ? 'text-red-400' : ''}}">{{ __('Parent Item') }}</x-admin.form.label>
 
@@ -66,6 +67,7 @@
                                 value="{{ old('weight', $item->weight) }}"
                                 />
             </div>
+            @endif
 
             <div class="flex justify-end mt-4">
                 <x-admin.form.button>{{ __('Update') }}</x-admin.form.button>

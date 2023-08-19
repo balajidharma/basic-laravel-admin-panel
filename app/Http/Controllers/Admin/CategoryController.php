@@ -50,6 +50,10 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request, CategoryType $type)
     {
+        if(!$request->has('enabled')) {
+            $request['enabled'] = false;
+        }
+
         $slug = \Str::slug($request->name);
         $count = Category::whereRaw("slug RLIKE '^{$slug}(-[0-9]+)?$'")->where('category_type_id', $type->id)->count();
         $request['slug'] = $count ? "{$slug}-{$count}" : $slug;
@@ -82,9 +86,13 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, CategoryType $type, Category $item)
     {
+        if(!$request->has('enabled')) {
+            $request['enabled'] = false;
+        }
+
         $item->update($request->all());
 
-        return redirect()->route('admin.category.item.index', $type->id)
+        return redirect()->route('admin.category.type.item.index', $type->id)
                         ->with('message', 'Category updated successfully.');
     }
 
@@ -99,7 +107,7 @@ class CategoryController extends Controller
     {
         $item->delete();
 
-        return redirect()->route('admin.category.item.index', $type->id)
+        return redirect()->route('admin.category.type.item.index', $type->id)
                         ->with('message', __('Category deleted successfully'));
     }
 }
