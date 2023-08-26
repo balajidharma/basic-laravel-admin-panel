@@ -54,10 +54,6 @@ class CategoryController extends Controller
             $request['enabled'] = false;
         }
 
-        $slug = \Str::slug($request->name);
-        $count = Category::whereRaw("slug RLIKE '^{$slug}(-[0-9]+)?$'")->where('category_type_id', $type->id)->count();
-        $request['slug'] = $count ? "{$slug}-{$count}" : $slug;
-
         $type->categories()->create($request->all());
 
         return redirect()->route('admin.category.type.item.index', $type->id)

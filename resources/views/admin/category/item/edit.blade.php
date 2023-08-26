@@ -24,6 +24,19 @@
             </div>
 
             <div class="py-2">
+            <x-admin.form.label for="slug" class="{{$errors->has('slug') ? 'text-red-400' : ''}}">{{ __('Slug') }}</x-admin.form.label>
+
+            <x-admin.form.input id="slug" class="{{$errors->has('slug') ? 'border-red-400' : ''}}"
+                                type="text"
+                                name="slug"
+                                value="{{ old('name', $item->slug) }}"
+                                />
+            <div>
+            The “slug” is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens.
+            </div>
+            </div>
+
+            <div class="py-2">
             <x-admin.form.label for="description" class="{{$errors->has('description') ? 'text-red-400' : ''}}">{{ __('Description') }}</x-admin.form.label>
 
             <x-admin.form.input id="description" class="{{$errors->has('description') ? 'border-red-400' : ''}}"
