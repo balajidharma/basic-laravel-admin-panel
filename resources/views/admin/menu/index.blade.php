@@ -10,11 +10,11 @@
     @endcan
 
     <div class="py-2">
-        <div class="min-w-full border-b border-gray-200 shadow overflow-x-auto">
+        <div class="min-w-full  border-base-200 shadow overflow-x-auto">
             <x-admin.grid.search action="{{ route('admin.menu.index') }}" />
             <x-admin.grid.table>
                 <x-slot name="head">
-                    <tr>
+                    <tr class="bg-base-200">
                         <x-admin.grid.th>
                             @include('admin.includes.sort-link', ['label' => 'Name', 'attribute' => 'name'])
                         </x-admin.grid.th>
@@ -35,19 +35,13 @@
                 @foreach($menus as $menu)
                     <tr>
                         <x-admin.grid.td>
-                            <div class="text-sm text-gray-900">
-                                {{ $menu->name }}
-                            </div>
+                            {{ $menu->name }}
                         </x-admin.grid.td>
                         <x-admin.grid.td>
-                            <div class="text-sm text-gray-900">
-                                {{ $menu->description }}
-                            </div>
+                            {{ $menu->description }}
                         </x-admin.grid.td>
                         <x-admin.grid.td>
-                            <div class="text-sm text-gray-900">
-                                {{ $menu->machine_name }}
-                            </div>
+                            {{ $menu->machine_name }}
                         </x-admin.grid.td>
                         @canany(['menu edit', 'menu delete', 'menu.item list'])
                         <x-admin.grid.td>

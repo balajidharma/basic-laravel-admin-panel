@@ -1,9 +1,9 @@
-<table {{ $attributes->merge(['class' => 'border-collapse table-auto w-full text-sm']) }}>
+<table {{ $attributes->merge(['class' => 'table']) }}>
     <thead>
         {{ $head }}
     </thead>
 
-    <tbody class="bg-white">
+    <tbody>
         {{ $body }}
     </tbody>
 </table>

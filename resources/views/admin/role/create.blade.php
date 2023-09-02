@@ -8,7 +8,7 @@
         <x-admin.form.errors />
     </div>
 
-    <div class="w-full py-2 bg-white overflow-hidden">
+    <div class="w-full py-2 overflow-hidden">
 
         <form method="POST" action="{{ route('admin.role.store') }}">
         @csrf

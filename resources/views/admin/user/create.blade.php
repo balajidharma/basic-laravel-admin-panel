@@ -7,7 +7,7 @@
         <x-admin.breadcrumb href="{{route('admin.user.index')}}" title="{{ __('Create user') }}">{{ __('<< Back to all users') }}</x-admin.breadcrumb>
         <x-admin.form.errors />
     </div>
-    <div class="w-full py-2 bg-white overflow-hidden">
+    <div class="w-full py-2 overflow-hidden">
 
         <form method="POST" action="{{ route('admin.user.store') }}">
         @csrf
@@ -42,7 +42,7 @@
             </div>
 
             <div class="py-2">
-                <x-admin.form.label for="password_confirmation" class="block font-medium text-sm text-gray-700{{$errors->has('password') ? 'text-red-400' : ''}}">{{ __('Password Confirmation') }}</x-admin.form.label>
+                <x-admin.form.label for="password_confirmation" class="block font-medium text-sm text-base-700{{$errors->has('password') ? 'text-red-400' : ''}}">{{ __('Password Confirmation') }}</x-admin.form.label>
 
                 <x-admin.form.input id="password_confirmation" class="{{$errors->has('password') ? 'border-red-400' : ''}}"
                                 type="password"

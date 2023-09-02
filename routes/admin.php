@@ -6,6 +6,9 @@ Route::group([
     'middleware' => ['auth', 'verified'],
     'as' => 'admin.'
 ], function () {
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
     Route::resource('user', 'UserController');
     Route::resource('role', 'RoleController');
     Route::resource('permission', 'PermissionController');
