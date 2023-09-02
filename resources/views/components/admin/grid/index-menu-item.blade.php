@@ -1,11 +1,11 @@
 <tr>
     <x-admin.grid.td>
-        <div class="text-sm text-gray-900" style="margin-left:{{$level*20}}px;">
+        <div class="text-sm" style="margin-left:{{$level*20}}px;">
             {{ $item['name'] }}
         </div>
     </x-admin.grid.td>
     <x-admin.grid.td>
-        <div class="text-sm text-gray-900">
+        <div class="text-sm">
             {{ $item['enabled'] ? 'Enabled' : 'Disabled' }}
         </div>
     </x-admin.grid.td>

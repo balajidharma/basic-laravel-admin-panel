@@ -7,7 +7,7 @@
         <x-admin.breadcrumb href="{{route('admin.category.type.index')}}" title="{{ __('Update Category Type') }}">{{ __('<< Back to all Category Type') }}</x-admin.breadcrumb>
         <x-admin.form.errors />
     </div>
-    <div class="w-full py-2 bg-white overflow-hidden">
+    <div class="w-full py-2 overflow-hidden">
 
         <form method="POST" action="{{ route('admin.category.type.update', $type->id) }}">
         @csrf

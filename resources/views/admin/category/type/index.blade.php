@@ -10,11 +10,11 @@
     @endcan
 
     <div class="py-2">
-        <div class="min-w-full border-b border-gray-200 shadow overflow-x-auto">
+        <div class="min-w-full  border-base-200 shadow overflow-x-auto">
             <x-admin.grid.search action="{{ route('admin.category.type.index') }}" />
             <x-admin.grid.table>
                 <x-slot name="head">
-                    <tr>
+                    <tr class="bg-base-200">
                         <x-admin.grid.th>
                             @include('admin.includes.sort-link', ['label' => 'Name', 'attribute' => 'name'])
                         </x-admin.grid.th>
@@ -35,17 +35,17 @@
                 @foreach($categoryTypes as $categoryType)
                     <tr>
                         <x-admin.grid.td>
-                            <div class="text-sm text-gray-900">
+                            <div>
                                 {{ $categoryType->name }}
                             </div>
                         </x-admin.grid.td>
                         <x-admin.grid.td>
-                            <div class="text-sm text-gray-900">
+                            <div>
                                 {{ $categoryType->description }}
                             </div>
                         </x-admin.grid.td>
                         <x-admin.grid.td>
-                            <div class="text-sm text-gray-900">
+                            <div>
                                 {{ $categoryType->machine_name }}
                             </div>
                         </x-admin.grid.td>

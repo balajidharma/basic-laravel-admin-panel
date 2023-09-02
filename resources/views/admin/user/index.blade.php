@@ -10,11 +10,11 @@
     @endcan
 
     <div class="py-2">
-        <div class="min-w-full border-b border-gray-200 shadow overflow-x-auto">
+        <div class="min-w-full  border-base-200 shadow overflow-x-auto">
             <x-admin.grid.search action="{{ route('admin.user.index') }}" />
             <x-admin.grid.table>
                 <x-slot name="head">
-                    <tr>
+                    <tr class="bg-base-200">
                         <x-admin.grid.th>
                             @include('admin.includes.sort-link', ['label' => 'Name', 'attribute' => 'name'])
                         </x-admin.grid.th>
@@ -32,12 +32,12 @@
                 @foreach($users as $user)
                     <tr>
                         <x-admin.grid.td>
-                            <div class="text-sm text-gray-900">
+                            <div>
                                 <a href="{{route('admin.user.show', $user->id)}}" class="no-underline hover:underline text-cyan-600">{{ $user->name }}</a>
                             </div>
                         </x-admin.grid.td>
                         <x-admin.grid.td>
-                            <div class="text-sm text-gray-900">
+                            <div>
                                 {{ $user->email }}
                             </div>
                         </x-admin.grid.td>

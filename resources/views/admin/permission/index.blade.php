@@ -10,11 +10,11 @@
     @endcan
 
     <div class="py-2">
-        <div class="min-w-full border-b border-gray-200 shadow overflow-x-auto">
+        <div class="min-w-full  border-base-200 shadow overflow-x-auto">
             <x-admin.grid.search action="{{ route('admin.permission.index') }}" />
             <x-admin.grid.table>
                 <x-slot name="head">
-                    <tr>
+                    <tr class="bg-base-200">
                         <x-admin.grid.th>
                             @include('admin.includes.sort-link', ['label' => 'Name', 'attribute' => 'name'])
                         </x-admin.grid.th>
@@ -29,9 +29,7 @@
                 @foreach($permissions as $permission)
                     <tr>
                         <x-admin.grid.td>
-                            <div class="text-sm text-gray-900">
-                                <a href="{{route('admin.permission.show', $permission->id)}}" class="no-underline hover:underline text-cyan-600">{{ $permission->name }}</a>
-                            </div>
+                            <a href="{{route('admin.permission.show', $permission->id)}}" class="no-underline hover:underline text-cyan-600">{{ $permission->name }}</a>
                         </x-admin.grid.td>
                         @canany(['permission edit', 'permission delete'])
                         <x-admin.grid.td>

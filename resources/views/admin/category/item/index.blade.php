@@ -7,16 +7,16 @@
         <x-admin.breadcrumb href="{{route('admin.category.type.index')}}" title="{{ __('Categories') }}">{{ __('<< Back to all category types') }}</x-admin.breadcrumb> 
     </div>
     <div class="w-full py-2">
-        <div class="min-w-full border-b border-gray-200 shadow">
-            <table class="table-fixed w-full text-sm">
-                <tbody class="bg-white">
+        <div class="min-w-full border-base-200 shadow">
+            <table class="table">
+                <tbody>
                     <tr>
-                        <td class="border-b border-slate-100 p-4 pl-8 text-slate-500">{{ __('Name') }}</td>
-                        <td class="border-b border-slate-100 p-4 text-slate-500">{{$type->name}}</td>
+                        <td>{{ __('Name') }}</td>
+                        <td>{{$type->name}}</td>
                     </tr>
                     <tr>
-                        <td class="border-b border-slate-100 p-4 pl-8 text-slate-500">{{ __('Machine name') }}</td>
-                        <td class="border-b border-slate-100 p-4 text-slate-500">{{$type->machine_name}}</td>
+                        <td>{{ __('Machine name') }}</td>
+                        <td>{{$type->machine_name}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -30,10 +30,10 @@
     @endcan
     
     <div class="py-2">
-        <div class="min-w-full border-b border-gray-200 shadow overflow-x-auto">
+        <div class="min-w-full  border-base-200 shadow overflow-x-auto">
             <x-admin.grid.table>
                 <x-slot name="head">
-                    <tr>
+                    <tr class="bg-base-200">
                         <x-admin.grid.th>
                         {{ __('Name') }}
                         </x-admin.grid.th>

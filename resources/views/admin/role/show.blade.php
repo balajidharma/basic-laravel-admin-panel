@@ -7,9 +7,9 @@
         <x-admin.breadcrumb href="{{route('admin.role.index')}}" title="{{ __('View role') }}">{{ __('<< Back to all roles') }}</x-admin.breadcrumb> 
     </div>
     <div class="w-full py-2">
-        <div class="min-w-full border-b border-gray-200 shadow">
+        <div class="min-w-full border-base-200 shadow">
             <table class="table-fixed w-full text-sm">
-                <tbody class="bg-white">
+                <tbody>
                     <tr>
                         <td class="border-b border-slate-100 p-4 pl-8 text-slate-500">{{ __('Name') }}</td>
                         <td class="border-b border-slate-100 p-4 text-slate-500">{{$role->name}}</td>

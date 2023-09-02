@@ -7,7 +7,7 @@
         <x-admin.breadcrumb href="{{route('admin.menu.item.index', $menu->id)}}" title="{{ __('Add Menu Item') }}">{{ __('<< Back to Menu Items') }}</x-admin.breadcrumb>
         <x-admin.form.errors />
     </div>
-    <div class="w-full py-2 bg-white overflow-hidden">
+    <div class="w-full py-2 overflow-hidden">
 
         <form method="POST" action="{{ route('admin.menu.item.store', ['menu' => $menu->id]) }}">
         @csrf
@@ -56,7 +56,7 @@
             <div class="py">
                 <x-admin.form.label for="parent_id" class="{{$errors->has('parent_id') ? 'text-red-400' : ''}}">{{ __('Parent Item') }}</x-admin.form.label>
 
-                <select name="parent_id" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full">
+                <select name="parent_id" class="input input-bordered w-full ">
                     <option value=''>-ROOT-</option>
                     @foreach ($item_options as $key => $name)
                     <option value="{{ $key }}" @selected(old('parent_id') == $key)>
