@@ -41,6 +41,7 @@
 - Create a new MYSQL database and update database details in `.env` file
 - `php artisan vendor:publish --provider="BalajiDharma\LaravelAdminCore\AdminCoreServiceProvider"`
 - `php artisan vendor:publish --provider="BalajiDharma\LaravelMenu\MenuServiceProvider"`
+- `php artisan vendor:publish --provider="BalajiDharma\LaravelCategory\CategoryServiceProvider"`
 - `php artisan migrate --seed --seeder=AdminCoreSeeder`
 - `npm install`
 - `npm run dev`
