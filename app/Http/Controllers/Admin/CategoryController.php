@@ -25,7 +25,7 @@ class CategoryController extends Controller
      */
     public function index(CategoryType $type)
     {
-        $items = (new Category)->toTree($type->id);
+        $items = (new Category)->toTree($type->id, true);
 
         return view('admin.category.item.index', compact('items', 'type'));
     }
@@ -37,7 +37,7 @@ class CategoryController extends Controller
      */
     public function create(CategoryType $type)
     {
-        $item_options = Category::selectOptions($type->id);
+        $item_options = Category::selectOptions($type->id, null, true);
         return view('admin.category.item.create', compact('type', 'item_options'));
     }
 
