@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use BalajiDharma\LaravelMenu\Models\Menu;
+use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
@@ -92,35 +92,35 @@ class BasicAdminPermissionSeeder extends Seeder
 
         $menu_items = [
             [
-                'name'      => 'Dashboard',
-                'uri'       => '/dashboard',
-                'enabled'   => 1,
-                'weight'    => 0,
+                'name' => 'Dashboard',
+                'uri' => '/dashboard',
+                'enabled' => 1,
+                'weight' => 0,
             ],
             [
-                'name'      => 'Permissions',
-                'uri'       => '/<admin>/permission',
-                'enabled'   => 1,
-                'weight'    => 1,
+                'name' => 'Permissions',
+                'uri' => '/<admin>/permission',
+                'enabled' => 1,
+                'weight' => 1,
             ],
             [
-                'name'      => 'Roles',
-                'uri'       => '/<admin>/role',
-                'enabled'   => 1,
-                'weight'    => 2,
+                'name' => 'Roles',
+                'uri' => '/<admin>/role',
+                'enabled' => 1,
+                'weight' => 2,
             ],
             [
-                'name'      => 'Users',
-                'uri'       => '/<admin>/user',
-                'enabled'   => 1,
-                'weight'    => 3,
+                'name' => 'Users',
+                'uri' => '/<admin>/user',
+                'enabled' => 1,
+                'weight' => 3,
             ],
             [
-                'name'      => 'Menus',
-                'uri'       => '/<admin>/menu',
-                'enabled'   => 1,
-                'weight'    => 4,
-            ]
+                'name' => 'Menus',
+                'uri' => '/<admin>/menu',
+                'enabled' => 1,
+                'weight' => 4,
+            ],
         ];
 
         $menu->menuItems()->createMany($menu_items);

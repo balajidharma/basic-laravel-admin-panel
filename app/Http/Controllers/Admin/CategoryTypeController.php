@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use BalajiDharma\LaravelCategory\Models\CategoryType;
 use BalajiDharma\LaravelAdminCore\Requests\StoreCategoryTypeRequest;
 use BalajiDharma\LaravelAdminCore\Requests\UpdateCategoryTypeRequest;
+use BalajiDharma\LaravelCategory\Models\CategoryType;
 
 class CategoryTypeController extends Controller
 {
@@ -60,12 +60,11 @@ class CategoryTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreCategoryTypeRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreCategoryTypeRequest $request)
     {
-        if(!$request->has('is_flat')) {
+        if (! $request->has('is_flat')) {
             $request['is_flat'] = false;
         }
 
@@ -77,7 +76,7 @@ class CategoryTypeController extends Controller
         ]);
 
         return redirect()->route('admin.category.type.index')
-                        ->with('message', 'Category type created successfully.');
+            ->with('message', 'Category type created successfully.');
     }
 
     /**
@@ -94,20 +93,19 @@ class CategoryTypeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateCategoryTypeRequest  $request
      * @param  \BalajiDharma\LaravelCategory\Models\CategoryType  $categoryType
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateCategoryTypeRequest $request, CategoryType $type)
     {
-        if(!$request->has('is_flat')) {
+        if (! $request->has('is_flat')) {
             $request['is_flat'] = false;
         }
 
         $type->update($request->all());
 
         return redirect()->route('admin.category.type.index')
-                        ->with('message', 'Category type updated successfully.');
+            ->with('message', 'Category type updated successfully.');
     }
 
     /**
@@ -121,6 +119,6 @@ class CategoryTypeController extends Controller
         $type->delete();
 
         return redirect()->route('admin.category.type.index')
-                        ->with('message', __('Category type deleted successfully'));
+            ->with('message', __('Category type deleted successfully'));
     }
 }

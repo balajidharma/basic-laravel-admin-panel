@@ -68,8 +68,6 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreUserRequest  $request
-     * @param  CreateUser  $createUser
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreUserRequest $request, CreateUser $createUser)
@@ -77,13 +75,12 @@ class UserController extends Controller
         $createUser->handle((object) $request->all());
 
         return redirect()->route('admin.user.index')
-                        ->with('message', __('User created successfully.'));
+            ->with('message', __('User created successfully.'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
      * @return \Illuminate\View\View
      */
     public function show(User $user)
@@ -97,7 +94,6 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
      * @return \Illuminate\View\View
      */
     public function edit(User $user)
@@ -111,9 +107,6 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateUserRequest  $request
-     * @param  \App\Models\User  $user
-     * @param  UpdateUser  $updateUser
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateUserRequest $request, User $user, UpdateUser $updateUser)
@@ -121,13 +114,12 @@ class UserController extends Controller
         $updateUser->handle((object) $request->all(), $user);
 
         return redirect()->route('admin.user.index')
-                        ->with('message', __('User updated successfully.'));
+            ->with('message', __('User updated successfully.'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(User $user)
@@ -135,12 +127,12 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('admin.user.index')
-                        ->with('message', __('User deleted successfully'));
+            ->with('message', __('User deleted successfully'));
     }
 
     /**
      * Show the user a form to change their personal information & password.
-     * 
+     *
      * @return \Illuminate\View\View
      */
     public function accountInfo()
@@ -152,8 +144,7 @@ class UserController extends Controller
 
     /**
      * Save the modified personal information for a user.
-     * 
-     * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\View\View
      */
     public function accountInfoStore(Request $request)
@@ -176,8 +167,7 @@ class UserController extends Controller
 
     /**
      * Save the new password for a user.
-     * 
-     * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function changePasswordStore(Request $request)
