@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use BalajiDharma\LaravelMenu\Models\Menu;
 use BalajiDharma\LaravelAdminCore\Requests\StoreMenuRequest;
 use BalajiDharma\LaravelAdminCore\Requests\UpdateMenuRequest;
+use BalajiDharma\LaravelMenu\Models\Menu;
 
 class MenuController extends Controller
 {
@@ -60,7 +60,6 @@ class MenuController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreMenuRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreMenuRequest $request)
@@ -72,13 +71,12 @@ class MenuController extends Controller
         ]);
 
         return redirect()->route('admin.menu.index')
-                        ->with('message', 'Menu created successfully.');
+            ->with('message', 'Menu created successfully.');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \BalajiDharma\LaravelMenu\Models\Menu  $menu
      * @return \Illuminate\View\View
      */
     public function edit(Menu $menu)
@@ -89,8 +87,6 @@ class MenuController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateMenuRequest  $request
-     * @param  \BalajiDharma\LaravelMenu\Models\Menu  $menu
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateMenuRequest $request, Menu $menu)
@@ -98,13 +94,12 @@ class MenuController extends Controller
         $menu->update($request->all());
 
         return redirect()->route('admin.menu.index')
-                        ->with('message', 'Menu updated successfully.');
+            ->with('message', 'Menu updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \BalajiDharma\LaravelMenu\Models\Menu  $menu
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Menu $menu)
@@ -112,6 +107,6 @@ class MenuController extends Controller
         $menu->delete();
 
         return redirect()->route('admin.menu.index')
-                        ->with('message', __('Menu deleted successfully'));
+            ->with('message', __('Menu deleted successfully'));
     }
 }

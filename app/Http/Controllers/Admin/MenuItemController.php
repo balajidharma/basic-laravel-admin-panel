@@ -30,7 +30,7 @@ class MenuItemController extends Controller
         return view('admin.menu.item.index', compact('items', 'menu'));
     }
 
-        /**
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\View\View
@@ -38,65 +38,60 @@ class MenuItemController extends Controller
     public function create(Menu $menu)
     {
         $item_options = MenuItem::selectOptions($menu->id, null, true);
+
         return view('admin.menu.item.create', compact('menu', 'item_options'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreMenuItemRequest  $request
-     * @param  \BalajiDharma\LaravelMenu\Models\Menu $menu
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreMenuItemRequest $request, Menu $menu)
     {
-        if(!$request->has('enabled')) {
+        if (! $request->has('enabled')) {
             $request['enabled'] = false;
         }
-        
+
         $menu->menuItems()->create($request->all());
 
         return redirect()->route('admin.menu.item.index', $menu->id)
-                        ->with('message', 'Menu created successfully.');
+            ->with('message', 'Menu created successfully.');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \BalajiDharma\LaravelMenu\Models\Menu $menu
      * @return \Illuminate\View\View
      */
     public function edit(Menu $menu, MenuItem $item)
     {
         $item_options = MenuItem::selectOptions($menu->id, $item->parent_id ?? $item->id);
+
         return view('admin.menu.item.edit', compact('menu', 'item', 'item_options'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateMenuItemRequest  $request
-     * @param  \BalajiDharma\LaravelMenu\Models\Menu $menu
-     * @param  \BalajiDharma\LaravelMenu\Models\MenuItem $item
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateMenuItemRequest $request, Menu $menu, MenuItem $item)
     {
-        if(!$request->has('enabled')) {
+        if (! $request->has('enabled')) {
             $request['enabled'] = false;
         }
-        
+
         $item->update($request->all());
 
         return redirect()->route('admin.menu.item.index', $menu->id)
-                        ->with('message', 'Menu Item updated successfully.');
+            ->with('message', 'Menu Item updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \BalajiDharma\LaravelMenu\Models\Menu $menu
-     * @param  \BalajiDharma\LaravelMenu\Models\MenuItem $menuItem
+     * @param  \BalajiDharma\LaravelMenu\Models\MenuItem  $menuItem
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Menu $menu, MenuItem $item)
@@ -104,6 +99,6 @@ class MenuItemController extends Controller
         $item->delete();
 
         return redirect()->route('admin.menu.item.index', $menu->id)
-                        ->with('message', __('Menu deleted successfully'));
+            ->with('message', __('Menu deleted successfully'));
     }
 }

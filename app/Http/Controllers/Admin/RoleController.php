@@ -63,7 +63,6 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreRoleRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreRoleRequest $request)
@@ -75,13 +74,12 @@ class RoleController extends Controller
         }
 
         return redirect()->route('admin.role.index')
-                        ->with('message', 'Role created successfully.');
+            ->with('message', 'Role created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Role  $role
      * @return \Illuminate\View\View
      */
     public function show(Role $role)
@@ -95,7 +93,6 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Role  $role
      * @return \Illuminate\View\View
      */
     public function edit(Role $role)
@@ -109,8 +106,6 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateRoleRequest  $request
-     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRoleRequest $request, Role $role)
@@ -120,13 +115,12 @@ class RoleController extends Controller
         $role->syncPermissions($permissions);
 
         return redirect()->route('admin.role.index')
-                        ->with('message', 'Role updated successfully.');
+            ->with('message', 'Role updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Role $role)
@@ -134,6 +128,6 @@ class RoleController extends Controller
         $role->delete();
 
         return redirect()->route('admin.role.index')
-                        ->with('message', __('Role deleted successfully'));
+            ->with('message', __('Role deleted successfully'));
     }
 }

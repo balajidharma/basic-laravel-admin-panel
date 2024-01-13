@@ -4,7 +4,7 @@ Route::group([
     'namespace' => 'App\Http\Controllers\Admin',
     'prefix' => config('admin.prefix'),
     'middleware' => ['auth', 'verified'],
-    'as' => 'admin.'
+    'as' => 'admin.',
 ], function () {
     Route::get('/', function () {
         return view('admin.dashboard');
@@ -13,15 +13,15 @@ Route::group([
     Route::resource('role', 'RoleController');
     Route::resource('permission', 'PermissionController');
     Route::resource('menu', 'MenuController')->except([
-        'show'
+        'show',
     ]);
     Route::resource('menu.item', 'MenuItemController');
     Route::group([
         'prefix' => 'category',
-        "as"=>"category."
+        'as' => 'category.',
     ], function () {
         Route::resource('type', 'CategoryTypeController')->except([
-            'show'
+            'show',
         ]);
         Route::resource('type.item', 'CategoryController');
     });

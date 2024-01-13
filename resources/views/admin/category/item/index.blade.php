@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    @can('menu create')
+    @can('category create')
     <x-admin.add-link href="{{ route('admin.category.type.item.create', $type->id) }}">
         {{ __('Add Category') }}
     </x-admin.add-link>
@@ -43,7 +43,7 @@
                         <x-admin.grid.th>
                             {{ __('Enabled') }}
                         </x-admin.grid.th>
-                        @canany(['menu.item edit', 'menu.item delete'])
+                        @canany(['category edit', 'category delete'])
                         <x-admin.grid.th>
                             {{ __('Actions') }}
                         </x-admin.grid.th>
