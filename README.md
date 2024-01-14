@@ -28,9 +28,7 @@
 - `./vendor/bin/sail up`
 - `./vendor/bin/sail npm install`
 - `./vendor/bin/sail npm run dev`
-- `./vendor/bin/sail artisan vendor:publish --provider="BalajiDharma\LaravelAdminCore\AdminCoreServiceProvider"`
-- `./vendor/bin/sail artisan vendor:publish --provider="BalajiDharma\LaravelMenu\MenuServiceProvider"`
-- `./vendor/bin/sail artisan vendor:publish --provider="BalajiDharma\LaravelCategory\CategoryServiceProvider"`
+- `./vendor/bin/sail artisan vendor:publish --tag=admin-core`
 - `./vendor/bin/sail artisan migrate --seed --seeder=AdminCoreSeeder`
 - Now open http://localhost/
 
@@ -39,8 +37,7 @@
 - `composer create-project balajidharma/basic-laravel-admin-panel admin-app`
 - `cd admin-app`
 - Create a new MYSQL database and update database details in `.env` file
-- `php artisan vendor:publish --provider="BalajiDharma\LaravelAdminCore\AdminCoreServiceProvider"`
-- `php artisan vendor:publish --provider="BalajiDharma\LaravelMenu\MenuServiceProvider"`
+- `php artisan vendor:publish --tag=admin-core`
 - `php artisan migrate --seed --seeder=AdminCoreSeeder`
 - `npm install`
 - `npm run dev`
