@@ -8,7 +8,7 @@ Route::group([
 ], function () {
     Route::get('/', function () {
         return view('admin.dashboard');
-    })->middleware(['auth', 'verified'])->name('dashboard');
+    })->name('dashboard');
     Route::resource('user', 'UserController');
     Route::resource('role', 'RoleController');
     Route::resource('permission', 'PermissionController');
