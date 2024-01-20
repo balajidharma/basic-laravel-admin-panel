@@ -31,6 +31,6 @@ class MenuComposer
      */
     public function compose(View $view)
     {
-        $view->with('menus', $this->menu::getMenuTree('admin'));
+        $view->with('menus', $this->menu::getMenuTree('admin', false, true));
     }
 }

@@ -81,6 +81,22 @@
                                 />
             </div>
 
+            <div class="py-2">
+                <h3 class="inline-block text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight py-4 block sm:inline-block flex">Roles</h3>
+                <div class="grid grid-cols-4 gap-4">
+                    @forelse ($roles as $role)
+                        <div class="col-span-4 sm:col-span-2 md:col-span-1">
+                            <label class="form-check-label">
+                                <input type="checkbox" name="roles[]" value="{{ $role->name }}" {{ in_array($role->id, $itemHasRoles) ? 'checked' : '' }} class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                {{ $role->name }}
+                            </ >
+                        </div>
+                    @empty
+                        ----
+                    @endforelse
+                </div>
+            </div>
+
             <div class="flex justify-end mt-4">
                 <x-admin.form.button>{{ __('Update') }}</x-admin.form.button>
             </div>
