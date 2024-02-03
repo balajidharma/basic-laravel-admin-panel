@@ -42,7 +42,8 @@ class MenuController extends Controller
             $menus->latest();
         }
 
-        $menus = $menus->paginate(5)->onEachSide(2);
+        $menus = $menus->paginate(config('admin.paginate.per_page'))
+            ->onEachSide(config('admin.paginate.each_side'));
 
         return view('admin.menu.index', compact('menus'));
     }

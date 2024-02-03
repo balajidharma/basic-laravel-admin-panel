@@ -48,7 +48,8 @@ class UserController extends Controller
             $users->latest();
         }
 
-        $users = $users->paginate(5)->onEachSide(2);
+        $users = $users->paginate(config('admin.paginate.per_page'))
+            ->onEachSide(config('admin.paginate.each_side'));
 
         return view('admin.user.index', compact('users'));
     }
@@ -145,7 +146,7 @@ class UserController extends Controller
     /**
      * Save the modified personal information for a user.
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function accountInfoStore(Request $request)
     {
