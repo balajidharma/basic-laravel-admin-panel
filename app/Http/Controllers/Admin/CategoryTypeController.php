@@ -42,7 +42,8 @@ class CategoryTypeController extends Controller
             $categoryTypes->latest();
         }
 
-        $categoryTypes = $categoryTypes->paginate(5)->onEachSide(2);
+        $categoryTypes = $categoryTypes->paginate(config('admin.paginate.per_page'))
+            ->onEachSide(config('admin.paginate.each_side'));
 
         return view('admin.category.type.index', compact('categoryTypes'));
     }

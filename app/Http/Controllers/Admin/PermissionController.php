@@ -42,7 +42,8 @@ class PermissionController extends Controller
             $permissions->latest();
         }
 
-        $permissions = $permissions->paginate(5)->onEachSide(2);
+        $permissions = $permissions->paginate(config('admin.paginate.per_page'))
+            ->onEachSide(config('admin.paginate.each_side'));
 
         return view('admin.permission.index', compact('permissions'));
     }
