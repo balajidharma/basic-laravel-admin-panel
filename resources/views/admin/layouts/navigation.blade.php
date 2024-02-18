@@ -11,6 +11,11 @@
     @foreach($menus as $menu)
     <li>
         <a href="{{ $menu['link'] }}" class="{{ (request()->is(ltrim($menu['link'], '/'))) ? 'active' : '' }}">
+            @if($menu['icon'])
+            <span class="menu-icon">
+                {!! $menu['icon'] !!}
+            </span>
+            @endif
             {{ $menu['name'] }}
         </a>
         @isset($menu['children'])

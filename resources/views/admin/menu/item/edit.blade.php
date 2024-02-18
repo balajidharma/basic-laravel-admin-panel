@@ -82,6 +82,12 @@
             </div>
 
             <div class="py-2">
+            <x-admin.form.label for="icon" class="{{$errors->has('icon') ? 'text-red-400' : ''}}">{{ __('Icon') }}</x-admin.form.label>
+
+            <textarea name="icon" id="icon" class="{{$errors->has('icon') ? 'border-red-400' : ''}} textarea input-bordered w-full">{{ old('icon', $item->icon) }}</textarea>
+            </div>
+
+            <div class="py-2">
                 <h3 class="inline-block text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight py-4 block sm:inline-block flex">Roles</h3>
                 <div class="grid grid-cols-4 gap-4">
                     @forelse ($roles as $role)

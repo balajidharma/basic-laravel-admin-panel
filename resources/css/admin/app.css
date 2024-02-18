@@ -8,3 +8,7 @@
 [data-theme='dark'] {
   --my-color: #000;
 }
+.menu-icon svg {
+  width: 20px;
+  height: 20px;
+}
