@@ -64,23 +64,25 @@ To change the Admin Prefix, change `prefix` on `config/admin.php` or add the `AD
 <p align="center">
 	<img src="https://user-images.githubusercontent.com/6037466/179876455-1fbe6c89-9afc-4002-879b-fe3fc6506e34.png" >
 	<br/><br/>
-	<img src="https://user-images.githubusercontent.com/6037466/212739682-9b78b9d0-0a98-47c1-8cfd-c59eda49c29d.png" >
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/e3332546-fde5-43f2-b485-c480e2789aca" >
 	<br/><br/>
-	<img src="https://user-images.githubusercontent.com/6037466/212739938-558b0510-aab8-4093-b5d6-046ad54e4719.png" >
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/d61f99be-672c-490b-a953-e5f85124e588" >
 	<br/><br/>
-	<img src="https://user-images.githubusercontent.com/6037466/212740241-7991aa91-f31b-4545-ad75-6d8b7d5a0152.png">
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/5c5b8653-bc47-40ce-8ca1-a80e1c18e02c">
 	<br/><br/>
-	<img src="https://user-images.githubusercontent.com/6037466/212740406-8289a684-2c9b-49fc-a14c-4c1ab34fe851.png">
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/1b57218c-6b59-4ce5-9258-53bcfaeadf0b">
 	<br/><br/>
-	<img src="https://user-images.githubusercontent.com/6037466/212740481-cca2a0e7-66c7-49c3-8cc6-d0d02e4e79d7.png">
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/ce3d5549-7897-44bc-afd2-7b82d196e255">
 	<br/><br/>
-	<img src="https://user-images.githubusercontent.com/6037466/212740915-e358e0de-15f3-4de5-8fd0-3fa719fd653f.png">
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/dc489947-9b6a-4eac-a425-9f5f86750afa">
 	<br/><br/>
-	<img src="https://user-images.githubusercontent.com/6037466/212739281-833ba20f-b9e7-4f5f-9f03-5a558a7bb8d3.png">
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/f29751ec-3401-451f-9ce1-bee54865d8f5">
 	<br/><br/>
-	<img src="https://user-images.githubusercontent.com/6037466/212739204-5a5d8008-e48e-401f-aadf-305b57c7186d.png">
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/b3819023-12cc-481a-8c44-b5ea6dbb1987">
 	<br/><br/>
-	<img src="https://user-images.githubusercontent.com/6037466/212741829-1684b852-2cdd-4385-ae0b-2dd9dde56d55.png">
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/64f1f333-9812-4b7e-b981-2fcddf33cc1e">
+	<br/><br/>
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/e7895ca3-cab1-4a00-9e4b-8c1d87288c10">
 </p>
 
 ## License
