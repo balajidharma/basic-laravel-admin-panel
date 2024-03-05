@@ -12,9 +12,7 @@
     <li>
         <a href="{{ $menu['link'] }}" class="{{ (request()->is(ltrim($menu['link'], '/'))) ? 'active' : '' }}">
             @if($menu['icon'])
-            <span class="menu-icon">
-                {!! $menu['icon'] !!}
-            </span>
+            <x-admin.base-icon path="{{$menu['icon']}}" />
             @endif
             {{ $menu['name'] }}
         </a>

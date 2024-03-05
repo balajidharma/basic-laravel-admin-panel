@@ -2,9 +2,7 @@
     <x-admin.grid.td>
         <div class="text-sm" style="margin-left:{{$level*20}}px;">
             @if($item['icon'])
-            <span class="menu-icon float-left">
-                {!! $item['icon'] !!}
-            </span>
+            <x-admin.base-icon path="{{$item['icon']}}" />
             @endif
             {{ $item['name'] }}
         </div>
