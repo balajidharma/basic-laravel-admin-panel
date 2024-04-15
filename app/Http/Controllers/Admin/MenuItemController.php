@@ -55,10 +55,10 @@ class MenuItemController extends Controller
             $request['enabled'] = false;
         }
 
-        $menu->menuItems()->create($request->except(['roles']));
+        $item = $menu->menuItems()->create($request->except(['roles']));
 
         $roles = $request->roles ?? [];
-        $menu->assignRole($roles);
+        $item->assignRole(array_map('intval', $roles));
 
         return redirect()->route('admin.menu.item.index', $menu->id)
             ->with('message', 'Menu created successfully.');
@@ -92,7 +92,7 @@ class MenuItemController extends Controller
         $item->update($request->except(['roles']));
 
         $roles = $request->roles ?? [];
-        $item->syncRoles($roles);
+        $item->syncRoles(array_map('intval', $roles));
 
         return redirect()->route('admin.menu.item.index', $menu->id)
             ->with('message', 'Menu Item updated successfully.');
