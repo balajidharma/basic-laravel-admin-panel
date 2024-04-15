@@ -7,8 +7,8 @@ use App\Models\Role;
 use App\Models\User;
 use BalajiDharma\LaravelAdminCore\Actions\User\CreateUser;
 use BalajiDharma\LaravelAdminCore\Actions\User\UpdateUser;
-use BalajiDharma\LaravelAdminCore\Requests\StoreUserRequest;
-use BalajiDharma\LaravelAdminCore\Requests\UpdateUserRequest;
+use BalajiDharma\LaravelAdminCore\Requests\User\StoreUserRequest;
+use BalajiDharma\LaravelAdminCore\Requests\User\UpdateUserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
@@ -73,7 +73,7 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request, CreateUser $createUser)
     {
-        $createUser->handle((object) $request->all());
+        $createUser->handle($request->getUserData());
 
         return redirect()->route('admin.user.index')
             ->with('message', __('User created successfully.'));
@@ -112,7 +112,7 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user, UpdateUser $updateUser)
     {
-        $updateUser->handle((object) $request->all(), $user);
+        $updateUser->handle($request->getUserData(), $user);
 
         return redirect()->route('admin.user.index')
             ->with('message', __('User updated successfully.'));
