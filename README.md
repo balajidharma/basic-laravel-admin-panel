@@ -30,7 +30,7 @@
 - `./vendor/bin/sail npm run dev`
 - `./vendor/bin/sail artisan vendor:publish --tag=admin-core`
 - `./vendor/bin/sail artisan migrate --seed --seeder=AdminCoreSeeder`
-- Now open http://localhost/
+- Now open http://localhost/admin
 
 ### Without Docker Desktop
 - To get started, you need to install [PHP Composer](https://getcomposer.org/).
@@ -42,7 +42,7 @@
 - `npm install`
 - `npm run dev`
 - `php artisan serve`
-- Now open http://localhost:8000/
+- Now open http://localhost:8000/admin
 
 ###### Super Admin Login
 - Email - superadmin@example.com
