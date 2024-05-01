@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Middleware\HasAccessAdmin;
+
 Route::group([
     'namespace' => 'App\Http\Controllers\Admin',
     'prefix' => config('admin.prefix'),
-    'middleware' => ['auth', 'verified'],
+    'middleware' => ['auth', 'verified', HasAccessAdmin::class],
     'as' => 'admin.',
 ], function () {
     Route::get('/', function () {
