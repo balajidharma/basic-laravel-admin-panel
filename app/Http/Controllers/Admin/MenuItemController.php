@@ -4,21 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Role;
-use BalajiDharma\LaravelAdminCore\Requests\StoreMenuItemRequest;
-use BalajiDharma\LaravelAdminCore\Requests\UpdateMenuItemRequest;
+use BalajiDharma\LaravelAdminCore\Actions\MenuItem\MenuItemCreateAction;
+use BalajiDharma\LaravelAdminCore\Actions\MenuItem\MenuItemUpdateAction;
+use BalajiDharma\LaravelAdminCore\Data\MenuItem\MenuItemCreateData;
+use BalajiDharma\LaravelAdminCore\Data\MenuItem\MenuItemUpdateData;
 use BalajiDharma\LaravelMenu\Models\Menu;
 use BalajiDharma\LaravelMenu\Models\MenuItem;
 
 class MenuItemController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('can:menu list', ['only' => ['index', 'show']]);
-        $this->middleware('can:menu create', ['only' => ['create', 'store']]);
-        $this->middleware('can:menu edit', ['only' => ['edit', 'update']]);
-        $this->middleware('can:menu delete', ['only' => ['destroy']]);
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -26,6 +20,7 @@ class MenuItemController extends Controller
      */
     public function index(Menu $menu)
     {
+        $this->authorize('adminViewAny', MenuItem::class);
         $items = (new MenuItem)->toTree($menu->id, true);
 
         return view('admin.menu.item.index', compact('items', 'menu'));
@@ -38,6 +33,7 @@ class MenuItemController extends Controller
      */
     public function create(Menu $menu)
     {
+        $this->authorize('adminCreate', MenuItem::class);
         $item_options = MenuItem::selectOptions($menu->id, null, true);
         $roles = Role::all();
 
@@ -49,16 +45,10 @@ class MenuItemController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreMenuItemRequest $request, Menu $menu)
+    public function store(MenuItemCreateData $data, Menu $menu, MenuItemCreateAction $menuItemCreateAction)
     {
-        if (! $request->has('enabled')) {
-            $request['enabled'] = false;
-        }
-
-        $item = $menu->menuItems()->create($request->except(['roles']));
-
-        $roles = $request->roles ?? [];
-        $item->assignRole(array_map('intval', $roles));
+        $this->authorize('adminCreate', MenuItem::class);
+        $menuItemCreateAction->handle($data, $menu);
 
         return redirect()->route('admin.menu.item.index', $menu->id)
             ->with('message', 'Menu created successfully.');
@@ -71,6 +61,7 @@ class MenuItemController extends Controller
      */
     public function edit(Menu $menu, MenuItem $item)
     {
+        $this->authorize('adminUpdate', $item);
         $item_options = MenuItem::selectOptions($menu->id, $item->parent_id ?? $item->id);
         $roles = Role::all();
         $itemHasRoles = array_column(json_decode($item->roles, true), 'id');
@@ -83,16 +74,10 @@ class MenuItemController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateMenuItemRequest $request, Menu $menu, MenuItem $item)
+    public function update(MenuItemUpdateData $data, Menu $menu, MenuItem $item, MenuItemUpdateAction $menuItemUpdateAction)
     {
-        if (! $request->has('enabled')) {
-            $request['enabled'] = false;
-        }
-
-        $item->update($request->except(['roles']));
-
-        $roles = $request->roles ?? [];
-        $item->syncRoles(array_map('intval', $roles));
+        $this->authorize('adminUpdate', $item);
+        $menuItemUpdateAction->handle($data, $item);
 
         return redirect()->route('admin.menu.item.index', $menu->id)
             ->with('message', 'Menu Item updated successfully.');
@@ -106,6 +91,7 @@ class MenuItemController extends Controller
      */
     public function destroy(Menu $menu, MenuItem $item)
     {
+        $this->authorize('adminDelete', $item);
         $item->delete();
 
         return redirect()->route('admin.menu.item.index', $menu->id)

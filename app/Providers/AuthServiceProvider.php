@@ -13,7 +13,13 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        'App\Models\Role' => 'BalajiDharma\LaravelAdminCore\Policies\RolePolicy',
+        'App\Models\Permission' => 'BalajiDharma\LaravelAdminCore\Policies\PermissionPolicy',
+        'App\Models\User' => 'BalajiDharma\LaravelAdminCore\Policies\UserPolicy',
+        'BalajiDharma\LaravelCategory\Models\Category' => 'BalajiDharma\LaravelCategory\Policies\CategoryPolicy',
+        'BalajiDharma\LaravelCategory\Models\CategoryType' => 'BalajiDharma\LaravelCategory\Policies\CategoryTypePolicy',
+        'BalajiDharma\LaravelMenu\Models\Menu' => 'BalajiDharma\LaravelMenu\Policies\MenuPolicy',
+        'BalajiDharma\LaravelMenu\Models\MenuItem' => 'BalajiDharma\LaravelMenu\Policies\MenuItemPolicy',
     ];
 
     /**
