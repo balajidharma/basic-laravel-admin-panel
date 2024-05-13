@@ -5,19 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Permission;
 use App\Models\Role;
-use BalajiDharma\LaravelAdminCore\Requests\StoreRoleRequest;
-use BalajiDharma\LaravelAdminCore\Requests\UpdateRoleRequest;
+use BalajiDharma\LaravelAdminCore\Actions\Role\RoleCreateAction;
+use BalajiDharma\LaravelAdminCore\Actions\Role\RoleUpdateAction;
+use BalajiDharma\LaravelAdminCore\Data\Role\RoleCreateData;
+use BalajiDharma\LaravelAdminCore\Data\Role\RoleUpdateData;
 
 class RoleController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('can:role list', ['only' => ['index', 'show']]);
-        $this->middleware('can:role create', ['only' => ['create', 'store']]);
-        $this->middleware('can:role edit', ['only' => ['edit', 'update']]);
-        $this->middleware('can:role delete', ['only' => ['destroy']]);
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -25,6 +19,7 @@ class RoleController extends Controller
      */
     public function index()
     {
+        $this->authorize('adminViewAny', Role::class);
         $roles = (new Role)->newQuery();
 
         if (request()->has('search')) {
@@ -56,6 +51,7 @@ class RoleController extends Controller
      */
     public function create()
     {
+        $this->authorize('adminCreate', Role::class);
         $permissions = Permission::all();
 
         return view('admin.role.create', compact('permissions'));
@@ -66,13 +62,10 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreRoleRequest $request)
+    public function store(RoleCreateData $data, RoleCreateAction $roleCreateAction)
     {
-        $role = Role::create($request->all());
-
-        if (! empty($request->permissions)) {
-            $role->givePermissionTo($request->permissions);
-        }
+        $this->authorize('adminCreate', Role::class);
+        $roleCreateAction->handle($data);
 
         return redirect()->route('admin.role.index')
             ->with('message', 'Role created successfully.');
@@ -85,6 +78,7 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
+        $this->authorize('adminView', $role);
         $permissions = Permission::all();
         $roleHasPermissions = array_column(json_decode($role->permissions, true), 'id');
 
@@ -98,6 +92,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
+        $this->authorize('adminUpdate', $role);
         $permissions = Permission::all();
         $roleHasPermissions = array_column(json_decode($role->permissions, true), 'id');
 
@@ -109,11 +104,10 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateRoleRequest $request, Role $role)
+    public function update(RoleUpdateData $data, Role $role, RoleUpdateAction $roleUpdateAction)
     {
-        $role->update($request->all());
-        $permissions = $request->permissions ?? [];
-        $role->syncPermissions($permissions);
+        $this->authorize('adminUpdate', $role);
+        $roleUpdateAction->handle($data, $role);
 
         return redirect()->route('admin.role.index')
             ->with('message', 'Role updated successfully.');
@@ -126,6 +120,7 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
+        $this->authorize('adminDelete', $role);
         $role->delete();
 
         return redirect()->route('admin.role.index')

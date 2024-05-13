@@ -3,20 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use BalajiDharma\LaravelAdminCore\Requests\StoreMenuRequest;
-use BalajiDharma\LaravelAdminCore\Requests\UpdateMenuRequest;
+use BalajiDharma\LaravelAdminCore\Actions\Menu\MenuCreateAction;
+use BalajiDharma\LaravelAdminCore\Actions\Menu\MenuUpdateAction;
+use BalajiDharma\LaravelAdminCore\Data\Menu\MenuCreateData;
+use BalajiDharma\LaravelAdminCore\Data\Menu\MenuUpdateData;
 use BalajiDharma\LaravelMenu\Models\Menu;
 
 class MenuController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('can:menu list', ['only' => ['index']]);
-        $this->middleware('can:menu create', ['only' => ['create', 'store']]);
-        $this->middleware('can:menu edit', ['only' => ['edit', 'update']]);
-        $this->middleware('can:menu delete', ['only' => ['destroy']]);
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -24,6 +18,7 @@ class MenuController extends Controller
      */
     public function index()
     {
+        $this->authorize('adminViewAny', Menu::class);
         $menus = (new Menu)->newQuery();
 
         if (request()->has('search')) {
@@ -55,6 +50,8 @@ class MenuController extends Controller
      */
     public function create()
     {
+        $this->authorize('adminCreate', Menu::class);
+
         return view('admin.menu.create');
     }
 
@@ -63,13 +60,10 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreMenuRequest $request)
+    public function store(MenuCreateData $data, MenuCreateAction $menuCreateAction)
     {
-        Menu::create([
-            'name' => $request->name,
-            'machine_name' => $request->machine_name,
-            'description' => $request->description,
-        ]);
+        $this->authorize('adminCreate', Menu::class);
+        $menuCreateAction->handle($data);
 
         return redirect()->route('admin.menu.index')
             ->with('message', 'Menu created successfully.');
@@ -82,6 +76,8 @@ class MenuController extends Controller
      */
     public function edit(Menu $menu)
     {
+        $this->authorize('adminUpdate', $menu);
+
         return view('admin.menu.edit', compact('menu'));
     }
 
@@ -90,9 +86,10 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateMenuRequest $request, Menu $menu)
+    public function update(MenuUpdateData $data, Menu $menu, MenuUpdateAction $menuUpdateAction)
     {
-        $menu->update($request->all());
+        $this->authorize('adminUpdate', $menu);
+        $menuUpdateAction->handle($data, $menu);
 
         return redirect()->route('admin.menu.index')
             ->with('message', 'Menu updated successfully.');
@@ -105,6 +102,7 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
+        $this->authorize('adminDelete', $menu);
         $menu->delete();
 
         return redirect()->route('admin.menu.index')
