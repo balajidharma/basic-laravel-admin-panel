@@ -9,7 +9,7 @@
     </div>
     <div class="w-full py-2 overflow-hidden">
 
-        <form method="POST" action="{{ route('admin.user.update', $user->id) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin.user.update', $user->id) }}">
         @csrf
         @method('PUT')
 
@@ -48,15 +48,6 @@
                 <x-admin.form.input id="password_confirmation" class="{{$errors->has('password') ? 'border-red-400' : ''}}"
                                 type="password"
                                 name="password_confirmation"
-                                />
-            </div>
-
-            <div class="py-2">
-                <x-admin.form.label for="image" class="{{$errors->has('image') ? 'text-red-400' : ''}}">{{ __('Image') }}</x-admin.form.label>
-
-                <x-admin.form.input id="image" class="{{$errors->has('image') ? 'border-red-400' : ''}}"
-                                type="file"
-                                name="image"
                                 />
             </div>
 
