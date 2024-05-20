@@ -14,6 +14,7 @@ Route::group([
     Route::resource('user', 'UserController');
     Route::resource('role', 'RoleController');
     Route::resource('permission', 'PermissionController');
+    Route::resource('media', 'MediaController');
     Route::resource('menu', 'MenuController')->except([
         'show',
     ]);
