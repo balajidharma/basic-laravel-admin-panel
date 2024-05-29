@@ -13,6 +13,7 @@ class MediaController extends Controller
 {
     public function index()
     {
+        $this->authorize('adminViewAny', Media::class);
         $mediaItems = (new Media)->newQuery();
         $mediaItems->whereIsOriginal();
         if (request()->has('search')) {
@@ -39,11 +40,13 @@ class MediaController extends Controller
 
     public function create()
     {
+        $this->authorize('adminCreate', Media::class);
         return view('admin.media.create');
     }
 
     public function store(MediaCreateData $data, MediaCreateAction $mediaCreateAction)
     {
+        $this->authorize('adminCreate', Media::class);
         $mediaCreateAction->handle($data);
 
         return redirect()->route('admin.media.index')
@@ -53,6 +56,7 @@ class MediaController extends Controller
     public function edit($id)
     {
         $media = Media::findOrFail($id);
+        $this->authorize('adminUpdate', $media);
 
         return view('admin.media.edit', compact('media'));
     }
@@ -60,6 +64,7 @@ class MediaController extends Controller
     public function update(MediaUpdateData $mediaUpdateData, $id, MediaUpdateAction $mediaUpdateAction)
     {
         $media = Media::findOrFail($id);
+        $this->authorize('adminUpdate', $media);
         $mediaUpdateAction->handle($mediaUpdateData, $media);
 
         return redirect()->route('admin.media.index')
@@ -69,6 +74,7 @@ class MediaController extends Controller
     public function destroy($id)
     {
         $media = Media::findOrFail($id);
+        $this->authorize('adminDelete', $media);
         $media->getAllVariantsAndSelf()->each(function (Media $variant) {
             $variant->delete();
         });
