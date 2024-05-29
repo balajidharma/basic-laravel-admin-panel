@@ -40,7 +40,7 @@
                     </tr>
                     <tr>
                         <td class="border-b border-slate-100 p-4 pl-8 text-slate-500">{{ __('Created') }}</td>
-                        <td class="border-b border-slate-100 p-4 text-slate-500">{{$user->created_at}}</td>
+                        <td class="border-b border-slate-100 p-4 text-slate-500">{{$user->created_at->toDateTimeString()}}</td>
                     </tr>
                 </tbody>
             </table>

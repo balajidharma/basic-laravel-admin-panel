@@ -53,6 +53,15 @@ class MediaController extends Controller
             ->with('message', __('Media created successfully.'));
     }
 
+
+    public function show($id)
+    {
+        $media = Media::findOrFail($id);
+        $this->authorize('adminView', $media);
+
+        return view('admin.media.show', compact('media'));
+    }
+
     public function edit($id)
     {
         $media = Media::findOrFail($id);
