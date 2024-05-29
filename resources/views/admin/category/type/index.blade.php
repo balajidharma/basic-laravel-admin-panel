@@ -24,7 +24,7 @@
                         <x-admin.grid.th>
                             {{ __('Machine name') }}
                         </x-admin.grid.th>
-                        @canany(['adminUpdate', 'adminDelete'], \BalajiDharma\LaravelCategory\Models\CategoryType::class)
+                        @canany(['adminUpdate', 'adminDelete'], new \BalajiDharma\LaravelCategory\Models\CategoryType)
                         <x-admin.grid.th>
                             {{ __('Actions') }}
                         </x-admin.grid.th>

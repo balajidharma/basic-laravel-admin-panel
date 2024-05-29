@@ -16,10 +16,11 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Role' => 'BalajiDharma\LaravelAdminCore\Policies\RolePolicy',
         'App\Models\Permission' => 'BalajiDharma\LaravelAdminCore\Policies\PermissionPolicy',
         'App\Models\User' => 'BalajiDharma\LaravelAdminCore\Policies\UserPolicy',
-        'BalajiDharma\LaravelCategory\Models\Category' => 'BalajiDharma\LaravelCategory\Policies\CategoryPolicy',
-        'BalajiDharma\LaravelCategory\Models\CategoryType' => 'BalajiDharma\LaravelCategory\Policies\CategoryTypePolicy',
-        'BalajiDharma\LaravelMenu\Models\Menu' => 'BalajiDharma\LaravelMenu\Policies\MenuPolicy',
-        'BalajiDharma\LaravelMenu\Models\MenuItem' => 'BalajiDharma\LaravelMenu\Policies\MenuItemPolicy',
+        'BalajiDharma\LaravelCategory\Models\Category' => 'BalajiDharma\LaravelAdminCore\Policies\CategoryPolicy',
+        'BalajiDharma\LaravelCategory\Models\CategoryType' => 'BalajiDharma\LaravelAdminCore\Policies\CategoryTypePolicy',
+        'BalajiDharma\LaravelMenu\Models\Menu' => 'BalajiDharma\LaravelAdminCore\Policies\MenuPolicy',
+        'BalajiDharma\LaravelMenu\Models\MenuItem' => 'BalajiDharma\LaravelAdminCore\Policies\MenuItemPolicy',
+        'Plank\Mediable\Media' => 'BalajiDharma\LaravelAdminCore\Policies\MediaPolicy',
     ];
 
     /**

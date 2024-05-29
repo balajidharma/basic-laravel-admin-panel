@@ -27,7 +27,7 @@
                         <x-admin.grid.th>
                             {{ __('Created') }}
                         </x-admin.grid.th>
-                        @canany(['adminUpdate', 'adminDelete'], \Plank\Mediable\Media::class)
+                        @canany(['adminUpdate', 'adminDelete'], new \Plank\Mediable\Media)
                         <x-admin.grid.th>
                             {{ __('Actions') }}
                         </x-admin.grid.th>

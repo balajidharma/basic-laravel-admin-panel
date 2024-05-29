@@ -18,7 +18,7 @@
                         <x-admin.grid.th>
                             @include('admin.includes.sort-link', ['label' => 'Name', 'attribute' => 'name'])
                         </x-admin.grid.th>
-                        @canany(['adminUpdate', 'adminDelete'], \App\Models\Role::class)
+                        @canany(['adminUpdate', 'adminDelete'], new \App\Models\Role)
                         <x-admin.grid.th>
                             {{ __('Actions') }}
                         </x-admin.grid.th>
