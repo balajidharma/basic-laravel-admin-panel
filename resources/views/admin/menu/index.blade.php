@@ -24,7 +24,7 @@
                         <x-admin.grid.th>
                             {{ __('Machine name') }}
                         </x-admin.grid.th>
-                        @canany(['adminUpdate', 'adminDelete'], \BalajiDharma\LaravelMenu\Models\Menu::class)
+                        @canany(['adminUpdate', 'adminDelete'], new \BalajiDharma\LaravelMenu\Models\Menu)
                         <x-admin.grid.th>
                             {{ __('Actions') }}
                         </x-admin.grid.th>

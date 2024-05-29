@@ -43,7 +43,7 @@
                         <x-admin.grid.th>
                             {{ __('Enabled') }}
                         </x-admin.grid.th>
-                        @canany(['adminUpdate', 'adminDelete'], \BalajiDharma\LaravelCategory\Models\Category::class)
+                        @canany(['adminUpdate', 'adminDelete'], new \BalajiDharma\LaravelCategory\Models\Category)
                         <x-admin.grid.th>
                             {{ __('Actions') }}
                         </x-admin.grid.th>
