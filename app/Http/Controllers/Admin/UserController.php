@@ -112,8 +112,6 @@ class UserController extends Controller
         $this->authorize('adminUpdate', $user);
         $userUpdateAction->handle($data, $user);
 
-        $user->addMediaFromRequest('image')->toMediaCollection('user-images');
-
         return redirect()->route('admin.user.index')
             ->with('message', __('User updated successfully.'));
     }
