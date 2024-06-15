@@ -92,7 +92,7 @@
                     @forelse ($roles as $role)
                         <div class="col-span-4 sm:col-span-2 md:col-span-1">
                             <label class="form-check-label">
-                                <input type="checkbox" name="roles[]" value="{{ $role->name }}" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                <input type="checkbox" name="roles[]" value="{{ $role->id }}" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                 {{ $role->name }}
                             </label>
                         </div>
