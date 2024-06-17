@@ -66,23 +66,25 @@ To change the Admin Prefix, change `prefix` on `config/admin.php` or add the `AD
 <p align="center">
 	<img src="https://user-images.githubusercontent.com/6037466/179876455-1fbe6c89-9afc-4002-879b-fe3fc6506e34.png" >
 	<br/><br/>
-	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/e3332546-fde5-43f2-b485-c480e2789aca" >
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/e6b99484-589c-4d44-8282-fb2a9936e712" >
 	<br/><br/>
-	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/d61f99be-672c-490b-a953-e5f85124e588" >
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/1a01f5f1-5fc5-4551-bf01-db345b4378da" >
 	<br/><br/>
-	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/5c5b8653-bc47-40ce-8ca1-a80e1c18e02c">
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/80084c6f-be9b-43c4-b070-9aa2ec38df60">
 	<br/><br/>
-	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/1b57218c-6b59-4ce5-9258-53bcfaeadf0b">
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/f5c0489f-d62f-414b-950a-51a7db879a0e">
 	<br/><br/>
-	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/ce3d5549-7897-44bc-afd2-7b82d196e255">
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/d1d161b2-b6b1-4381-b608-7dbb6e1bf1d8">
 	<br/><br/>
-	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/dc489947-9b6a-4eac-a425-9f5f86750afa">
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/13d88e2f-98f0-4792-a3ee-3e251370f345">
 	<br/><br/>
-	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/f29751ec-3401-451f-9ce1-bee54865d8f5">
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/f7553d1a-c416-495a-8948-4bc6b1e2f3dc">
 	<br/><br/>
-	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/b3819023-12cc-481a-8c44-b5ea6dbb1987">
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/0d060108-3a79-46aa-a8aa-466040c35cc1">
 	<br/><br/>
-	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/64f1f333-9812-4b7e-b981-2fcddf33cc1e">
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/0f9378fe-ceca-40b7-bf40-3c54c18fd487">
+	<br/><br/>
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/d379c6ac-3b20-4451-8152-06bd28b7a94a">
 	<br/><br/>
 	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/e7895ca3-cab1-4a00-9e4b-8c1d87288c10">
 </p>
