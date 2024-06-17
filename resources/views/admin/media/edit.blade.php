@@ -3,10 +3,6 @@
             {{ __('Media') }}
     </x-slot>
 
-    <div>
-        <x-admin.breadcrumb href="{{route('admin.media.index')}}" title="{{ __('Update Media') }}">{{ __('<< Back to all Media') }}</x-admin.breadcrumb>
-        <x-admin.form.errors />
-    </div>
     <div class="w-full py-2 overflow-hidden">
 
         <form method="POST" action="{{ route('admin.media.update', $media->id) }}" enctype="multipart/form-data">

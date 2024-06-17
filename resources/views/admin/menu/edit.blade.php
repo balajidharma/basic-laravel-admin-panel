@@ -3,10 +3,6 @@
             {{ __('Menus') }}
     </x-slot>
 
-    <div>
-        <x-admin.breadcrumb href="{{route('admin.menu.index')}}" title="{{ __('Update Menu') }}">{{ __('<< Back to all menus') }}</x-admin.breadcrumb>
-        <x-admin.form.errors />
-    </div>
     <div class="w-full py-2 overflow-hidden">
 
         <form method="POST" action="{{ route('admin.menu.update', $menu->id) }}">
