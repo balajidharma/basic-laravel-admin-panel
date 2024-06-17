@@ -18,7 +18,9 @@ Route::group([
     Route::resource('menu', 'MenuController')->except([
         'show',
     ]);
-    Route::resource('menu.item', 'MenuItemController');
+    Route::resource('menu.item', 'MenuItemController')->except([
+        'show',
+    ]);
     Route::group([
         'prefix' => 'category',
         'as' => 'category.',

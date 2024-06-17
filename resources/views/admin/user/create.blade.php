@@ -3,10 +3,6 @@
             {{ __('Users') }}
     </x-slot>
 
-    <div>
-        <x-admin.breadcrumb href="{{route('admin.user.index')}}" title="{{ __('Create user') }}">{{ __('<< Back to all users') }}</x-admin.breadcrumb>
-        <x-admin.form.errors />
-    </div>
     <div class="w-full py-2 overflow-hidden">
 
         <form method="POST" action="{{ route('admin.user.store') }}">
