@@ -9,9 +9,12 @@ use BalajiDharma\LaravelAdminCore\Actions\Role\RoleCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\Role\RoleUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\Role\RoleCreateData;
 use BalajiDharma\LaravelAdminCore\Data\Role\RoleUpdateData;
+use BalajiDharma\LaravelFormBuilder\FormBuilder;
 
 class RoleController extends Controller
 {
+    protected $title = 'Roles';
+
     /**
      * Display a listing of the resource.
      *
@@ -49,12 +52,16 @@ class RoleController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(FormBuilder $formBuilder)
     {
         $this->authorize('adminCreate', Role::class);
-        $permissions = Permission::all();
+        $form = $formBuilder->create(\App\Forms\Admin\RoleForm::class, [
+            'method' => 'POST',
+            'url' => route('admin.role.store'),
+        ]);
+        $title = $this->title;
 
-        return view('admin.role.create', compact('permissions'));
+        return view('admin.form.edit', compact('form', 'title'));
     }
 
     /**
@@ -90,13 +97,18 @@ class RoleController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function edit(Role $role)
+    public function edit(Role $role, FormBuilder $formBuilder)
     {
         $this->authorize('adminUpdate', $role);
-        $permissions = Permission::all();
-        $roleHasPermissions = array_column(json_decode($role->permissions, true), 'id');
 
-        return view('admin.role.edit', compact('role', 'permissions', 'roleHasPermissions'));
+        $form = $formBuilder->create(\App\Forms\Admin\RoleForm::class, [
+            'method' => 'PUT',
+            'url' => route('admin.role.update', $role->id),
+            'model' => $role,
+        ]);
+        $title = $this->title;
+
+        return view('admin.form.edit', compact('form', 'title'));
     }
 
     /**

@@ -8,9 +8,12 @@ use BalajiDharma\LaravelAdminCore\Actions\CategoryType\CategoryTypeUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\CategoryType\CategoryTypeCreateData;
 use BalajiDharma\LaravelAdminCore\Data\CategoryType\CategoryTypeUpdateData;
 use BalajiDharma\LaravelCategory\Models\CategoryType;
+use BalajiDharma\LaravelFormBuilder\FormBuilder;
 
 class CategoryTypeController extends Controller
 {
+    protected $title = 'Category Types';
+
     /**
      * Display a listing of the resource.
      *
@@ -48,11 +51,18 @@ class CategoryTypeController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(FormBuilder $formBuilder)
     {
         $this->authorize('adminCreate', CategoryType::class);
 
-        return view('admin.category.type.create');
+        $form = $formBuilder->create(\App\Forms\Admin\CategoryTypeForm::class, [
+            'method' => 'POST',
+            'url' => route('admin.category.type.store'),
+        ]);
+
+        $title = $this->title;
+
+        return view('admin.form.edit', compact('form', 'title'));
     }
 
     /**
@@ -75,11 +85,19 @@ class CategoryTypeController extends Controller
      * @param  \BalajiDharma\LaravelCategory\Models\CategoryType  $categoryType
      * @return \Illuminate\View\View
      */
-    public function edit(CategoryType $type)
+    public function edit(CategoryType $type, FormBuilder $formBuilder)
     {
         $this->authorize('adminUpdate', $type);
 
-        return view('admin.category.type.edit', compact('type'));
+        $form = $formBuilder->create(\App\Forms\Admin\CategoryTypeForm::class, [
+            'method' => 'PUT',
+            'url' => route('admin.category.type.update', $type->id),
+            'model' => $type,
+        ]);
+
+        $title = $this->title;
+
+        return view('admin.form.edit', compact('form', 'title'));
     }
 
     /**

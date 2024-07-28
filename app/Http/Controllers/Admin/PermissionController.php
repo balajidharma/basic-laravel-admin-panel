@@ -8,9 +8,12 @@ use BalajiDharma\LaravelAdminCore\Actions\Permission\PermissionCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\Permission\PermissionUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\Permission\PermissionCreateData;
 use BalajiDharma\LaravelAdminCore\Data\Permission\PermissionUpdateData;
+use BalajiDharma\LaravelFormBuilder\FormBuilder;
 
 class PermissionController extends Controller
 {
+    protected $title = 'Permissions';
+
     /**
      * Display a listing of the resource.
      *
@@ -48,11 +51,17 @@ class PermissionController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(FormBuilder $formBuilder)
     {
         $this->authorize('adminCreate', Permission::class);
 
-        return view('admin.permission.create');
+        $form = $formBuilder->create(\App\Forms\Admin\PermissionForm::class, [
+            'method' => 'POST',
+            'url' => route('admin.permission.store'),
+        ]);
+        $title = $this->title;
+
+        return view('admin.form.edit', compact('form', 'title'));
     }
 
     /**
@@ -86,11 +95,18 @@ class PermissionController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function edit(Permission $permission)
+    public function edit(Permission $permission, FormBuilder $formBuilder)
     {
         $this->authorize('adminUpdate', $permission);
 
-        return view('admin.permission.edit', compact('permission'));
+        $form = $formBuilder->create(\App\Forms\Admin\PermissionForm::class, [
+            'method' => 'PUT',
+            'url' => route('admin.permission.update', $permission->id),
+            'model' => $permission,
+        ]);
+        $title = $this->title;
+
+        return view('admin.form.edit', compact('form', 'title'));
     }
 
     /**

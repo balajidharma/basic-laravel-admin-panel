@@ -7,10 +7,13 @@ use BalajiDharma\LaravelAdminCore\Actions\Menu\MenuCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\Menu\MenuUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\Menu\MenuCreateData;
 use BalajiDharma\LaravelAdminCore\Data\Menu\MenuUpdateData;
+use BalajiDharma\LaravelFormBuilder\FormBuilder;
 use BalajiDharma\LaravelMenu\Models\Menu;
 
 class MenuController extends Controller
 {
+    protected $title = 'Menus';
+
     /**
      * Display a listing of the resource.
      *
@@ -48,11 +51,18 @@ class MenuController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(FormBuilder $formBuilder)
     {
         $this->authorize('adminCreate', Menu::class);
 
-        return view('admin.menu.create');
+        $form = $formBuilder->create(\App\Forms\Admin\MenuForm::class, [
+            'method' => 'POST',
+            'url' => route('admin.menu.store'),
+        ]);
+
+        $title = $this->title;
+
+        return view('admin.form.edit', compact('form', 'title'));
     }
 
     /**
@@ -74,11 +84,19 @@ class MenuController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function edit(Menu $menu)
+    public function edit(Menu $menu, FormBuilder $formBuilder)
     {
         $this->authorize('adminUpdate', $menu);
 
-        return view('admin.menu.edit', compact('menu'));
+        $form = $formBuilder->create(\App\Forms\Admin\MenuForm::class, [
+            'method' => 'PUT',
+            'url' => route('admin.menu.update', $menu->id),
+            'model' => $menu,
+        ]);
+
+        $title = $this->title;
+
+        return view('admin.form.edit', compact('form', 'title'));
     }
 
     /**

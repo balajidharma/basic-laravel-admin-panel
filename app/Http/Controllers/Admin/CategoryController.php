@@ -9,9 +9,12 @@ use BalajiDharma\LaravelAdminCore\Data\Category\CategoryCreateData;
 use BalajiDharma\LaravelAdminCore\Data\Category\CategoryUpdateData;
 use BalajiDharma\LaravelCategory\Models\Category;
 use BalajiDharma\LaravelCategory\Models\CategoryType;
+use BalajiDharma\LaravelFormBuilder\FormBuilder;
 
 class CategoryController extends Controller
 {
+    protected $title = 'Categories';
+
     /**
      * Display a listing of the resource.
      *
@@ -30,12 +33,18 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create(CategoryType $type)
+    public function create(CategoryType $type, FormBuilder $formBuilder)
     {
         $this->authorize('adminCreate', Category::class);
-        $item_options = Category::selectOptions($type->id, null, true);
 
-        return view('admin.category.item.create', compact('type', 'item_options'));
+        $form = $formBuilder->create(\App\Forms\Admin\CategoryItemForm::class, [
+            'method' => 'POST',
+            'url' => route('admin.category.type.item.store', ['type' => $type->id]),
+        ], ['type' => $type]);
+
+        $title = $this->title;
+
+        return view('admin.form.edit', compact('form', 'title'));
     }
 
     /**
@@ -57,12 +66,19 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function edit(CategoryType $type, Category $item)
+    public function edit(CategoryType $type, Category $item, FormBuilder $formBuilder)
     {
         $this->authorize('adminUpdate', $item);
-        $item_options = Category::selectOptions($type->id, $item->parent_id ?? $item->id);
 
-        return view('admin.category.item.edit', compact('type', 'item', 'item_options'));
+        $form = $formBuilder->create(\App\Forms\Admin\CategoryItemForm::class, [
+            'method' => 'PUT',
+            'url' => route('admin.category.type.item.update', ['type' => $type->id, 'item' => $item->id]),
+            'model' => $item,
+        ], ['type' => $type]);
+
+        $title = $this->title;
+
+        return view('admin.form.edit', compact('form', 'title'));
     }
 
     /**
