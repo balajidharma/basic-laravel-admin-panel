@@ -7,10 +7,13 @@ use BalajiDharma\LaravelAdminCore\Actions\Media\MediaCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\Media\MediaUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\Media\MediaCreateData;
 use BalajiDharma\LaravelAdminCore\Data\Media\MediaUpdateData;
+use BalajiDharma\LaravelFormBuilder\FormBuilder;
 use Plank\Mediable\Media;
 
 class MediaController extends Controller
 {
+    protected $title = 'Media';
+
     public function index()
     {
         $this->authorize('adminViewAny', Media::class);
@@ -38,10 +41,17 @@ class MediaController extends Controller
         return view('admin.media.index', compact('mediaItems'));
     }
 
-    public function create()
+    public function create(FormBuilder $formBuilder)
     {
         $this->authorize('adminCreate', Media::class);
-        return view('admin.media.create');
+
+        $form = $formBuilder->create(\App\Forms\Admin\MediaForm::class, [
+            'method' => 'POST',
+            'url' => route('admin.media.store'),
+        ]);
+        $title = $this->title;
+
+        return view('admin.form.edit', compact('form', 'title'));
     }
 
     public function store(MediaCreateData $data, MediaCreateAction $mediaCreateAction)
@@ -53,7 +63,6 @@ class MediaController extends Controller
             ->with('message', __('Media created successfully.'));
     }
 
-
     public function show($id)
     {
         $media = Media::findOrFail($id);
@@ -62,12 +71,19 @@ class MediaController extends Controller
         return view('admin.media.show', compact('media'));
     }
 
-    public function edit($id)
+    public function edit($id, FormBuilder $formBuilder)
     {
         $media = Media::findOrFail($id);
         $this->authorize('adminUpdate', $media);
 
-        return view('admin.media.edit', compact('media'));
+        $form = $formBuilder->create(\App\Forms\Admin\MediaForm::class, [
+            'method' => 'PUT',
+            'url' => route('admin.media.update', $media->id),
+            'model' => $media,
+        ]);
+        $title = $this->title;
+
+        return view('admin.form.edit', compact('form', 'title'));
     }
 
     public function update(MediaUpdateData $mediaUpdateData, $id, MediaUpdateAction $mediaUpdateAction)

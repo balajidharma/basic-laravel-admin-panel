@@ -8,6 +8,8 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/components/admin/**/*.blade.php',
         './resources/views/admin/**/*.blade.php',
+        './app/Forms/Admin/*.php',
+        './config/form-builder.php',
     ],
 
     plugins: [

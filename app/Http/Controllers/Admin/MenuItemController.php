@@ -3,16 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Role;
 use BalajiDharma\LaravelAdminCore\Actions\MenuItem\MenuItemCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\MenuItem\MenuItemUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\MenuItem\MenuItemCreateData;
 use BalajiDharma\LaravelAdminCore\Data\MenuItem\MenuItemUpdateData;
+use BalajiDharma\LaravelFormBuilder\FormBuilder;
 use BalajiDharma\LaravelMenu\Models\Menu;
 use BalajiDharma\LaravelMenu\Models\MenuItem;
 
 class MenuItemController extends Controller
 {
+    protected $title = 'Menus Items';
+
     /**
      * Display a listing of the resource.
      *
@@ -31,13 +33,18 @@ class MenuItemController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create(Menu $menu)
+    public function create(Menu $menu, FormBuilder $formBuilder)
     {
         $this->authorize('adminCreate', MenuItem::class);
-        $item_options = MenuItem::selectOptions($menu->id, null, true);
-        $roles = Role::all();
 
-        return view('admin.menu.item.create', compact('menu', 'item_options', 'roles'));
+        $form = $formBuilder->create(\App\Forms\Admin\MenuItemForm::class, [
+            'method' => 'POST',
+            'url' => route('admin.menu.item.store', ['menu' => $menu->id]),
+        ], ['menu' => $menu]);
+
+        $title = $this->title;
+
+        return view('admin.form.edit', compact('form', 'title'));
     }
 
     /**
@@ -59,14 +66,19 @@ class MenuItemController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function edit(Menu $menu, MenuItem $item)
+    public function edit(Menu $menu, MenuItem $item, FormBuilder $formBuilder)
     {
         $this->authorize('adminUpdate', $item);
-        $item_options = MenuItem::selectOptions($menu->id, $item->parent_id ?? $item->id);
-        $roles = Role::all();
-        $itemHasRoles = array_column(json_decode($item->roles, true), 'id');
 
-        return view('admin.menu.item.edit', compact('menu', 'item', 'item_options', 'roles', 'itemHasRoles'));
+        $form = $formBuilder->create(\App\Forms\Admin\MenuItemForm::class, [
+            'method' => 'PUT',
+            'url' => route('admin.menu.item.update', ['menu' => $menu->id, 'item' => $item->id]),
+            'model' => $item,
+        ], ['menu' => $menu]);
+
+        $title = $this->title;
+
+        return view('admin.form.edit', compact('form', 'title'));
     }
 
     /**

@@ -9,12 +9,15 @@ use BalajiDharma\LaravelAdminCore\Actions\User\UserCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\User\UserUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\User\UserCreateData;
 use BalajiDharma\LaravelAdminCore\Data\User\UserUpdateData;
+use BalajiDharma\LaravelFormBuilder\FormBuilder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
 class UserController extends Controller
 {
+    protected $title = 'Users';
+
     /**
      * Display a listing of the resource.
      *
@@ -52,12 +55,16 @@ class UserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(FormBuilder $formBuilder)
     {
         $this->authorize('adminCreate', User::class);
-        $roles = Role::all();
+        $form = $formBuilder->create(\App\Forms\Admin\UserForm::class, [
+            'method' => 'POST',
+            'url' => route('admin.user.store'),
+        ]);
+        $title = $this->title;
 
-        return view('admin.user.create', compact('roles'));
+        return view('admin.form.edit', compact('form', 'title'));
     }
 
     /**
@@ -93,13 +100,18 @@ class UserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function edit(User $user)
+    public function edit(User $user, FormBuilder $formBuilder)
     {
         $this->authorize('adminUpdate', $user);
-        $roles = Role::all();
-        $userHasRoles = array_column(json_decode($user->roles, true), 'id');
 
-        return view('admin.user.edit', compact('user', 'roles', 'userHasRoles'));
+        $form = $formBuilder->create(\App\Forms\Admin\UserForm::class, [
+            'method' => 'PUT',
+            'url' => route('admin.user.update', $user->id),
+            'model' => $user,
+        ]);
+        $title = $this->title;
+
+        return view('admin.form.edit', compact('form', 'title'));
     }
 
     /**
