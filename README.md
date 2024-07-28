@@ -11,6 +11,7 @@
 - [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
 - [Laravel Breeze](https://github.com/laravel/breeze)
 - [balajidharma/laravel-menu](https://github.com/balajidharma/laravel-menu)
+- [balajidharma/laravel-form-builder](https://github.com/balajidharma/laravel-form-builder)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [daisyUI](https://daisyui.com/)
 
