@@ -11,22 +11,22 @@ class MenuForm extends Form
     public function buildForm()
     {
         $this->add('name', 'text', [
-            'label' => 'Name',
+            'label' =>__('Name'),
         ]);
 
         $this->add('machine_name', 'text', [
-            'label' => 'Machine-readable name',
+            'label' => __('Machine-readable name'),
             'attr' => $this->model ? ['disabled' => 'disabled'] : [],
         ]);
 
         $this->add('description', 'text', [
-            'label' => 'Description',
+            'label' => __('Description'),
         ]);
 
-        $submitLabel = 'Create';
+        $submitLabel = __('Create');
 
         if ($this->model) {
-            $submitLabel = 'Update';
+            $submitLabel = __('Update');
         }
 
         $this->add('submit', 'submit', [

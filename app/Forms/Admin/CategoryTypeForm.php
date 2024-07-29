@@ -11,20 +11,20 @@ class CategoryTypeForm extends Form
     public function buildForm()
     {
         $this->add('name', 'text', [
-            'label' => 'Name',
+            'label' => __('Name'),
         ]);
 
         $this->add('machine_name', 'text', [
-            'label' => 'Machine-readable name',
+            'label' => __('Machine-readable name'),
             'attr' => $this->model ? ['disabled' => 'disabled'] : [],
         ]);
 
         $this->add('description', 'text', [
-            'label' => 'Description',
+            'label' => __('Description'),
         ]);
 
         $this->add('is_flat', 'checkbox', [
-            'label' => 'Use Flat Category',
+            'label' => __('Use Flat Category'),
             'value' => 1,
             'checked' => $this->model ? $this->model->is_flat : false,
             'attr' => [
@@ -32,10 +32,10 @@ class CategoryTypeForm extends Form
             ],
         ]);
 
-        $submitLabel = 'Create';
+        $submitLabel = __('Create');
 
         if ($this->model) {
-            $submitLabel = 'Update';
+            $submitLabel = __('Update');
         }
 
         $this->add('submit', 'submit', [

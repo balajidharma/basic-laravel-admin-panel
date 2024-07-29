@@ -11,13 +11,13 @@ class PermissionForm extends Form
     public function buildForm()
     {
         $this->add('name', 'text', [
-            'label' => 'Name',
+            'label' => __('Name'),
         ]);
 
-        $submitLabel = 'Create';
+        $submitLabel = __('Create');
 
         if ($this->model) {
-            $submitLabel = 'Update';
+            $submitLabel = __('Update');
         }
 
         $this->add('submit', 'submit', [

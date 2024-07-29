@@ -14,27 +14,27 @@ class MediaForm extends Form
 
         $this->add('type', 'select', [
             'choices' => $type,
-            'label' => 'Type',
+            'label' => __('Type'),
             'default_value' => $this->model ? $this->model->variant_name : null,
         ]);
 
         $this->add('name', 'text', [
-            'label' => 'Name',
+            'label' => __('Name'),
             'default_value' => $this->model ? $this->model->filename : null,
         ]);
 
         $this->add('alt', 'text', [
-            'label' => 'Alternative Text',
+            'label' => __('Alternative Text'),
         ]);
 
         $this->add('file', 'file', [
-            'label' => 'File',
+            'label' => __('File'),
         ]);
 
-        $submitLabel = 'Create';
+        $submitLabel = __('Create');
 
         if ($this->model) {
-            $submitLabel = 'Update';
+            $submitLabel = __('Update');
         }
 
         $this->add('submit', 'submit', [
