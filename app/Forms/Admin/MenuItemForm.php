@@ -21,22 +21,22 @@ class MenuItemForm extends Form
         $item_options = MenuItem::selectOptions($this->data['menu']->id, null, true);
 
         $this->add('name', 'text', [
-            'label' => 'Name',
+            'label' => __('Name'),
         ]);
 
         $this->add('uri', 'text', [
-            'label' => 'Link',
+            'label' => __('Link'),
             'help_block' => [
                 'text' => 'You can also enter an internal path such as /home or an external URL such as http://example.com. Add prefix <admin> to link for admin page. Enter <nolink> to display link text only.',
             ],
         ]);
 
         $this->add('description', 'text', [
-            'label' => 'Description',
+            'label' => __('Description'),
         ]);
 
         $this->add('enabled', 'checkbox', [
-            'label' => 'Enabled',
+            'label' => __('Enabled'),
             'value' => 1,
             'default_value' => 1,
             'attr' => [
@@ -46,7 +46,7 @@ class MenuItemForm extends Form
 
         $this->add('parent_id', 'select', [
             'choices' => $item_options,
-            'label' => 'Parent Item',
+            'label' => __('Parent Item'),
             'selected' => $this->model->parent_id ?? null,
             'empty_value' => '-ROOT-',
             'help_block' => [
@@ -56,11 +56,11 @@ class MenuItemForm extends Form
 
         $this->add('weight', 'number', [
             'wrapper' => ['class' => 'form-group py-2 w-40'],
-            'label' => 'Weight',
+            'label' => __('Weight'),
         ]);
 
         $this->add('icon', 'textarea', [
-            'label' => 'Icon',
+            'label' => __('Icon'),
             'attr' => [
                 'rows' => 3,
                 'class' => 'textarea input-bordered w-full',
@@ -76,17 +76,17 @@ class MenuItemForm extends Form
                 ],
             ],
             'choices_wrapper' => ['class' => 'grid grid-cols-4 gap-4'],
-            'label' => 'Roles',
+            'label' => __('Roles'),
             'label_attr' => ['class' => 'inline-block text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight py-4 block sm:inline-block flex'],
             'selected' => $itemHasRoles,
             'expanded' => true,
             'multiple' => true,
         ]);
 
-        $submitLabel = 'Create';
+        $submitLabel = __('Create');
 
         if ($this->model) {
-            $submitLabel = 'Update';
+            $submitLabel = __('Update');
         }
 
         $this->add('submit', 'submit', [

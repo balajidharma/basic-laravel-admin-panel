@@ -18,7 +18,7 @@ class RoleForm extends Form
         }
 
         $this->add('name', 'text', [
-            'label' => 'Name',
+            'label' => __('Name'),
         ]);
 
         if (! $this->model || $this->model->name !== config('admin.super_admin', 'super-admin')) {
@@ -32,7 +32,7 @@ class RoleForm extends Form
                     ],
                 ],
                 'choices_wrapper' => ['class' => 'grid grid-cols-4 gap-4'],
-                'label' => 'Permissions',
+                'label' => __('Permissions'),
                 'label_attr' => ['class' => 'inline-block text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight py-4 block sm:inline-block flex'],
                 'selected' => $roleHasPermissions,
                 'expanded' => true,
@@ -40,10 +40,10 @@ class RoleForm extends Form
             ]);
         }
 
-        $submitLabel = 'Create';
+        $submitLabel = __('Create');
 
         if ($this->model) {
-            $submitLabel = 'Update';
+            $submitLabel = __('Update');
         }
 
         $this->add('submit', 'submit', [

@@ -19,20 +19,20 @@ class UserForm extends Form
         }
 
         $this->add('name', 'text', [
-            'label' => 'Name',
+            'label' => __('Name'),
         ]);
 
         $this->add('email', 'email', [
-            'label' => 'Email',
+            'label' => __('Email'),
         ]);
 
         $this->add('password', 'password', [
-            'label' => 'Password',
+            'label' => __('Password'),
             'value' => '',
         ]);
 
         $this->add('password_confirmation', 'password', [
-            'label' => 'Password Confirmation',
+            'label' => __('Password Confirmation'),
         ]);
 
         $this->add('roles', 'choice', [
@@ -45,17 +45,17 @@ class UserForm extends Form
                 ],
             ],
             'choices_wrapper' => ['class' => 'grid grid-cols-4 gap-4'],
-            'label' => 'Roles',
+            'label' => __('Roles'),
             'label_attr' => ['class' => 'inline-block text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight py-4 block sm:inline-block flex'],
             'selected' => $userHasRoles,
             'expanded' => true,
             'multiple' => true,
         ]);
 
-        $submitLabel = 'Create';
+        $submitLabel = __('Create');
 
         if ($this->model) {
-            $submitLabel = 'Update';
+            $submitLabel = __('Update');
         }
 
         $this->add('submit', 'submit', [
