@@ -72,3 +72,5 @@ Breadcrumbs::resource('admin.menu', 'Menu');
 Breadcrumbs::resource('admin.menu.item', 'Menu Items', 'admin.menu');
 Breadcrumbs::resource('admin.category.type', 'Category Types');
 Breadcrumbs::resource('admin.category.type.item', 'Items', 'admin.category.type');
+
+Breadcrumbs::resource('admin.demo.forms', 'Froms');
