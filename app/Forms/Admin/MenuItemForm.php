@@ -55,7 +55,7 @@ class MenuItemForm extends Form
         ]);
 
         $this->add('weight', 'number', [
-            'wrapper' => ['class' => 'form-group py-2 w-40'],
+            'wrapper' => ['class' => 'form-control py-2 w-40'],
             'label' => __('Weight'),
         ]);
 
