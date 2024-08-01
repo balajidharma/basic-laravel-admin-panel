@@ -39,9 +39,6 @@ class MenuItemForm extends Form
             'label' => __('Enabled'),
             'value' => 1,
             'default_value' => 1,
-            'attr' => [
-                'class' => 'rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50',
-            ],
         ]);
 
         $this->add('parent_id', 'select', [
@@ -55,7 +52,7 @@ class MenuItemForm extends Form
         ]);
 
         $this->add('weight', 'number', [
-            'wrapper' => ['class' => 'form-group py-2 w-40'],
+            'wrapper' => ['class' => 'form-control py-2 w-40'],
             'label' => __('Weight'),
         ]);
 
@@ -71,9 +68,6 @@ class MenuItemForm extends Form
             'choices' => $roles->pluck('name', 'name')->toArray(),
             'choice_options' => [
                 'wrapper' => ['class' => 'col-span-4 sm:col-span-2 md:col-span-1'],
-                'attr' => [
-                    'class' => 'rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50',
-                ],
             ],
             'choices_wrapper' => ['class' => 'grid grid-cols-4 gap-4'],
             'label' => __('Roles'),

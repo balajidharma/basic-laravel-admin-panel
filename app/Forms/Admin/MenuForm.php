@@ -11,7 +11,7 @@ class MenuForm extends Form
     public function buildForm()
     {
         $this->add('name', 'text', [
-            'label' =>__('Name'),
+            'label' => __('Name'),
         ]);
 
         $this->add('machine_name', 'text', [

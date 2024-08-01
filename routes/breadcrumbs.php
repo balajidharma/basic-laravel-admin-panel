@@ -20,7 +20,7 @@ Breadcrumbs::macro('resource', function (string $name, string $title, ?string $p
             $trail->parent("{$name}.index", $model);
             $trail->push('Create', route("{$name}.create", $model));
         });
-    
+
         Breadcrumbs::for("{$name}.show", function (BreadcrumbTrail $trail, $model, $item) use ($name) {
             $trail->parent("{$name}.index", $model, $item);
             \Log::info("{$name}.show");
@@ -30,12 +30,12 @@ Breadcrumbs::macro('resource', function (string $name, string $title, ?string $p
                 $trail->push($item->name ?? $model);
             }
         });
-    
+
         Breadcrumbs::for("{$name}.edit", function (BreadcrumbTrail $trail, $model, $item) use ($name) {
             $trail->parent("{$name}.show", $model, $item);
             $trail->push('Edit', route("{$name}.edit", [$model, $item]));
         });
-        
+
     } else {
         Breadcrumbs::for("{$name}.index", function (BreadcrumbTrail $trail) use ($name, $title) {
             $trail->parent('admin.dashboard');
@@ -46,7 +46,7 @@ Breadcrumbs::macro('resource', function (string $name, string $title, ?string $p
             $trail->parent("{$name}.index");
             $trail->push('Create', route("{$name}.create"));
         });
-    
+
         Breadcrumbs::for("{$name}.show", function (BreadcrumbTrail $trail, $model) use ($name) {
             $trail->parent("{$name}.index");
             if (Route::has("$name.show")) {
@@ -55,14 +55,13 @@ Breadcrumbs::macro('resource', function (string $name, string $title, ?string $p
                 $trail->push($model->name ?? $model);
             }
         });
-    
+
         Breadcrumbs::for("{$name}.edit", function (BreadcrumbTrail $trail, $model) use ($name) {
             $trail->parent("{$name}.show", $model);
             $trail->push('Edit', route("{$name}.edit", $model));
         });
     }
 });
-
 
 Breadcrumbs::resource('admin.permission', 'Permissions');
 Breadcrumbs::resource('admin.role', 'Roles');
