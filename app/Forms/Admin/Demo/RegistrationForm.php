@@ -11,22 +11,22 @@ class RegistrationForm extends Form
         $this
             ->add('name', 'text', [
                 'label' => 'Name',
-                'rules' => 'required'
+                'rules' => 'required',
             ])
             ->add('email', 'email', [
                 'label' => 'Email',
-                'rules' => 'required|email|unique:users,email'
+                'rules' => 'required|email|unique:users,email',
             ])
             ->add('password', 'password', [
                 'label' => 'Password',
-                'rules' => 'required|min:6'
+                'rules' => 'required|min:6',
             ])
             ->add('password_confirmation', 'password', [
                 'label' => 'Confirm Password',
-                'rules' => 'required|same:password'
+                'rules' => 'required|same:password',
             ])
             ->add('submit', 'submit', [
-                'label' => 'Register'
+                'label' => 'Register',
             ]);
     }
 }

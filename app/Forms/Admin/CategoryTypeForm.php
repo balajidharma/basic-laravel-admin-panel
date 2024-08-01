@@ -27,9 +27,6 @@ class CategoryTypeForm extends Form
             'label' => __('Use Flat Category'),
             'value' => 1,
             'checked' => $this->model ? $this->model->is_flat : false,
-            'attr' => [
-                'class' => 'rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50',
-            ],
         ]);
 
         $submitLabel = __('Create');
