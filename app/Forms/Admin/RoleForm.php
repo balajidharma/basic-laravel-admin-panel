@@ -26,7 +26,6 @@ class RoleForm extends Form
                 'choices' => $permissions->pluck('name', 'name')->toArray(),
                 'choice_options' => [
                     'wrapper' => ['class' => 'col-span-4 sm:col-span-2 md:col-span-1'],
-                    'label_attr' => ['class' => 'label-text'],
                 ],
                 'choices_wrapper' => ['class' => 'grid grid-cols-4 gap-4'],
                 'label' => __('Permissions'),

@@ -20,7 +20,7 @@ return [
                 'field_class' => 'btn btn-primary px-6',
             ],
             'checkbox' => [
-                'label_class' => 'label-text',
+                'label_class' => 'label-text cursor-pointer',
                 'field_class' => 'checkbox',
             ],
         ],
