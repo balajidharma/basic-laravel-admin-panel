@@ -3,18 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Grid\Admin\CategoryItemGrid;
 use BalajiDharma\LaravelAdminCore\Actions\Category\CategoryCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\Category\CategoryUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\Category\CategoryCreateData;
 use BalajiDharma\LaravelAdminCore\Data\Category\CategoryUpdateData;
 use BalajiDharma\LaravelCategory\Models\Category;
 use BalajiDharma\LaravelCategory\Models\CategoryType;
-use BalajiDharma\LaravelFormBuilder\FormBuilder;
 
 class CategoryController extends Controller
 {
-    protected $title = 'Categories';
-
     /**
      * Display a listing of the resource.
      *
@@ -33,18 +31,13 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create(CategoryType $type, FormBuilder $formBuilder)
+    public function create(CategoryType $type)
     {
         $this->authorize('adminCreate', Category::class);
-
-        $form = $formBuilder->create(\App\Forms\Admin\CategoryItemForm::class, [
-            'method' => 'POST',
-            'url' => route('admin.category.type.item.store', ['type' => $type->id]),
-        ], ['type' => $type]);
-
-        $title = $this->title;
-
-        return view('admin.form.edit', compact('form', 'title'));
+        $menuItemGrid = (new CategoryItemGrid);
+        $menuItemGrid->setAddtional(['type' => $type]);
+        $crud = $menuItemGrid->form();
+        return view('admin.crud.edit', compact('crud'));
     }
 
     /**
@@ -66,19 +59,13 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function edit(CategoryType $type, Category $item, FormBuilder $formBuilder)
+    public function edit(CategoryType $type, Category $item)
     {
         $this->authorize('adminUpdate', $item);
-
-        $form = $formBuilder->create(\App\Forms\Admin\CategoryItemForm::class, [
-            'method' => 'PUT',
-            'url' => route('admin.category.type.item.update', ['type' => $type->id, 'item' => $item->id]),
-            'model' => $item,
-        ], ['type' => $type]);
-
-        $title = $this->title;
-
-        return view('admin.form.edit', compact('form', 'title'));
+        $menuItemGrid = (new CategoryItemGrid);
+        $menuItemGrid->setAddtional(['type' => $type]);
+        $crud = $menuItemGrid->form($item);
+        return view('admin.crud.edit', compact('crud'));
     }
 
     /**

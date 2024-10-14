@@ -4,16 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Permission;
+use App\Grid\Admin\PermissionGrid;
 use BalajiDharma\LaravelAdminCore\Actions\Permission\PermissionCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\Permission\PermissionUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\Permission\PermissionCreateData;
 use BalajiDharma\LaravelAdminCore\Data\Permission\PermissionUpdateData;
-use BalajiDharma\LaravelFormBuilder\FormBuilder;
 
 class PermissionController extends Controller
 {
-    protected $title = 'Permissions';
-
     /**
      * Display a listing of the resource.
      *
@@ -24,26 +22,8 @@ class PermissionController extends Controller
         $this->authorize('adminViewAny', Permission::class);
         $permissions = (new Permission)->newQuery();
 
-        if (request()->has('search')) {
-            $permissions->where('name', 'Like', '%'.request()->input('search').'%');
-        }
-
-        if (request()->query('sort')) {
-            $attribute = request()->query('sort');
-            $sort_order = 'ASC';
-            if (strncmp($attribute, '-', 1) === 0) {
-                $sort_order = 'DESC';
-                $attribute = substr($attribute, 1);
-            }
-            $permissions->orderBy($attribute, $sort_order);
-        } else {
-            $permissions->latest();
-        }
-
-        $permissions = $permissions->paginate(config('admin.paginate.per_page'))
-            ->onEachSide(config('admin.paginate.each_side'));
-
-        return view('admin.permission.index', compact('permissions'));
+        $crud = (new PermissionGrid)->list($permissions);
+        return view('admin.crud.index', compact('crud'));
     }
 
     /**
@@ -51,17 +31,11 @@ class PermissionController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create(FormBuilder $formBuilder)
+    public function create()
     {
         $this->authorize('adminCreate', Permission::class);
-
-        $form = $formBuilder->create(\App\Forms\Admin\PermissionForm::class, [
-            'method' => 'POST',
-            'url' => route('admin.permission.store'),
-        ]);
-        $title = $this->title;
-
-        return view('admin.form.edit', compact('form', 'title'));
+        $crud = (new PermissionGrid)->form();
+        return view('admin.crud.edit', compact('crud'));
     }
 
     /**
@@ -86,8 +60,8 @@ class PermissionController extends Controller
     public function show(Permission $permission)
     {
         $this->authorize('adminView', $permission);
-
-        return view('admin.permission.show', compact('permission'));
+        $crud = (new PermissionGrid)->show($permission);
+        return view('admin.crud.show', compact('crud'));
     }
 
     /**
@@ -95,18 +69,11 @@ class PermissionController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function edit(Permission $permission, FormBuilder $formBuilder)
+    public function edit(Permission $permission)
     {
         $this->authorize('adminUpdate', $permission);
-
-        $form = $formBuilder->create(\App\Forms\Admin\PermissionForm::class, [
-            'method' => 'PUT',
-            'url' => route('admin.permission.update', $permission->id),
-            'model' => $permission,
-        ]);
-        $title = $this->title;
-
-        return view('admin.form.edit', compact('form', 'title'));
+        $crud = (new PermissionGrid)->form($permission);
+        return view('admin.crud.edit', compact('crud'));
     }
 
     /**

@@ -3,17 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Grid\Admin\MenuGrid;
 use BalajiDharma\LaravelAdminCore\Actions\Menu\MenuCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\Menu\MenuUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\Menu\MenuCreateData;
 use BalajiDharma\LaravelAdminCore\Data\Menu\MenuUpdateData;
-use BalajiDharma\LaravelFormBuilder\FormBuilder;
 use BalajiDharma\LaravelMenu\Models\Menu;
 
 class MenuController extends Controller
 {
-    protected $title = 'Menus';
-
     /**
      * Display a listing of the resource.
      *
@@ -22,28 +20,10 @@ class MenuController extends Controller
     public function index()
     {
         $this->authorize('adminViewAny', Menu::class);
-        $menus = (new Menu)->newQuery();
+        $menus = (new Menu)->newQuery()->with(['menuItems']);
 
-        if (request()->has('search')) {
-            $menus->where('name', 'Like', '%'.request()->input('search').'%');
-        }
-
-        if (request()->query('sort')) {
-            $attribute = request()->query('sort');
-            $sort_order = 'ASC';
-            if (strncmp($attribute, '-', 1) === 0) {
-                $sort_order = 'DESC';
-                $attribute = substr($attribute, 1);
-            }
-            $menus->orderBy($attribute, $sort_order);
-        } else {
-            $menus->latest();
-        }
-
-        $menus = $menus->paginate(config('admin.paginate.per_page'))
-            ->onEachSide(config('admin.paginate.each_side'));
-
-        return view('admin.menu.index', compact('menus'));
+        $crud = (new MenuGrid)->list($menus);
+        return view('admin.crud.index', compact('crud'));
     }
 
     /**
@@ -51,18 +31,11 @@ class MenuController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create(FormBuilder $formBuilder)
+    public function create()
     {
         $this->authorize('adminCreate', Menu::class);
-
-        $form = $formBuilder->create(\App\Forms\Admin\MenuForm::class, [
-            'method' => 'POST',
-            'url' => route('admin.menu.store'),
-        ]);
-
-        $title = $this->title;
-
-        return view('admin.form.edit', compact('form', 'title'));
+        $crud = (new MenuGrid)->form();
+        return view('admin.crud.edit', compact('crud'));
     }
 
     /**
@@ -84,19 +57,11 @@ class MenuController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function edit(Menu $menu, FormBuilder $formBuilder)
+    public function edit(Menu $menu)
     {
         $this->authorize('adminUpdate', $menu);
-
-        $form = $formBuilder->create(\App\Forms\Admin\MenuForm::class, [
-            'method' => 'PUT',
-            'url' => route('admin.menu.update', $menu->id),
-            'model' => $menu,
-        ]);
-
-        $title = $this->title;
-
-        return view('admin.form.edit', compact('form', 'title'));
+        $crud = (new MenuGrid)->form($menu);
+        return view('admin.crud.edit', compact('crud'));
     }
 
     /**

@@ -3,21 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Role;
 use App\Models\User;
+use App\Grid\Admin\UserGrid;
 use BalajiDharma\LaravelAdminCore\Actions\User\UserCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\User\UserUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\User\UserCreateData;
 use BalajiDharma\LaravelAdminCore\Data\User\UserUpdateData;
-use BalajiDharma\LaravelFormBuilder\FormBuilder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
 class UserController extends Controller
 {
-    protected $title = 'Users';
-
     /**
      * Display a listing of the resource.
      *
@@ -26,28 +23,10 @@ class UserController extends Controller
     public function index()
     {
         $this->authorize('adminViewAny', User::class);
-        $users = (new User)->newQuery();
+        $users = (new User)->newQuery()->with(['roles']);
 
-        if (request()->has('search')) {
-            $users->where('name', 'Like', '%'.request()->input('search').'%');
-        }
-
-        if (request()->query('sort')) {
-            $attribute = request()->query('sort');
-            $sort_order = 'ASC';
-            if (strncmp($attribute, '-', 1) === 0) {
-                $sort_order = 'DESC';
-                $attribute = substr($attribute, 1);
-            }
-            $users->orderBy($attribute, $sort_order);
-        } else {
-            $users->latest();
-        }
-
-        $users = $users->paginate(config('admin.paginate.per_page'))
-            ->onEachSide(config('admin.paginate.each_side'));
-
-        return view('admin.user.index', compact('users'));
+        $crud = (new UserGrid)->list($users);
+        return view('admin.crud.index', compact('crud'));
     }
 
     /**
@@ -55,16 +34,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create(FormBuilder $formBuilder)
+    public function create()
     {
         $this->authorize('adminCreate', User::class);
-        $form = $formBuilder->create(\App\Forms\Admin\UserForm::class, [
-            'method' => 'POST',
-            'url' => route('admin.user.store'),
-        ]);
-        $title = $this->title;
-
-        return view('admin.form.edit', compact('form', 'title'));
+        $crud = (new UserGrid)->form();
+        return view('admin.crud.edit', compact('crud'));
     }
 
     /**
@@ -89,10 +63,8 @@ class UserController extends Controller
     public function show(User $user)
     {
         $this->authorize('adminView', $user);
-        $roles = Role::all();
-        $userHasRoles = array_column(json_decode($user->roles, true), 'id');
-
-        return view('admin.user.show', compact('user', 'roles', 'userHasRoles'));
+        $crud = (new UserGrid)->show($user);
+        return view('admin.crud.show', compact('crud'));
     }
 
     /**
@@ -100,18 +72,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function edit(User $user, FormBuilder $formBuilder)
+    public function edit(User $user)
     {
         $this->authorize('adminUpdate', $user);
 
-        $form = $formBuilder->create(\App\Forms\Admin\UserForm::class, [
-            'method' => 'PUT',
-            'url' => route('admin.user.update', $user->id),
-            'model' => $user,
-        ]);
-        $title = $this->title;
-
-        return view('admin.form.edit', compact('form', 'title'));
+        $crud = (new UserGrid)->form($user);
+        return view('admin.crud.edit', compact('crud'));
     }
 
     /**
