@@ -65,6 +65,7 @@ class CategoryItemGrid extends CrudBuilder
                         'label' => __('Parent Item'),
                         'selected' => $this->model->parent_id ?? null,
                         'empty_value' => '-ROOT-',
+                        'hide' => $this->addtional['type']->is_flat ? true : false,
                         'help_block' => [
                             'text' => 'The maximum depth for a link and all its children is fixed. Some type links may not be available as parents if selecting them would exceed this limit.',
                         ],
@@ -79,6 +80,7 @@ class CategoryItemGrid extends CrudBuilder
                         'type' => 'number',
                         'wrapper' => ['class' => 'form-control py-2 w-40'],
                         'label' => __('Weight'),
+                        'hide' => $this->addtional['type']->is_flat ? true : false,
                     ];
                 },
             ],
