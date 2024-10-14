@@ -3,18 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Grid\Admin\MenuItemGrid;
 use BalajiDharma\LaravelAdminCore\Actions\MenuItem\MenuItemCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\MenuItem\MenuItemUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\MenuItem\MenuItemCreateData;
 use BalajiDharma\LaravelAdminCore\Data\MenuItem\MenuItemUpdateData;
-use BalajiDharma\LaravelFormBuilder\FormBuilder;
 use BalajiDharma\LaravelMenu\Models\Menu;
 use BalajiDharma\LaravelMenu\Models\MenuItem;
 
 class MenuItemController extends Controller
 {
-    protected $title = 'Menus Items';
-
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +22,6 @@ class MenuItemController extends Controller
     {
         $this->authorize('adminViewAny', MenuItem::class);
         $items = (new MenuItem)->toTree($menu->id, true);
-
         return view('admin.menu.item.index', compact('items', 'menu'));
     }
 
@@ -33,18 +30,13 @@ class MenuItemController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create(Menu $menu, FormBuilder $formBuilder)
+    public function create(Menu $menu)
     {
         $this->authorize('adminCreate', MenuItem::class);
-
-        $form = $formBuilder->create(\App\Forms\Admin\MenuItemForm::class, [
-            'method' => 'POST',
-            'url' => route('admin.menu.item.store', ['menu' => $menu->id]),
-        ], ['menu' => $menu]);
-
-        $title = $this->title;
-
-        return view('admin.form.edit', compact('form', 'title'));
+        $menuItemGrid = (new MenuItemGrid);
+        $menuItemGrid->setAddtional(['menu' => $menu]);
+        $crud = $menuItemGrid->form();
+        return view('admin.crud.edit', compact('crud'));
     }
 
     /**
@@ -66,19 +58,13 @@ class MenuItemController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function edit(Menu $menu, MenuItem $item, FormBuilder $formBuilder)
+    public function edit(Menu $menu, MenuItem $item)
     {
         $this->authorize('adminUpdate', $item);
-
-        $form = $formBuilder->create(\App\Forms\Admin\MenuItemForm::class, [
-            'method' => 'PUT',
-            'url' => route('admin.menu.item.update', ['menu' => $menu->id, 'item' => $item->id]),
-            'model' => $item,
-        ], ['menu' => $menu]);
-
-        $title = $this->title;
-
-        return view('admin.form.edit', compact('form', 'title'));
+        $menuItemGrid = (new MenuItemGrid);
+        $menuItemGrid->setAddtional(['menu' => $menu]);
+        $crud = $menuItemGrid->form($item);
+        return view('admin.crud.edit', compact('crud'));
     }
 
     /**
