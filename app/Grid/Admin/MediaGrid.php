@@ -22,15 +22,14 @@ class MediaGrid extends CrudBuilder
                 'attribute' => 'type',
                 'filable' => true,
                 'label' => __('Type'),
+                'type' => 'select',
                 'value' => function ($model) {
                     return $model->variant_name;
                 },
                 'form_options' => function ($model) {
                     $type = media_type_as_options();
                     return [
-                        'type' => 'select',
                         'choices' => $type,
-                        'label' => __('Type'),
                         'default_value' => $model ? $model->variant_name : null,
                     ];
                 },
@@ -38,10 +37,11 @@ class MediaGrid extends CrudBuilder
             [
                 'attribute' => 'filename',
                 'filable' => true,
-                'label' => 'Name',
+                'label' => __('Name'),
                 'sortable' => true,
                 'filter' => 'like',
                 'searchable' => true,
+                'type' => 'text',
                 'list' => [
                     'class' => 'BalajiDharma\LaravelCrud\Column\LinkColumn',
                     'route' => 'admin.media.show',
@@ -51,8 +51,6 @@ class MediaGrid extends CrudBuilder
                 'form_options' => function ($model) {
                     return [
                         'attribute' => 'name',
-                        'type' => 'text',
-                        'label' => __('Name'),
                         'default_value' => $model ? $model->filename : null,
                     ];
                 }
@@ -62,17 +60,13 @@ class MediaGrid extends CrudBuilder
                 'label' => __('Alternative Text'),
                 'filable' => true,
                 'list' => false,
-                'form_options' => function ($model) {
-                    return [
-                        'type' => 'text',
-                        'label' => __('Alternative Text'),
-                    ];
-                }
+                'type' => 'text',
             ],
             [
                 'attribute' => 'file',
                 'label' => __('File'),
                 'filable' => true,
+                'type' => 'file',
                 'value' => function ($model) {
                     if($model->aggregate_type != 'image'){
                         $file = media_type_icon($model);
@@ -81,11 +75,6 @@ class MediaGrid extends CrudBuilder
                     }
                     return '<div class="avatar"><div class="w-32 rounded">'.$file.'</div><div>';
                 },
-                'form_options' => function ($model) {
-                    return [
-                        'type' => 'file',
-                    ];
-                }
             ],
             [
                 'attribute' => 'created_at',

@@ -55,9 +55,10 @@ class UserGrid extends CrudBuilder
                 'label' =>  __('Password'),
                 'list' => false,
                 'show' => false,
+                'type' => 'password',
+                'filable' => true,
                 'form_options' => function($model) {
                     return [
-                        'type' => 'password',
                         'value' => '',
                     ];
                 },
@@ -68,11 +69,7 @@ class UserGrid extends CrudBuilder
                 'filable' => true,
                 'list' => false,
                 'show' => false,
-                'form_options' => function($model) {
-                    return [
-                        'type' => 'password',
-                    ];
-                },
+                'type' => 'password',
             ],
             [
                 'attribute' => 'roles',

@@ -20,7 +20,7 @@ class MenuGrid extends CrudBuilder
         return [
             [
                 'attribute' => 'id',
-                'label' => 'ID',
+                'label' => __('ID'),
                 'sortable' => true,
                 'searchable' => true,
                 'form_options' => function($model) {
@@ -31,7 +31,7 @@ class MenuGrid extends CrudBuilder
             ],
             [
                 'attribute' => 'name',
-                'label' => 'Name',
+                'label' => __('Name'),
                 'sortable' => true,
                 'filter' => 'like',
                 'searchable' => true,
@@ -56,7 +56,7 @@ class MenuGrid extends CrudBuilder
             ],
             [
                 'attribute' => 'items',
-                'label' => '# of Items',
+                'label' => __('# of Items'),
                 'list' => [
                     'class' => 'BalajiDharma\LaravelCrud\Column\LinkColumn',
                     'route' => 'admin.menu.item.index',
