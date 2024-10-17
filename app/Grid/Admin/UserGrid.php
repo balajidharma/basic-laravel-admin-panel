@@ -56,7 +56,7 @@ class UserGrid extends CrudBuilder
                 'list' => false,
                 'show' => false,
                 'type' => 'password',
-                'filable' => true,
+                'fillable' => true,
                 'form_options' => function($model) {
                     return [
                         'value' => '',
@@ -66,7 +66,7 @@ class UserGrid extends CrudBuilder
             [
                 'attribute' => 'password_confirmation',
                 'label' => __('Password Confirmation'),
-                'filable' => true,
+                'fillable' => true,
                 'list' => false,
                 'show' => false,
                 'type' => 'password',
@@ -75,7 +75,7 @@ class UserGrid extends CrudBuilder
                 'attribute' => 'roles',
                 'label' => __('Roles'),
                 'type' => 'choice',
-                'filable' => true,
+                'fillable' => true,
                 'list' => [
                     'class' => 'BalajiDharma\LaravelCrud\Column\ListColumn',
                     'attribute' => 'name'

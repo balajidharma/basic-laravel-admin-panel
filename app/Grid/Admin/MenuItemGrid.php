@@ -94,7 +94,7 @@ class MenuItemGrid extends CrudBuilder
             [
                 'attribute' => 'roles',
                 'label' => __('Roles'),
-                'filable' => true,
+                'fillable' => true,
                 'type' => 'choice',
                 'form_options' => function ($model) {
                     $roles = Role::all();

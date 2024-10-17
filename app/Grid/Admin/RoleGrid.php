@@ -48,7 +48,7 @@ class RoleGrid extends CrudBuilder
                 'attribute' => 'permissions',
                 'label' => __('Permissions'),
                 'type' => 'choice',
-                'filable' => true,
+                'fillable' => true,
                 'list' => [
                     'class' => 'BalajiDharma\LaravelCrud\Column\ListColumn',
                     'attribute' => 'name'

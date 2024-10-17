@@ -20,7 +20,7 @@ class MediaGrid extends CrudBuilder
         return [
             [
                 'attribute' => 'type',
-                'filable' => true,
+                'fillable' => true,
                 'label' => __('Type'),
                 'type' => 'select',
                 'value' => function ($model) {
@@ -36,7 +36,7 @@ class MediaGrid extends CrudBuilder
             ],
             [
                 'attribute' => 'filename',
-                'filable' => true,
+                'fillable' => true,
                 'label' => __('Name'),
                 'sortable' => true,
                 'filter' => 'like',
@@ -58,14 +58,14 @@ class MediaGrid extends CrudBuilder
             [
                 'attribute' => 'alt',
                 'label' => __('Alternative Text'),
-                'filable' => true,
+                'fillable' => true,
                 'list' => false,
                 'type' => 'text',
             ],
             [
                 'attribute' => 'file',
                 'label' => __('File'),
-                'filable' => true,
+                'fillable' => true,
                 'type' => 'file',
                 'value' => function ($model) {
                     if($model->aggregate_type != 'image'){
