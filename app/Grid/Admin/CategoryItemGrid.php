@@ -20,7 +20,7 @@ class CategoryItemGrid extends CrudBuilder
         return [
             [
                 'attribute' => 'name',
-                'label' => 'Name',
+                'label' => __('Name'),
                 'sortable' => true,
                 'filter' => 'like',
                 'searchable' => true,
@@ -28,10 +28,9 @@ class CategoryItemGrid extends CrudBuilder
             [
                 'attribute' => 'slug',
                 'label' => __('Slug'),
+                'type' => 'text',
                 'form_options' => function ($model) {
                     return [
-                        'type' => 'text',
-                        'label' => __('Slug'),
                         'help_block' => [
                             'text' => 'The “slug” is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens.',
                         ],
@@ -44,11 +43,10 @@ class CategoryItemGrid extends CrudBuilder
             ],
             [
                 'attribute' => 'enabled',
-                'label' => 'Enabled',
+                'label' => __('Enabled'),
+                'type' => 'checkbox',
                 'form_options' => function ($model) {
                     return [
-                        'type' => 'checkbox',
-                        'label' => __('Enabled'),
                         'value' => 1,
                         'default_value' => 1,
                     ];
@@ -57,10 +55,10 @@ class CategoryItemGrid extends CrudBuilder
             [
                 'attribute' => 'parent_id',
                 'label' => __('Parent Item'),
+                'type' => 'choice',
                 'form_options' => function ($model) {
                     $item_options = Category::selectOptions($this->addtional['type']->id, null, true);
                     return [
-                        'type' => 'choice',
                         'choices' => $item_options,
                         'label' => __('Parent Item'),
                         'selected' => $this->model->parent_id ?? null,
@@ -75,11 +73,10 @@ class CategoryItemGrid extends CrudBuilder
             [
                 'attribute' => 'weight',
                 'label' => __('Weight'),
+                'type' => 'number',
                 'form_options' => function ($model) {
                     return [
-                        'type' => 'number',
                         'wrapper' => ['class' => 'form-control py-2 w-40'],
-                        'label' => __('Weight'),
                         'hide' => $this->addtional['type']->is_flat ? true : false,
                     ];
                 },

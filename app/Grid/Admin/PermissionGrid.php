@@ -19,7 +19,7 @@ class PermissionGrid extends CrudBuilder
     {
         return [
             [
-                'label' => '#',
+                'label' => __('#'),
                 'attribute' => 'label',
                 'list' => [
                     'class' => 'BalajiDharma\LaravelCrud\Column\SerialColumn',
@@ -28,7 +28,7 @@ class PermissionGrid extends CrudBuilder
             ],
             [
                 'attribute' => 'id',
-                'label' => 'ID',
+                'label' => __('ID'),
                 'sortable' => true,
                 'searchable' => true,
                 'list' => [
@@ -40,7 +40,7 @@ class PermissionGrid extends CrudBuilder
             ],
             [
                 'attribute' => 'name',
-                'label' => 'Name',
+                'label' => __('Name'),
                 'sortable' => true,
                 'filter' => 'like',
                 'searchable' => true,

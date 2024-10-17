@@ -21,7 +21,7 @@ class MenuItemGrid extends CrudBuilder
         return [
             [
                 'attribute' => 'name',
-                'label' => 'Name',
+                'label' => __('Name'),
                 'sortable' => true,
                 'filter' => 'like',
                 'searchable' => true,
@@ -31,7 +31,6 @@ class MenuItemGrid extends CrudBuilder
                 'label' => __('Link'),
                 'form_options' => function ($model) {
                     return [
-                        'label' => __('Link'),
                         'help_block' => [
                             'text' => 'You can also enter an internal path such as /home or an external URL such as http://example.com. Add prefix <admin> to link for admin page. Enter <nolink> to display link text only.',
                         ],
@@ -44,11 +43,10 @@ class MenuItemGrid extends CrudBuilder
             ],
             [
                 'attribute' => 'enabled',
-                'label' => 'Enabled',
+                'label' => __('Enabled'),
+                'type' => 'checkbox',
                 'form_options' => function ($model) {
                     return [
-                        'type' => 'checkbox',
-                        'label' => __('Enabled'),
                         'value' => 1,
                         'default_value' => 1,
                     ];
@@ -57,12 +55,11 @@ class MenuItemGrid extends CrudBuilder
             [
                 'attribute' => 'parent_id',
                 'label' => __('Parent Item'),
+                'type' => 'choice',
                 'form_options' => function ($model) {
                     $item_options = MenuItem::selectOptions($this->addtional['menu']->id, null, true);
                     return [
-                        'type' => 'choice',
                         'choices' => $item_options,
-                        'label' => __('Parent Item'),
                         'selected' => $this->model->parent_id ?? null,
                         'empty_value' => '-ROOT-',
                         'help_block' => [
@@ -74,21 +71,19 @@ class MenuItemGrid extends CrudBuilder
             [
                 'attribute' => 'weight',
                 'label' => __('Weight'),
+                'type' => 'number',
                 'form_options' => function ($model) {
                     return [
-                        'type' => 'number',
                         'wrapper' => ['class' => 'form-control py-2 w-40'],
-                        'label' => __('Weight'),
                     ];
                 },
             ],
             [
                 'attribute' => 'icon',
                 'label' => __('Icon'),
+                'type' => 'textarea',
                 'form_options' => function ($model) {
                     return [
-                        'type' => 'textarea',
-                        'label' => __('Icon'),
                         'attr' => [
                             'rows' => 3,
                             'class' => 'textarea input-bordered w-full',
@@ -99,7 +94,8 @@ class MenuItemGrid extends CrudBuilder
             [
                 'attribute' => 'roles',
                 'label' => __('Roles'),
-                'filable' => true,
+                'fillable' => true,
+                'type' => 'choice',
                 'form_options' => function ($model) {
                     $roles = Role::all();
                     $itemHasRoles = [];
@@ -107,13 +103,11 @@ class MenuItemGrid extends CrudBuilder
                         $itemHasRoles = array_column(json_decode($model->roles, true), 'name');
                     }
                     return [
-                        'type' => 'choice',
                         'choices' => $roles->pluck('name', 'name')->toArray(),
                         'choice_options' => [
                             'wrapper' => ['class' => 'col-span-4 sm:col-span-2 md:col-span-1'],
                         ],
                         'choices_wrapper' => ['class' => 'grid grid-cols-4 gap-4'],
-                        'label' => __('Roles'),
                         'label_attr' => ['class' => 'inline-block text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight py-4 block sm:inline-block flex'],
                         'selected' => $itemHasRoles,
                         'expanded' => true,
