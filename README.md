@@ -65,6 +65,15 @@ To change the Admin Prefix, change `prefix` on `config/admin.php` or add the `AD
 - [Build a Laravel admin panel from scratch](https://blog.devgenius.io/laravel-create-an-admin-panel-from-scratch-part-1-installation-8c11dae7e684)
 - [Laravel Vue Admin Panel](https://github.com/balajidharma/laravel-vue-admin-panel)
 
+## Update guide
+Encountering errors post `composer update`? Reset the database and re-publish vendor assets to resolve issues during active development
+
+```
+php artisan vendor:publish --tag=admin-core  --force
+
+php artisan migrate --seed --seeder=AdminCoreSeeder
+```
+
 ## Screenshots
 <p align="center">
 	<img src="https://user-images.githubusercontent.com/6037466/179876455-1fbe6c89-9afc-4002-879b-fe3fc6506e34.png" >
