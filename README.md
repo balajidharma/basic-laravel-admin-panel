@@ -66,7 +66,7 @@ To change the Admin Prefix, change `prefix` on `config/admin.php` or add the `AD
 - [Laravel Vue Admin Panel](https://github.com/balajidharma/laravel-vue-admin-panel)
 
 ## Update guide
-Encountering errors post `composer update`? Reset the database and re-publish vendor assets to resolve issues during active development
+Encountering errors post `composer update`? Reset the database and re-publish vendor assets to resolve issues.
 
 ```
 php artisan vendor:publish --tag=admin-core  --force
