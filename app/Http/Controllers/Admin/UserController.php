@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use BalajiDharma\LaravelAdminCore\Grid\UserGrid;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use BalajiDharma\LaravelAdminCore\Actions\User\UserCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\User\UserUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\User\UserCreateData;
 use BalajiDharma\LaravelAdminCore\Data\User\UserUpdateData;
+use BalajiDharma\LaravelAdminCore\Grid\UserGrid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use BalajiDharma\LaravelAdminCore\Grid\RoleGrid;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use BalajiDharma\LaravelAdminCore\Actions\Role\RoleCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\Role\RoleUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\Role\RoleCreateData;
 use BalajiDharma\LaravelAdminCore\Data\Role\RoleUpdateData;
+use BalajiDharma\LaravelAdminCore\Grid\RoleGrid;
 
 class RoleController extends Controller
 {

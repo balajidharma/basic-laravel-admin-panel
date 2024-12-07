@@ -10,7 +10,6 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Spatie\Permission\Traits\HasRoles;
 
-
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, HasRoles, LaravelCategories, Notifiable;
@@ -46,7 +45,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-
     public static function boot()
     {
         parent::boot();
@@ -67,11 +65,11 @@ class User extends Authenticatable implements MustVerifyEmail
         if ($this->username) {
             return;
         }
-    
+
         $baseUsername = $this->generateBaseUsername();
         $this->username = $this->generateUniqueUsername($baseUsername);
     }
-    
+
     private function generateBaseUsername(): string
     {
         return Str::of($this->name)
@@ -80,26 +78,26 @@ class User extends Authenticatable implements MustVerifyEmail
             ->replaceMatches('/[\s._-]+/', '') // Replace multiple special characters at once
             ->trim();
     }
-    
+
     private function generateUniqueUsername(string $baseUsername): string
     {
         $username = $baseUsername;
-        
+
         // If base username is already unique, return it
-        if (!$this->usernameExists($username)) {
+        if (! $this->usernameExists($username)) {
             return $username;
         }
-    
+
         // Generate a random suffix between 100000 and 999999
         $suffix = random_int(100000, 999999);
-        $username = $baseUsername . $suffix;
-    
+        $username = $baseUsername.$suffix;
+
         // In the unlikely case of collision, increment until unique
         while ($this->usernameExists($username)) {
             $suffix++;
-            $username = $baseUsername . $suffix;
+            $username = $baseUsername.$suffix;
         }
-    
+
         return $username;
     }
 }

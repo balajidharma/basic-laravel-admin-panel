@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use BalajiDharma\LaravelAdminCore\Grid\CategoryItemGrid;
 use App\Http\Controllers\Controller;
 use BalajiDharma\LaravelAdminCore\Actions\Category\CategoryCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\Category\CategoryUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\Category\CategoryCreateData;
 use BalajiDharma\LaravelAdminCore\Data\Category\CategoryUpdateData;
+use BalajiDharma\LaravelAdminCore\Grid\CategoryItemGrid;
 use BalajiDharma\LaravelCategory\Models\Category;
 use BalajiDharma\LaravelCategory\Models\CategoryType;
 
@@ -30,6 +30,7 @@ class CategoryController extends Controller
             $crud = (new CategoryItemGrid);
             $crud->setAddtional(['type' => $type]);
             $crud = $crud->list($categories);
+
             return view('admin.crud.index', compact('crud'));
         }
         $items = (new Category)->toTree($type->id, true);
