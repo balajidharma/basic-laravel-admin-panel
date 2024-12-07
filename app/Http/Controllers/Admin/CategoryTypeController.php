@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Grid\Admin\CategoryTypeGrid;
 use App\Http\Controllers\Controller;
 use BalajiDharma\LaravelAdminCore\Actions\CategoryType\CategoryTypeCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\CategoryType\CategoryTypeUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\CategoryType\CategoryTypeCreateData;
 use BalajiDharma\LaravelAdminCore\Data\CategoryType\CategoryTypeUpdateData;
+use BalajiDharma\LaravelAdminCore\Grid\CategoryTypeGrid;
 use BalajiDharma\LaravelCategory\Models\CategoryType;
 
 class CategoryTypeController extends Controller

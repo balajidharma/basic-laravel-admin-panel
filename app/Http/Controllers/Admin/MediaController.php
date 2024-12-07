@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Grid\Admin\MediaGrid;
 use App\Http\Controllers\Controller;
 use BalajiDharma\LaravelAdminCore\Actions\Media\MediaCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\Media\MediaUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\Media\MediaCreateData;
 use BalajiDharma\LaravelAdminCore\Data\Media\MediaUpdateData;
+use BalajiDharma\LaravelAdminCore\Grid\MediaGrid;
 use BalajiDharma\LaravelFormBuilder\FormBuilder;
 use BalajiDharma\LaravelMediaManager\Models\Media;
 

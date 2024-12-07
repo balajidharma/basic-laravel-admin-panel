@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Grid\Admin\PermissionGrid;
 use App\Http\Controllers\Controller;
 use App\Models\Permission;
 use BalajiDharma\LaravelAdminCore\Actions\Permission\PermissionCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\Permission\PermissionUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\Permission\PermissionCreateData;
 use BalajiDharma\LaravelAdminCore\Data\Permission\PermissionUpdateData;
+use BalajiDharma\LaravelAdminCore\Grid\PermissionGrid;
 
 class PermissionController extends Controller
 {
@@ -23,9 +23,9 @@ class PermissionController extends Controller
         $permissions = (new Permission)->newQuery();
 
         $crud = (new PermissionGrid)
-                    ->setDisplaySearch(true)
-                    ->setDisplayFilters(false)
-                    ->list($permissions);
+            ->setDisplaySearch(true)
+            ->setDisplayFilters(false)
+            ->list($permissions);
 
         return view('admin.crud.index', compact('crud'));
     }

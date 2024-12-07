@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Grid\Admin\ThreadGrid;
-use App\Grid\Admin\CommentGrid;
 use App\Http\Controllers\Controller;
 use BalajiDharma\LaravelAdminCore\Actions\Forum\ThreadCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\Forum\ThreadUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\Forum\ThreadCreateData;
 use BalajiDharma\LaravelAdminCore\Data\Forum\ThreadUpdateData;
+use BalajiDharma\LaravelAdminCore\Grid\CommentGrid;
+use BalajiDharma\LaravelAdminCore\Grid\ThreadGrid;
 use BalajiDharma\LaravelForum\Models\Thread;
 
 class ThreadController extends Controller
@@ -51,7 +51,7 @@ class ThreadController extends Controller
         $this->authorize('adminCreate', Thread::class);
         $threadCreateAction->handle($data);
 
-        return crudRedirect('admin.thread.index','Thread created successfully.');
+        return crudRedirect('admin.thread.index', 'Thread created successfully.');
     }
 
     /**
@@ -65,9 +65,9 @@ class ThreadController extends Controller
         $this->authorize('adminView', $thread);
         $crud = (new ThreadGrid)->show($thread);
 
-        $relations[] =  [
+        $relations[] = [
             'crud' => (new CommentGrid)->setRedirectUrl()->list($thread->comments()->getQuery()),
-            'view' => 'list'
+            'view' => 'list',
         ];
 
         return view('admin.crud.show', compact('crud', 'relations'));
@@ -96,7 +96,7 @@ class ThreadController extends Controller
         $this->authorize('adminUpdate', $thread);
         $threadUpdateAction->handle($data, $thread);
 
-        return crudRedirect('admin.thread.index','Thread updated successfully.');
+        return crudRedirect('admin.thread.index', 'Thread updated successfully.');
     }
 
     /**
@@ -109,6 +109,6 @@ class ThreadController extends Controller
         $this->authorize('adminDelete', $thread);
         $thread->delete();
 
-        return crudRedirect('admin.thread.index','Thread deleted successfully.');
+        return crudRedirect('admin.thread.index', 'Thread deleted successfully.');
     }
 }

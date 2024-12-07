@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Grid\Admin\CommentGrid;
 use App\Http\Controllers\Controller;
 use BalajiDharma\LaravelAdminCore\Actions\Comment\CommentCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\Comment\CommentUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\Comment\CommentCreateData;
 use BalajiDharma\LaravelAdminCore\Data\Comment\CommentUpdateData;
+use BalajiDharma\LaravelAdminCore\Grid\CommentGrid;
 use BalajiDharma\LaravelComment\Models\Comment;
 
 class CommentController extends Controller
@@ -50,7 +50,7 @@ class CommentController extends Controller
         $this->authorize('adminCreate', Comment::class);
         $commentCreateAction->handle($data);
 
-        return crudRedirect('admin.comment.index','Comment created successfully.');
+        return crudRedirect('admin.comment.index', 'Comment created successfully.');
     }
 
     /**
@@ -66,10 +66,10 @@ class CommentController extends Controller
 
         if ($comment->commenter_type == 'App\Models\User') {
             $relations[] = [
-                'crud' => (new \App\Grid\Admin\UserGrid)->setTitle('Commenter')->show($comment->commenter()->first()),
-                'view' => 'show'
+                'crud' => (new \BalajiDharma\LaravelAdminCore\Grid\UserGrid)->setTitle('Commenter')->show($comment->commenter()->first()),
+                'view' => 'show',
             ];
-        };
+        }
 
         return view('admin.crud.show', compact('crud', 'relations'));
     }
@@ -97,7 +97,7 @@ class CommentController extends Controller
         $this->authorize('adminUpdate', $comment);
         $commentUpdateAction->handle($data, $comment);
 
-        return crudRedirect('admin.comment.index','Comment updated successfully.');
+        return crudRedirect('admin.comment.index', 'Comment updated successfully.');
     }
 
     /**
@@ -110,6 +110,6 @@ class CommentController extends Controller
         $this->authorize('adminDelete', $comment);
         $comment->delete();
 
-        return crudRedirect('admin.comment.index','Comment deleted successfully.');
+        return crudRedirect('admin.comment.index', 'Comment deleted successfully.');
     }
 }
