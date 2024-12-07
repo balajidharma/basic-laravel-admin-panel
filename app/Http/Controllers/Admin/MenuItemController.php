@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Grid\Admin\MenuItemGrid;
+use BalajiDharma\LaravelAdminCore\Grid\MenuItemGrid;
 use App\Http\Controllers\Controller;
 use BalajiDharma\LaravelAdminCore\Actions\MenuItem\MenuItemCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\MenuItem\MenuItemUpdateAction;

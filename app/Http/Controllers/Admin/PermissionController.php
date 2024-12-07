@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Grid\Admin\PermissionGrid;
+use BalajiDharma\LaravelAdminCore\Grid\PermissionGrid;
 use App\Http\Controllers\Controller;
 use App\Models\Permission;
 use BalajiDharma\LaravelAdminCore\Actions\Permission\PermissionCreateAction;

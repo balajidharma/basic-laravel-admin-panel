@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Grid\Admin\RoleGrid;
+use BalajiDharma\LaravelAdminCore\Grid\RoleGrid;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use BalajiDharma\LaravelAdminCore\Actions\Role\RoleCreateAction;

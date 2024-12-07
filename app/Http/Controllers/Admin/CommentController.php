@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Grid\Admin\CommentGrid;
+use BalajiDharma\LaravelAdminCore\Grid\CommentGrid;
 use App\Http\Controllers\Controller;
 use BalajiDharma\LaravelAdminCore\Actions\Comment\CommentCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\Comment\CommentUpdateAction;
@@ -66,7 +66,7 @@ class CommentController extends Controller
 
         if ($comment->commenter_type == 'App\Models\User') {
             $relations[] = [
-                'crud' => (new \App\Grid\Admin\UserGrid)->setTitle('Commenter')->show($comment->commenter()->first()),
+                'crud' => (new \BalajiDharma\LaravelAdminCore\Grid\UserGrid)->setTitle('Commenter')->show($comment->commenter()->first()),
                 'view' => 'show'
             ];
         };

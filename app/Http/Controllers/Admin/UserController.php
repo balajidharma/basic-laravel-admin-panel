@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Grid\Admin\UserGrid;
+use BalajiDharma\LaravelAdminCore\Grid\UserGrid;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use BalajiDharma\LaravelAdminCore\Actions\User\UserCreateAction;

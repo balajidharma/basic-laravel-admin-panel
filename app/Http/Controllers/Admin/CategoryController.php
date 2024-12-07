@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Grid\Admin\CategoryItemGrid;
+use BalajiDharma\LaravelAdminCore\Grid\CategoryItemGrid;
 use App\Http\Controllers\Controller;
 use BalajiDharma\LaravelAdminCore\Actions\Category\CategoryCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\Category\CategoryUpdateAction;

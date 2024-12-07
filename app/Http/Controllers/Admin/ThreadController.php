@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Grid\Admin\ThreadGrid;
-use App\Grid\Admin\CommentGrid;
+use BalajiDharma\LaravelAdminCore\Grid\ThreadGrid;
+use BalajiDharma\LaravelAdminCore\Grid\CommentGrid;
 use App\Http\Controllers\Controller;
 use BalajiDharma\LaravelAdminCore\Actions\Forum\ThreadCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\Forum\ThreadUpdateAction;
