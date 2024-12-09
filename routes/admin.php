@@ -38,6 +38,13 @@ Route::group([
     Route::post('edit-account-info', 'UserController@accountInfoStore')->name('account.info.store');
     Route::post('change-password', 'UserController@changePasswordStore')->name('account.password.store');
 
+    Route::resource('activitylog', 'ActivityLogController')->except([
+        'create',
+        'store',
+        'edit',
+        'update',
+    ]);
+
     //Demo
     Route::group([
         'prefix' => 'demo',
