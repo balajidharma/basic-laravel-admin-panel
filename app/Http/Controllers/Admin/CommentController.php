@@ -7,6 +7,7 @@ use BalajiDharma\LaravelAdminCore\Actions\Comment\CommentCreateAction;
 use BalajiDharma\LaravelAdminCore\Actions\Comment\CommentUpdateAction;
 use BalajiDharma\LaravelAdminCore\Data\Comment\CommentCreateData;
 use BalajiDharma\LaravelAdminCore\Data\Comment\CommentUpdateData;
+use BalajiDharma\LaravelAdminCore\Grid\ActivityLogGrid;
 use BalajiDharma\LaravelAdminCore\Grid\CommentGrid;
 use BalajiDharma\LaravelComment\Models\Comment;
 
@@ -70,6 +71,11 @@ class CommentController extends Controller
                 'view' => 'show',
             ];
         }
+
+        $relations[] = [
+            'crud' => (new ActivityLogGrid)->setRedirectUrl()->list($comment->activities()->getQuery()),
+            'view' => 'list',
+        ];
 
         return view('admin.crud.show', compact('crud', 'relations'));
     }
