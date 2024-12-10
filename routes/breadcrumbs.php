@@ -73,6 +73,6 @@ Breadcrumbs::resource('admin.category.type', 'Category Types');
 Breadcrumbs::resource('admin.category.type.item', 'Items', 'name', 'admin.category.type');
 Breadcrumbs::resource('admin.comment', 'Comments', 'id');
 Breadcrumbs::resource('admin.thread', 'Threads', 'title');
-Breadcrumbs::resource('admin.activitylog', 'Activity Log', 'id');
+Breadcrumbs::resource('admin.activitylog', 'Activity Logs', 'id');
 
 Breadcrumbs::resource('admin.demo.forms', 'Froms');
