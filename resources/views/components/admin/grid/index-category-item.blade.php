@@ -1,3 +1,7 @@
+<?php
+$media = $item->firstMedia('thumbnail');
+$image = $media ?? null;
+?>
 <tr>
     <x-admin.grid.td>
         <div class="text-sm text-gray-900" style="margin-left:{{$level*20}}px;">
@@ -7,6 +11,13 @@
     <x-admin.grid.td>
         <div class="text-sm text-gray-900">
             {{ $item['slug'] }}
+        </div>
+    </x-admin.grid.td>
+    <x-admin.grid.td>
+        <div class="w-32 rounded">
+            @if ($image)
+                <image src="{{ asset('storage/' . $image->getDiskPath()) }}" alt="{{ $image->alt }}">
+            @endif
         </div>
     </x-admin.grid.td>
     <x-admin.grid.td>

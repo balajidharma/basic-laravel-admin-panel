@@ -38,6 +38,9 @@
                         {{ __('Slug') }}
                         </x-admin.grid.th>
                         <x-admin.grid.th>
+                        {{ __('Image') }}
+                        </x-admin.grid.th>
+                        <x-admin.grid.th>
                             {{ __('Enabled') }}
                         </x-admin.grid.th>
                         @canany(['adminUpdate', 'adminDelete'], new \BalajiDharma\LaravelCategory\Models\Category)
