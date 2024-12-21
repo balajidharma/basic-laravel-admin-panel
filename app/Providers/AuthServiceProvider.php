@@ -23,6 +23,7 @@ class AuthServiceProvider extends ServiceProvider
         'Plank\Mediable\Media' => 'BalajiDharma\LaravelAdminCore\Policies\MediaPolicy',
         'BalajiDharma\LaravelComment\Models\Comment' => 'BalajiDharma\LaravelAdminCore\Policies\CommentPolicy',
         'BalajiDharma\LaravelForum\Models\Thread' => 'BalajiDharma\LaravelAdminCore\Policies\ThreadPolicy',
+        'BalajiDharma\LaravelAttributes\Models\Atrribute' => 'BalajiDharma\LaravelAdminCore\Policies\AtrributePolicy',
     ];
 
     /**
