@@ -10,6 +10,7 @@ use BalajiDharma\LaravelAdminCore\Data\Forum\ThreadUpdateData;
 use BalajiDharma\LaravelAdminCore\Grid\ActivityLogGrid;
 use BalajiDharma\LaravelAdminCore\Grid\AttributeGrid;
 use BalajiDharma\LaravelAdminCore\Grid\CommentGrid;
+use BalajiDharma\LaravelAdminCore\Grid\ReactionGrid;
 use BalajiDharma\LaravelAdminCore\Grid\ThreadGrid;
 use BalajiDharma\LaravelForum\Models\Thread;
 
@@ -78,7 +79,12 @@ class ThreadController extends Controller
         ];
 
         $relations[] = [
-            'crud' => (new AttributeGrid())->setRedirectUrl()->list($thread->attributes()->getQuery()),
+            'crud' => (new AttributeGrid)->setRedirectUrl()->list($thread->attributes()->getQuery()),
+            'view' => 'list',
+        ];
+
+        $relations[] = [
+            'crud' => (new ReactionGrid)->setRedirectUrl()->list($thread->reactions()->getQuery()),
             'view' => 'list',
         ];
 
