@@ -35,6 +35,7 @@ Route::group([
     Route::resource('comment', 'CommentController');
     Route::resource('thread', 'ThreadController');
     Route::resource('attribute', 'AttributeController');
+    Route::resource('reaction', 'ReactionController');
     Route::get('edit-account-info', 'UserController@accountInfo')->name('account.info');
     Route::post('edit-account-info', 'UserController@accountInfoStore')->name('account.info.store');
     Route::post('change-password', 'UserController@changePasswordStore')->name('account.password.store');

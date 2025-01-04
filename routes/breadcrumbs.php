@@ -75,5 +75,6 @@ Breadcrumbs::resource('admin.comment', 'Comments', 'id');
 Breadcrumbs::resource('admin.thread', 'Threads', 'title');
 Breadcrumbs::resource('admin.activitylog', 'Activity Logs', 'id');
 Breadcrumbs::resource('admin.attribute', 'Attributes', 'name');
+Breadcrumbs::resource('admin.reaction', 'Reactions', 'id');
 
 Breadcrumbs::resource('admin.demo.forms', 'Froms');

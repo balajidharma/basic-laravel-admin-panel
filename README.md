@@ -8,13 +8,21 @@
 
 ## Built with
 - [Laravel 11](https://github.com/laravel/framework)
-- [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
 - [Laravel Breeze](https://github.com/laravel/breeze)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [daisyUI](https://daisyui.com/)
+- [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
+- [spatie/laravel-activitylog](https://github.com/spatie/laravel-activitylog)
 - [balajidharma/laravel-menu](https://github.com/balajidharma/laravel-menu)
 - [balajidharma/laravel-crud](https://github.com/balajidharma/laravel-crud)
 - [balajidharma/laravel-form-builder](https://github.com/balajidharma/laravel-form-builder)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [daisyUI](https://daisyui.com/)
+- [balajidharma/laravel-category](https://github.com/balajidharma/laravel-category)
+- [balajidharma/laravel-comment](https://github.com/balajidharma/laravel-comment)
+- [balajidharma/laravel-forum](https://github.com/balajidharma/laravel-forum)
+- [balajidharma/laravel-viewable](https://github.com/balajidharma/laravel-viewable)
+- [balajidharma/laravel-attributes](https://github.com/balajidharma/laravel-attributes)
+- [balajidharma/laravel-reaction](https://github.com/balajidharma/laravel-reaction)
+- [diglactic/laravel-breadcrumbs](https://github.com/diglactic/laravel-breadcrumbs)
 
 
 ## Installation

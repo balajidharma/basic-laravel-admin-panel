@@ -69,7 +69,6 @@ class AttributeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \BalajiDharma\LaravelAttributes\Models\Attribute  $attribute
      * @return \Illuminate\View\View
      */
     public function edit(Attribute $attribute)
@@ -83,7 +82,6 @@ class AttributeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \BalajiDharma\LaravelAttributes\Models\Attribute  $attribute
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(AttributeUpdateData $data, Attribute $attribute, AttributeUpdateAction $attributeUpdateAction)
@@ -98,7 +96,6 @@ class AttributeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \BalajiDharma\LaravelAttributes\Models\Attribute  $attribute
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Attribute $attribute)

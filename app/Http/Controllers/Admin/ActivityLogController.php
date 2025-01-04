@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Spatie\Activitylog\Models\Activity;
 use BalajiDharma\LaravelAdminCore\Grid\ActivityLogGrid;
+use Spatie\Activitylog\Models\Activity;
 
 class ActivityLogController extends Controller
 {
