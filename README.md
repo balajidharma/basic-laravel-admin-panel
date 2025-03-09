@@ -7,8 +7,7 @@
 </p>
 
 ## Built with
-- [Laravel 11](https://github.com/laravel/framework)
-- [Laravel Breeze](https://github.com/laravel/breeze)
+- [Laravel 12](https://github.com/laravel/framework)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [daisyUI](https://daisyui.com/)
 - [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
