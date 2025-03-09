@@ -15,7 +15,6 @@
         "barryvdh/laravel-debugbar": "^3.7",
         "fakerphp/faker": "^1.23",
         "laravel/pail": "^1.2.2",
-        "laravel/breeze": "^2.0",
         "laravel/dusk": "^8.0",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.41",
