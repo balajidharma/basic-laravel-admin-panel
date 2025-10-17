@@ -12,6 +12,7 @@
 - [daisyUI](https://daisyui.com/)
 - [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
 - [spatie/laravel-activitylog](https://github.com/spatie/laravel-activitylog)
+- [balajidharma/laravel-admin](https://github.com/balajidharma/laravel-admin)
 - [balajidharma/laravel-menu](https://github.com/balajidharma/laravel-menu)
 - [balajidharma/laravel-crud](https://github.com/balajidharma/laravel-crud)
 - [balajidharma/laravel-form-builder](https://github.com/balajidharma/laravel-form-builder)
@@ -36,10 +37,10 @@
 - `./vendor/bin/sail build`
 - `sudo chown -R $USER:$USER .`
 - `./vendor/bin/sail up`
+- `./vendor/bin/sail artisan laravel-admin:install`
+- `./vendor/bin/sail artisan migrate --seed --seeder=AdminCoreSeeder`
 - `./vendor/bin/sail npm install`
 - `./vendor/bin/sail npm run dev`
-- `./vendor/bin/sail artisan vendor:publish --tag=admin-core`
-- `./vendor/bin/sail artisan migrate --seed --seeder=AdminCoreSeeder`
 - `./vendor/bin/sail artisan storage:link`
 - Now open http://localhost/admin
 
@@ -48,8 +49,7 @@
 - `composer create-project balajidharma/basic-laravel-admin-panel admin-app`
 - `cd admin-app`
 - Create a new MYSQL database and update database details in `.env` file
-- `php artisan vendor:publish --tag=admin-core`
-- `php artisan migrate --seed --seeder=AdminCoreSeeder`
+- `./vendor/bin/sail artisan laravel-admin:install`
 - `php artisan storage:link`
 - `npm install`
 - `npm run dev`
@@ -76,9 +76,8 @@ To change the Admin Prefix, change `prefix` on `config/admin.php` or add the `AD
 Encountering errors post `composer update`? Reset the database and re-publish vendor assets to resolve issues.
 
 ```
-php artisan vendor:publish --tag=admin-core  --force
+php artisan laravel-admin:install --force
 
-php artisan migrate --seed --seeder=AdminCoreSeeder
 ```
 
 ## Screenshots
