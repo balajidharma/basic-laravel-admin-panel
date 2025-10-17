@@ -38,10 +38,8 @@
 - `sudo chown -R $USER:$USER .`
 - `./vendor/bin/sail up`
 - `./vendor/bin/sail artisan laravel-admin:install`
-- `./vendor/bin/sail artisan migrate --seed --seeder=AdminCoreSeeder`
 - `./vendor/bin/sail npm install`
 - `./vendor/bin/sail npm run dev`
-- `./vendor/bin/sail artisan storage:link`
 - Now open http://localhost/admin
 
 ### Without Docker Desktop
@@ -50,7 +48,6 @@
 - `cd admin-app`
 - Create a new MYSQL database and update database details in `.env` file
 - `./vendor/bin/sail artisan laravel-admin:install`
-- `php artisan storage:link`
 - `npm install`
 - `npm run dev`
 - `php artisan serve`
