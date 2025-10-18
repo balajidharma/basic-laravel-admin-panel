@@ -1,0 +1,20 @@
+@use "choices.js/src/styles/choices";
+@use '@yaireo/tagify/dist/tagify.css';
+
+@config "../../../../tailwind.admin.config.js";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --my-color: #fff;
+}
+
+[data-theme='dark'] {
+  --my-color: #000;
+}
+
+.menu-icon svg {
+  width: 20px;
+  height: 20px;
+}

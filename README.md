@@ -37,7 +37,7 @@
 - `./vendor/bin/sail build`
 - `sudo chown -R $USER:$USER .`
 - `./vendor/bin/sail up`
-- `./vendor/bin/sail artisan laravel-admin:install`
+- `./vendor/bin/sail artisan migrate --seed --seeder=AdminCoreSeeder`
 - `./vendor/bin/sail npm install`
 - `./vendor/bin/sail npm run dev`
 - Now open http://localhost/admin
@@ -47,7 +47,7 @@
 - `composer create-project balajidharma/basic-laravel-admin-panel admin-app`
 - `cd admin-app`
 - Create a new MYSQL database and update database details in `.env` file
-- `./vendor/bin/sail artisan laravel-admin:install`
+- `php artisan migrate --seed --seeder=AdminCoreSeeder`
 - `npm install`
 - `npm run dev`
 - `php artisan serve`
