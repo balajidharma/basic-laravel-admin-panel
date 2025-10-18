@@ -6,6 +6,15 @@
 <a href="https://packagist.org/packages/balajidharma/basic-laravel-admin-panel"><img src="https://poser.pugx.org/balajidharma/basic-laravel-admin-panel/license" alt="License"></a>
 </p>
 
+## Laravel Admin Package
+This project was created using the laravel-admin package: https://github.com/balajidharma/laravel-admin.
+You can try it in your own Laravel installation by requiring the package:
+
+```
+composer require balajidharma/laravel-admin
+```
+Then follow the package repository's installation instructions to publish assets and run the installer.
+
 ## Built with
 - [Laravel 12](https://github.com/laravel/framework)
 - [Tailwind CSS](https://tailwindcss.com/)
