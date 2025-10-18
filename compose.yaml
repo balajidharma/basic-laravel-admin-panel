@@ -1,11 +1,11 @@
 services:
     laravel.test:
         build:
-            context: ./vendor/laravel/sail/runtimes/8.3
+            context: './vendor/laravel/sail/runtimes/8.4'
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
-        image: sail-8.3/app
+        image: 'sail-8.4/app'
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
@@ -33,11 +33,12 @@ services:
             - '${FORWARD_DB_PORT:-3306}:3306'
         environment:
             MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_ROOT_HOST: "%"
+            MYSQL_ROOT_HOST: '%'
             MYSQL_DATABASE: '${DB_DATABASE}'
             MYSQL_USER: '${DB_USERNAME}'
             MYSQL_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ALLOW_EMPTY_PASSWORD: 1
+            MYSQL_EXTRA_OPTIONS: '${MYSQL_EXTRA_OPTIONS}'
         volumes:
             - 'sail-mysql:/var/lib/mysql'
             - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
@@ -82,7 +83,7 @@ services:
                 - wget
                 - '--no-verbose'
                 - '--spider'
-                - 'http://localhost:7700/health'
+                - 'http://127.0.0.1:7700/health'
             retries: 3
             timeout: 5s
     mailpit:
@@ -93,23 +94,11 @@ services:
         networks:
             - sail
     selenium:
-        image: 'selenium/standalone-chrome'
+        image: selenium/standalone-chromium
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         volumes:
             - '/dev/shm:/dev/shm'
-        networks:
-            - sail
-    phpmyadmin:
-        image: phpmyadmin/phpmyadmin
-        links:
-            - mysql:mysql
-        ports:
-            - 8080:80
-        environment:
-            MYSQL_USERNAME: "${DB_USERNAME}"
-            MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
-            PMA_HOST: mysql
         networks:
             - sail
 networks:
