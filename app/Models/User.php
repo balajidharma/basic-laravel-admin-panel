@@ -9,10 +9,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, HasRoles, LaravelCategories, Notifiable;
+    use HasFactory, HasRoles, LaravelCategories, Notifiable, LogsActivity;
 
     /**
      * The attributes that are mass assignable.
@@ -52,6 +54,15 @@ class User extends Authenticatable implements MustVerifyEmail
         static::saving(function ($model) {
             $model->setUsername();
         });
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['name', 'username', 'email'])
+            ->logOnlyDirty()
+            ->dontSubmitEmptyLogs()
+            ->setDescriptionForEvent(fn (string $eventName) => "User has been {$eventName}");
     }
 
     protected function usernameExists(string $username): bool
