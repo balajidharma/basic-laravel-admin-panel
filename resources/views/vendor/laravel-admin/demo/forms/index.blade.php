@@ -9,7 +9,7 @@
             <div class="card place-items-center py-10">
                 <div class="card bg-base-100 w-96 shadow-xl">
                     <div class="card-body">
-                    {!! form($loginForm = $formBuilder->create(\App\Forms\Admin\Demo\LoginForm::class, [
+                    {!! form($loginForm = $formBuilder->create(\BalajiDharma\LaravelAdmin\Forms\Admin\Demo\LoginForm::class, [
                         'method' => 'POST',
                         'url' => route('admin.demo.forms.store'),
                     ])) !!}
@@ -20,9 +20,7 @@
             <details class="collapse collapse-arrow bg-base-200">
                 <summary class="collapse-title text-xl font-medium">Code</summary>
                 <div class="collapse-content">
-                @php
-                echo highlight_file(base_path('app/Forms/Admin/Demo/LoginForm.php'), true);
-                @endphp
+                    @include('laravel-admin::demo.forms._highlight_class', ['class' => \BalajiDharma\LaravelAdmin\Forms\Admin\Demo\LoginForm::class])
                 </div>
             </details>
         </div>
@@ -32,7 +30,7 @@
             <div class="card place-items-center py-10">
                 <div class="card bg-base-100 w-96 shadow-xl">
                     <div class="card-body">
-                    {!! form($loginForm = $formBuilder->create(\App\Forms\Admin\Demo\RegistrationForm::class, [
+                    {!! form($loginForm = $formBuilder->create(\BalajiDharma\LaravelAdmin\Forms\Admin\Demo\RegistrationForm::class, [
                         'method' => 'POST',
                         'url' => route('admin.demo.forms.store'),
                     ])) !!}
@@ -43,9 +41,7 @@
             <details class="collapse collapse-arrow bg-base-200">
                 <summary class="collapse-title text-xl font-medium">Code</summary>
                 <div class="collapse-content">
-                @php
-                echo highlight_file(base_path('app/Forms/Admin/Demo/RegistrationForm.php'), true);
-                @endphp
+                @include('laravel-admin::demo.forms._highlight_class', ['class' => \BalajiDharma\LaravelAdmin\Forms\Admin\Demo\RegistrationForm::class])
                 </div>
             </details>
         </div>
@@ -55,7 +51,7 @@
             <div class="card place-items-center py-10">
                 <div class="card bg-base-100 w-2/3 shadow-xl">
                     <div class="card-body">
-                    {!! form($loginForm = $formBuilder->create(\App\Forms\Admin\Demo\ShippingAddressForm::class, [
+                    {!! form($loginForm = $formBuilder->create(\BalajiDharma\LaravelAdmin\Forms\Admin\Demo\ShippingAddressForm::class, [
                         'method' => 'POST',
                         'url' => route('admin.demo.forms.store'),
                     ])) !!}
@@ -66,9 +62,7 @@
             <details class="collapse collapse-arrow bg-base-200">
                 <summary class="collapse-title text-xl font-medium">Code</summary>
                 <div class="collapse-content">
-                @php
-                echo highlight_file(base_path('app/Forms/Admin/Demo/ShippingAddressForm.php'), true);
-                @endphp
+                @include('laravel-admin::demo.forms._highlight_class', ['class' => \BalajiDharma\LaravelAdmin\Forms\Admin\Demo\ShippingAddressForm::class])
                 </div>
             </details>
         </div>
