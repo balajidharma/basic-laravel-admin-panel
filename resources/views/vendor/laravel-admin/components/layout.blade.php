@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Scripts -->
-        @vite(['resources/css/vendor/laravel-admin/app.scss', 'resources/js/vendor/laravel-admin/app.js', 'resources/js/vendor/laravel-admin/form-builder/field.js'])
+        @vite(['resources/css/laravel-admin/app.scss', 'resources/js/laravel-admin/app.js', 'resources/js/laravel-admin/form-builder/field.js'])
     </head>
     <body class="font-sans antialiased">
         <div class="bg-base-100 drawer lg:drawer-open">

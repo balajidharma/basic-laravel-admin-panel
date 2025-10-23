@@ -8,9 +8,9 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
-                "resources/js/vendor/laravel-admin/app.js",
-                "resources/js/vendor/laravel-admin/form-builder/field.js",
-                "resources/css/vendor/laravel-admin/app.scss"
+                "resources/js/laravel-admin/app.js",
+                "resources/js/laravel-admin/form-builder/field.js",
+                "resources/css/laravel-admin/app.scss"
             ],
             refresh: true,
         }),
