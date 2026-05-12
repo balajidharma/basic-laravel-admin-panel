@@ -6,37 +6,111 @@
 <a href="https://packagist.org/packages/balajidharma/basic-laravel-admin-panel"><img src="https://poser.pugx.org/balajidharma/basic-laravel-admin-panel/license" alt="License"></a>
 </p>
 
+## Laravel Admin Package
+This project was created using the laravel-admin package: https://github.com/balajidharma/laravel-admin.
+You can try it in your own Laravel installation by requiring the package:
+
+```
+composer require balajidharma/laravel-admin
+```
+Then follow the package repository's installation instructions to publish assets and run the installer.
+
 ## Built with
-- [Laravel 9](https://github.com/laravel/framework)
-- [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
-- [Laravel Breeze](https://github.com/laravel/breeze)
+- [Laravel 12](https://github.com/laravel/framework)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [daisyUI](https://daisyui.com/)
+- [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
+- [spatie/laravel-activitylog](https://github.com/spatie/laravel-activitylog)
+- [balajidharma/laravel-admin](https://github.com/balajidharma/laravel-admin)
+- [balajidharma/laravel-menu](https://github.com/balajidharma/laravel-menu)
+- [balajidharma/laravel-crud](https://github.com/balajidharma/laravel-crud)
+- [balajidharma/laravel-form-builder](https://github.com/balajidharma/laravel-form-builder)
+- [balajidharma/laravel-category](https://github.com/balajidharma/laravel-category)
+- [balajidharma/laravel-comment](https://github.com/balajidharma/laravel-comment)
+- [balajidharma/laravel-forum](https://github.com/balajidharma/laravel-forum)
+- [balajidharma/laravel-viewable](https://github.com/balajidharma/laravel-viewable)
+- [balajidharma/laravel-attributes](https://github.com/balajidharma/laravel-attributes)
+- [balajidharma/laravel-reaction](https://github.com/balajidharma/laravel-reaction)
+- [diglactic/laravel-breadcrumbs](https://github.com/diglactic/laravel-breadcrumbs)
 
 
 ## Installation
+
+### With Docker Desktop
 - To get started, you need to install [Docker Desktop](https://www.docker.com/products/docker-desktop).
 - You may run the following command in your terminal
 - Windows open WSL2 Linux terminal. [Docker Desktop WSL 2 backend](https://docs.docker.com/desktop/windows/wsl/)
-- `docker run --rm -v "$(pwd)":/opt -w /opt laravelsail/php81-composer:latest bash -c "composer create-project balajidharma/basic-laravel-admin-panel admin-app && cd admin-app && php ./artisan sail:install --with=mysql,redis,meilisearch,mailhog,selenium"`
-- `cd admin-app && ./vendor/bin/sail up`
+- `docker run --rm --pull=always -v "$(pwd)":/opt -w /opt laravelsail/php84-composer:latest bash -c "composer create-project balajidharma/basic-laravel-admin-panel admin-app && cd admin-app && php artisan sail:install --with=mysql,redis,meilisearch,mailpit,selenium"`
+- `cd admin-app`
+- `./vendor/bin/sail pull mysql redis meilisearch mailpit selenium`
+- `./vendor/bin/sail build`
+- `sudo chown -R $USER:$USER .`
+- `./vendor/bin/sail up`
+- `./vendor/bin/sail artisan migrate --seed --seeder=AdminCoreSeeder`
 - `./vendor/bin/sail npm install`
 - `./vendor/bin/sail npm run dev`
-- `./vendor/bin/sail artisan migrate --seed --seeder=BasicAdminPermissionSeeder`
-- Now open http://localhost/
+- Now open http://localhost/admin
+
+### Without Docker Desktop
+- To get started, you need to install [PHP Composer](https://getcomposer.org/).
+- `composer create-project balajidharma/basic-laravel-admin-panel admin-app`
+- `cd admin-app`
+- Create a new MYSQL database and update database details in `.env` file
+- `php artisan migrate --seed --seeder=AdminCoreSeeder`
+- `npm install`
+- `npm run dev`
+- `php artisan serve`
+- Now open http://localhost:8000/admin
 
 ###### Super Admin Login
 - Email - superadmin@example.com
 - Password - password
 
+#### Admin Configuration:
+
+To change the Admin Prefix, change `prefix` on `config/admin.php` or add the `ADMIN_PREFIX` on env 
+
+```php
+'prefix' => env('ADMIN_PREFIX', 'admin'),
+```
+
+## Also Try
+- [Build a Laravel admin panel from scratch](https://blog.devgenius.io/laravel-create-an-admin-panel-from-scratch-part-1-installation-8c11dae7e684)
+- [Laravel Vue Admin Panel](https://github.com/balajidharma/laravel-vue-admin-panel)
+
+## Update guide
+Encountering errors post `composer update`? Reset the database and re-publish vendor assets to resolve issues.
+
+```
+php artisan laravel-admin:install --force
+
+```
+
 ## Screenshots
 <p align="center">
-	<img src="https://miro.medium.com/max/700/1*Wk4WaomlQ4v_GKUY2AhcXw.png" >
+	<img src="https://user-images.githubusercontent.com/6037466/179876455-1fbe6c89-9afc-4002-879b-fe3fc6506e34.png" >
 	<br/><br/>
-	<img src="https://miro.medium.com/max/700/1*3eXlUx9DnzjgXX_1PJ_qWw.png" >
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/e6b99484-589c-4d44-8282-fb2a9936e712" >
 	<br/><br/>
-	<img src="https://miro.medium.com/max/700/1*jtzIchs6RP-leKp3nugdZw.png" >
-    <br/><br/>
-	<img src="https://miro.medium.com/max/700/1*4LFqQCnriBDipDpbvcnCzw.png">
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/1a01f5f1-5fc5-4551-bf01-db345b4378da" >
+	<br/><br/>
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/80084c6f-be9b-43c4-b070-9aa2ec38df60">
+	<br/><br/>
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/f5c0489f-d62f-414b-950a-51a7db879a0e">
+	<br/><br/>
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/d1d161b2-b6b1-4381-b608-7dbb6e1bf1d8">
+	<br/><br/>
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/13d88e2f-98f0-4792-a3ee-3e251370f345">
+	<br/><br/>
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/f7553d1a-c416-495a-8948-4bc6b1e2f3dc">
+	<br/><br/>
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/0d060108-3a79-46aa-a8aa-466040c35cc1">
+	<br/><br/>
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/0f9378fe-ceca-40b7-bf40-3c54c18fd487">
+	<br/><br/>
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/d379c6ac-3b20-4451-8152-06bd28b7a94a">
+	<br/><br/>
+	<img src="https://github.com/balajidharma/basic-laravel-admin-panel/assets/6037466/e7895ca3-cab1-4a00-9e4b-8c1d87288c10">
 </p>
 
 ## License

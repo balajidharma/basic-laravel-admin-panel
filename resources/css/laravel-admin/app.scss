@@ -1,0 +1,29 @@
+@use 'choices.js/src/styles/choices';
+@use '@yaireo/tagify/dist/tagify.css';
+
+@use 'tailwindcss';
+@plugin 'daisyui';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../../vendor/balajidharma/laravel-crud/src/resources/views/*.blade.php';
+@source '../../vendor/balajidharma/laravel-admin-core/Grid/*.php';
+@source '../../storage/framework/views/*.php';
+@source '../../resources/views/vendor/laravel-admin/components/**/*.blade.php';
+@source '../../resources/views/vendor/laravel-admin/**/*.blade.php';
+@source '../../app/Forms/Admin/*.php';
+@source '../../config/form-builder.php';
+
+
+:root {
+  --my-color: #fff;
+}
+
+[data-theme='dark'] {
+  --my-color: #000;
+}
+
+.menu-icon svg {
+  width: 20px;
+  height: 20px;
+}
