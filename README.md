@@ -16,7 +16,7 @@ composer require balajidharma/laravel-admin
 Then follow the package repository's installation instructions to publish assets and run the installer.
 
 ## Built with
-- [Laravel 12](https://github.com/laravel/framework)
+- [Laravel 13](https://github.com/laravel/framework)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [daisyUI](https://daisyui.com/)
 - [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
